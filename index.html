@@ -18,7 +18,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Ubuntu:wght@700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Ubuntu:wght@700&family=Montserrat:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* ===== Ubuntu Bold — local font (fonts/ folder) + Google Fonts fallback =====
@@ -108,6 +108,18 @@ nav{
   transform:translateY(-2px);
 }
 .menu-btn{display:none;background:none;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;font-size:1.1rem;cursor:pointer;color:var(--ink)}
+/* language switcher button (EN <-> Bangla) */
+.lang-btn{
+  display:inline-flex;align-items:center;gap:7px;flex-shrink:0;margin-left:8px;
+  background:#fff;border:1.5px solid var(--line);border-radius:999px;
+  padding:7px 14px;font-family:'Montserrat','Noto Sans Bengali',sans-serif;
+  font-weight:700;font-size:.78rem;color:var(--ink);cursor:pointer;transition:.3s;
+}
+.lang-btn:hover{border-color:var(--neon);color:var(--green);box-shadow:0 4px 14px var(--neon-soft)}
+.lang-btn svg{flex-shrink:0}
+/* Bangla mode e Bangla glyph gulo Noto Sans Bengali te render hoy */
+html[lang="bn"] body,html[lang="bn"] button,html[lang="bn"] input,html[lang="bn"] textarea{font-family:'Inter','Noto Sans Bengali',sans-serif}
+html[lang="bn"] h1,html[lang="bn"] h2,html[lang="bn"] h3,html[lang="bn"] h4{font-family:'Sora','Noto Sans Bengali',sans-serif}
 
 /* ================= HERO ================= */
 .hero{
@@ -655,12 +667,13 @@ footer a:hover{color:var(--neon)}
 /* ================= WHATSAPP CHATBOX ================= */
 .wa-btn{
   position:fixed;bottom:26px;right:26px;z-index:200;
-  width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;
-  background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-size:1.7rem;
+  width:62px;height:62px;border-radius:50%;cursor:pointer;
+  background:#fff;border:2.5px solid #25D366;padding:0;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 10px 28px rgba(37,211,102,.45), 0 0 20px var(--neon-soft);
   animation:pulse 2.6s infinite;transition:.3s;
 }
+.wa-btn img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .wa-btn:hover{transform:scale(1.1)}
 @keyframes pulse{
   0%,100%{box-shadow:0 10px 28px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.4)}
@@ -699,6 +712,9 @@ footer a:hover{color:var(--neon)}
   font-family:'Inter',sans-serif;font-size:.9rem;transition:.3s;
 }
 .wa-send:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,.4)}
+/* in-page chat bubbles */
+.wa-chat{max-height:230px;overflow-y:auto;margin-bottom:12px}
+.wa-msg.me{background:#DCF8C6;border-radius:14px 4px 14px 14px;margin-left:44px}
 
 /* ===== BRAND INTRO (page load e boro logo+name center e bose,
        scroll ba click korle navbar er jaygay fly kore chole jay) ===== */
@@ -720,14 +736,14 @@ footer a:hover{color:var(--neon)}
 .intro-mems{left:30px}
 .intro-certs{right:30px}
 .intro-mems img,.intro-certs img{
-  height:78px;width:auto;object-fit:contain;
+  height:104px;width:auto;object-fit:contain;
   opacity:0;animation:tagFade .8s ease .3s forwards;
 }
 #brandIntro.fly .intro-welcome,
 #brandIntro.fly .intro-mems,
 #brandIntro.fly .intro-certs{opacity:0;transition:opacity .25s;animation:none}
 @media(max-width:640px){
-  .intro-mems img,.intro-certs img{height:46px}
+  .intro-mems img,.intro-certs img{height:58px}
   .intro-mems{left:14px}.intro-certs{right:14px}
 }
 /* intro tagline: Montserrat regular, brand er niche still hoye fade-in kore */
@@ -774,6 +790,11 @@ footer a:hover{color:var(--neon)}
 /* intro cholakalin navbar er brand lukano thake */
 body.intro-active nav .brand{opacity:0}
 nav .brand{transition:opacity .35s ease}
+/* intro cholakalin page button gulo-o dekha jay na — intro sesh hole fade in kore ashe
+   (language button intro teo thake, jate shurutei bhasha bodlano jay) */
+body.intro-active .nav-links,
+body.intro-active .menu-btn{opacity:0;pointer-events:none}
+.nav-links,.menu-btn{transition:opacity .35s ease}
 
 /* ===== DAILY CAPACITY typing cursor ===== */
 .cap-cursor{
@@ -829,6 +850,7 @@ nav .brand{transition:opacity .35s ease}
   }
   .nav-links.open{display:flex}
   .menu-btn{display:block}
+  .lang-btn{margin-left:auto}
 }
 </style>
 </head>
@@ -843,17 +865,27 @@ nav .brand{transition:opacity .35s ease}
       <small>a sister concern of <span class="rph">R.PH.GROUP</span></small>
     </div>
   </a>
-  <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
   <div class="nav-links" id="navLinks">
-    <a href="#about">About Us</a>
-    <a href="#mission">Mission</a>
-    <a href="#certification">Certification</a>
-    <a href="#machineries">Machineries</a>
-    <a href="#products">Our Products</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#career">Career</a>
-    <a href="#contact">Contact Us</a>
+    <a href="#about" data-i18n="nav.about">About Us</a>
+    <a href="#mission" data-i18n="nav.mission">Mission</a>
+    <a href="#certification" data-i18n="nav.cert">Certification</a>
+    <a href="#machineries" data-i18n="nav.mach">Machineries</a>
+    <a href="#products" data-i18n="nav.products">Our Products</a>
+    <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+    <a href="#career" data-i18n="nav.career">Career</a>
+    <a href="#contact" data-i18n="nav.contact">Contact Us</a>
   </div>
+  <!-- LANGUAGE BUTTON: EN <-> Bangla. Icon: green box e "A", white box e green "ব" -->
+  <button class="lang-btn" onclick="toggleLang()" title="Change language / ভাষা বদলান">
+    <svg viewBox="0 0 44 44" width="21" height="21" aria-hidden="true">
+      <rect x="2" y="2" width="26" height="26" rx="7" fill="#128A46"/>
+      <text x="15" y="21.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="bold" fill="#fff">A</text>
+      <rect x="17" y="17" width="25" height="25" rx="7" fill="#fff" stroke="#128A46" stroke-width="2.5"/>
+      <text x="29.5" y="35.5" text-anchor="middle" font-family="'Noto Sans Bengali',Arial,sans-serif" font-size="15" font-weight="bold" fill="#128A46">ব</text>
+    </svg>
+    <span id="langLabel">বাংলা</span>
+  </button>
+  <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
 </nav>
 
 <!-- ===== BRAND INTRO: load e boro logo+name center e dekha jay.
@@ -870,7 +902,7 @@ nav .brand{transition:opacity .35s ease}
   <div class="intro-certs">
     <img src="images/certificate.png" alt="OEKO-TEX, FSC & GRS certified">
   </div>
-  <div class="intro-welcome">Welcome to</div>
+  <div class="intro-welcome" data-i18n="intro.welcome">Welcome to</div>
   <div class="intro-brand">
     <img src="images/logo.png" alt="Article Label logo">
     <div class="intro-name">Article Label & Accessories Ltd.
@@ -878,39 +910,39 @@ nav .brand{transition:opacity .35s ease}
     </div>
   </div>
   <!-- intro tagline: brand er niche, Montserrat regular, fade-in -->
-  <div class="intro-tagline">100% Computerized Woven Label, Printed Label, Offset Paper Item &amp; All Kinds of Garments Accessories — Manufacturer, Supplier &amp; Exporter</div>
-  <div class="intro-hint">Scroll to explore ↓</div>
+  <div class="intro-tagline" data-i18n="intro.tagline">100% Computerized Woven Label, Printed Label, Offset Paper Item &amp; All Kinds of Garments Accessories — Manufacturer, Supplier &amp; Exporter</div>
+  <div class="intro-hint" data-i18n="intro.hint">Scroll to explore ↓</div>
 </div>
 
 <!-- ================= HERO ================= -->
 <header class="hero" id="home">
   <div class="hero-grid">
     <div>
-      <span class="tag-label">Since 2003 · Dhaka, Bangladesh</span>
-      <h1>Every garment tells a story.<br>We make the <em class="spin-word" id="spinWord">label</em></h1>
-      <p>100% computerized woven labels, printed labels, offset paper items & all kinds of garments accessories — manufactured, supplied and exported to the world's leading apparel brands.</p>
+      <span class="tag-label" data-i18n="hero.tag">Since 2003 · Dhaka, Bangladesh</span>
+      <h1><span data-i18n="hero.h1a">Every garment tells a story.</span><br><span data-i18n="hero.h1b">We make the</span> <em class="spin-word" id="spinWord">label</em></h1>
+      <p data-i18n="hero.p">100% computerized woven labels, printed labels, offset paper items & all kinds of garments accessories — manufactured, supplied and exported to the world's leading apparel brands.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#products">Explore Products →</a>
-        <a class="btn btn-ghost" href="#contact">Get a Quote</a>
+        <a class="btn btn-primary" href="#products" data-i18n="hero.btn1">Explore Products →</a>
+        <a class="btn btn-ghost" href="#contact" data-i18n="hero.btn2">Get a Quote</a>
       </div>
     </div>
     <div class="hero-visual">
       <!-- Hero product image: spinWords list er img field theke ashe, product name er sathe synced -->
       <div class="hero-slide"><img src="images/cl01.png" alt="Product"></div>
       <!-- Daily capacity: product spin er sathe synced, typing style e ashe -->
-      <div class="hex-badge">DAILY CAPACITY<strong><span id="capText">6.5M+ pcs</span><span class="cap-cursor off" id="capCursor"></span></strong></div>
+      <div class="hex-badge"><span data-i18n="hero.cap">DAILY CAPACITY</span><strong><span id="capText">6.5M+ pcs</span><span class="cap-cursor off" id="capCursor"></span></strong></div>
     </div>
   </div>
 </header>
 
 <!-- stats strip -->
 <div class="stats reveal">
-  <div class="stat"><b>1997</b><span>Group Roots</span></div>
-  <div class="stat"><b>30,000</b><span>SFT Factory</span></div>
-  <div class="stat"><b>400+</b><span>Manpower</span></div>
-  <div class="stat"><b>80+</b><span>Retailers</span></div>
-  <div class="stat"><b>200+</b><span>Vendors</span></div>
-  <div class="stat"><b>$10M</b><span>Annual Revenue</span></div>
+  <div class="stat"><b>1997</b><span data-i18n="stat.s1">Group Roots</span></div>
+  <div class="stat"><b>30,000</b><span data-i18n="stat.s2">SFT Factory</span></div>
+  <div class="stat"><b>400+</b><span data-i18n="stat.s3">Manpower</span></div>
+  <div class="stat"><b>80+</b><span data-i18n="stat.s4">Retailers</span></div>
+  <div class="stat"><b>200+</b><span data-i18n="stat.s5">Vendors</span></div>
+  <div class="stat"><b>$10M</b><span data-i18n="stat.s6">Annual Revenue</span></div>
 </div>
 
 <!-- ================= ABOUT ================= -->
@@ -921,9 +953,9 @@ nav .brand{transition:opacity .35s ease}
       <img src="images/factory.jpg" alt="Article Label factory">
     </div>
     <div class="reveal">
-      <span class="tag-label">About Us</span>
-      <h2 class="sec-title">A trusted name in <span>garment accessories</span></h2>
-      <p style="color:var(--ink-soft);margin-bottom:16px">Article Label & Accessories Ltd., R.P.H. Label & Accessories, and Article Printing & Packaging are proud sister concerns of <b>R.PH. Group</b> — a leading garments accessories manufacturer based in Dhaka, Bangladesh.</p>
+      <span class="tag-label" data-i18n="about.tag">About Us</span>
+      <h2 class="sec-title" data-i18n="about.title">A trusted name in <span>garment accessories</span></h2>
+      <p style="color:var(--ink-soft);margin-bottom:16px" data-i18n="about.p1">Article Label & Accessories Ltd., R.P.H. Label & Accessories, and Article Printing & Packaging are proud sister concerns of <b>R.PH. Group</b> — a leading garments accessories manufacturer based in Dhaka, Bangladesh.</p>
 
       <!-- ===== "More" — R.PH. Group full profile (inline expand, kono page/iframe na)
            Note: upore je intro paragraph ta ache, seta ekhane ar repeat kora hoy nai —
@@ -948,8 +980,8 @@ nav .brand{transition:opacity .35s ease}
 
   <!-- ===== LEADERSHIP (boro profile cards) ===== -->
   <div class="wrap" style="margin-top:80px">
-    <span class="tag-label reveal">Leadership</span>
-    <h2 class="sec-title reveal">The people behind <span>the journey</span></h2>
+    <span class="tag-label reveal" data-i18n="lead.tag">Leadership</span>
+    <h2 class="sec-title reveal" data-i18n="lead.title">The people behind <span>the journey</span></h2>
     <div class="leader-grid">
       <div class="leader-card reveal">
         <!-- EDIT-IMG: Chairman photo (portrait, min 500x600) -->
@@ -980,9 +1012,9 @@ nav .brand{transition:opacity .35s ease}
 <!-- ================= CERTIFICATION ================= -->
 <section id="certification" style="background:#fff">
   <div class="wrap">
-    <span class="tag-label reveal">Certification Status</span>
-    <h2 class="sec-title reveal">Certified for <span>quality & sustainability</span></h2>
-    <p class="sec-sub reveal">We hold OEKO-TEX®, FSC® and GRS certifications ensuring product safety, sustainability and environmental responsibility. Our products passed the COSTCO Screening Test across all categories and fully comply with California Proposition 65 — Lead-free, Azo-free and Phthalate-free.</p>
+    <span class="tag-label reveal" data-i18n="cert.tag">Certification Status</span>
+    <h2 class="sec-title reveal" data-i18n="cert.title">Certified for <span>quality & sustainability</span></h2>
+    <p class="sec-sub reveal" data-i18n="cert.sub">We hold OEKO-TEX®, FSC® and GRS certifications ensuring product safety, sustainability and environmental responsibility. Our products passed the COSTCO Screening Test across all categories and fully comply with California Proposition 65 — Lead-free, Azo-free and Phthalate-free.</p>
 
     <!-- membership highlight banner -->
     <div class="member-banner reveal">
@@ -1027,9 +1059,9 @@ nav .brand{transition:opacity .35s ease}
 <!-- ================= MISSION ================= -->
 <section id="mission">
   <div class="wrap">
-    <span class="tag-label reveal">Our Vision & Mission</span>
-    <h2 class="sec-title reveal">Building a brighter <span>Bangladesh</span></h2>
-    <p class="sec-sub reveal">Our mission goes beyond labels — it's about empowering people, industry and the nation's backbone RMG sector.</p>
+    <span class="tag-label reveal" data-i18n="mission.tag">Our Vision & Mission</span>
+    <h2 class="sec-title reveal" data-i18n="mission.title">Building a brighter <span>Bangladesh</span></h2>
+    <p class="sec-sub reveal" data-i18n="mission.sub">Our mission goes beyond labels — it's about empowering people, industry and the nation's backbone RMG sector.</p>
     <div class="mission-grid">
       <div class="m-card reveal"><div class="ico">🌱</div><h3>Sustainable Growth</h3><p>Empowering Bangladesh through sustainable growth and inclusive employment with eco-friendly materials and practices.</p></div>
       <div class="m-card reveal"><div class="ico">📈</div><h3>Economic Development</h3><p>Driving economic development by expanding opportunities for all and reducing unemployment through innovation.</p></div>
@@ -1044,9 +1076,9 @@ nav .brand{transition:opacity .35s ease}
 <!-- ================= MACHINERIES ================= -->
 <section id="machineries">
   <div class="wrap">
-    <span class="tag-label reveal">Machineries & Capacity</span>
-    <h2 class="sec-title reveal">World-class machines, <span>massive capacity</span></h2>
-    <p class="sec-sub reveal">Vaupel, MEI, Heidelberg, Fuji, Konica Minolta, HY, Zebra — our production floor runs on globally trusted brands.</p>
+    <span class="tag-label reveal" data-i18n="mach.tag">Machineries & Capacity</span>
+    <h2 class="sec-title reveal" data-i18n="mach.title">World-class machines, <span>massive capacity</span></h2>
+    <p class="sec-sub reveal" data-i18n="mach.sub">Vaupel, MEI, Heidelberg, Fuji, Konica Minolta, HY, Zebra — our production floor runs on globally trusted brands.</p>
     <div class="mach-grid">
       <!-- EDIT-IMG: machine photo gulo images/machine/ folder e.
            Details button e click korle machModal e oi machine er full data ashe —
@@ -1172,9 +1204,9 @@ nav .brand{transition:opacity .35s ease}
 <!-- ================= PRODUCTS ================= -->
 <section id="products">
   <div class="wrap">
-    <span class="tag-label reveal">Key Products</span>
-    <h2 class="sec-title reveal">Everything a garment <span>needs</span></h2>
-    <p class="sec-sub reveal">From woven labels to printed poly bags — complete trims & packaging support from a single, reliable source.</p>
+    <span class="tag-label reveal" data-i18n="prod.tag">Key Products</span>
+    <h2 class="sec-title reveal" data-i18n="prod.title">Everything a garment <span>needs</span></h2>
+    <p class="sec-sub reveal" data-i18n="prod.sub">From woven labels to printed poly bags — complete trims & packaging support from a single, reliable source.</p>
     <div class="prod-grid">
       <!-- EDIT-IMG: prottek product card e:
            1) img src = card er cover photo
@@ -1200,8 +1232,8 @@ nav .brand{transition:opacity .35s ease}
 <!-- ================= GALLERY ================= -->
 <section id="gallery">
   <div class="wrap">
-    <span class="tag-label reveal">Gallery</span>
-    <h2 class="sec-title reveal">Inside our <span>factory</span></h2>
+    <span class="tag-label reveal" data-i18n="gal.tag">Gallery</span>
+    <h2 class="sec-title reveal" data-i18n="gal.title">Inside our <span>factory</span></h2>
     <div class="gal-grid">
       <!-- EDIT-IMG: gallery photos — add/remove as many .gal blocks as you want -->
       <div class="gal reveal"><img src="https://placehold.co/500x440/D9EBE0/128A46?text=Gallery+1" alt="Gallery 1"></div>
@@ -1228,33 +1260,33 @@ nav .brand{transition:opacity .35s ease}
 <!-- ================= CAREER ================= -->
 <section id="career">
   <div class="wrap">
-    <span class="tag-label reveal">Career</span><span class="hiring-badge reveal">We're Hiring</span>
-    <h2 class="sec-title reveal">Grow with <span>us</span></h2>
-    <p class="sec-sub reveal">We are 400+ people strong and always looking for talent. Openings below — or send your CV any time.</p>
+    <span class="tag-label reveal" data-i18n="career.tag">Career</span><span class="hiring-badge reveal" data-i18n="career.badge">We're Hiring</span>
+    <h2 class="sec-title reveal" data-i18n="career.title">Grow with <span>us</span></h2>
+    <p class="sec-sub reveal" data-i18n="career.sub">We are 400+ people strong and always looking for talent. Openings below — or send your CV any time.</p>
 
     <!-- EDIT: job openings — copy/paste a .job block to add more, delete to remove.
          Apply button e openApply('Position Name') dilei oi position soho form khole. -->
     <div class="job reveal">
       <div><b>Merchandiser (Trims & Accessories)</b><small>Full time · Uttara, Dhaka · Experience: 2+ years</small></div>
-      <button class="btn btn-ghost" onclick="openApply('Merchandiser (Trims & Accessories)')">Apply →</button>
+      <button class="btn btn-ghost" onclick="openApply('Merchandiser (Trims & Accessories)')" data-i18n="career.apply">Apply →</button>
     </div>
 
-    <p class="career-cv reveal">Don't see your role? Email your CV to <a href="mailto:rphlabel@yahoo.com">rphlabel@yahoo.com</a> — we're always looking for talented people.</p>
+    <p class="career-cv reveal" data-i18n="career.cv">Don't see your role? Email your CV to <a href="mailto:rphlabel@yahoo.com">rphlabel@yahoo.com</a> — we're always looking for talented people.</p>
   </div>
 </section>
 
 <!-- ================= CONTACT ================= -->
 <section id="contact">
   <div class="wrap">
-    <span class="tag-label reveal">Contact Us</span>
-    <h2 class="sec-title reveal">Let's make your <span>next label</span></h2>
+    <span class="tag-label reveal" data-i18n="contact.tag">Contact Us</span>
+    <h2 class="sec-title reveal" data-i18n="contact.title">Let's make your <span>next label</span></h2>
     <div class="contact-grid" style="margin-top:40px">
       <div class="c-info reveal">
-        <div class="item"><div class="ico">🏢</div><div><b>Corporate Office</b><p>KA-86/C, Kuril Bishwa Road, Vatara, Dhaka-1230</p></div></div>
-        <div class="item"><div class="ico">🏭</div><div><b>Factory Unit-01</b><p>16/D, Chanpara, Uzampur, Uttarkhan, Uttara, Dhaka-1230</p></div></div>
-        <div class="item"><div class="ico">🏭</div><div><b>Factory Unit-02</b><p>149/5, Arambagh, Motijheel, Dhaka-1000</p></div></div>
+        <div class="item"><div class="ico">🏢</div><div><b data-i18n="c.office">Corporate Office</b><p>KA-86/C, Kuril Bishwa Road, Vatara, Dhaka-1230</p></div></div>
+        <div class="item"><div class="ico">🏭</div><div><b data-i18n="c.f1">Factory Unit-01</b><p>16/D, Chanpara, Uzampur, Uttarkhan, Uttara, Dhaka-1230</p></div></div>
+        <div class="item"><div class="ico">🏭</div><div><b data-i18n="c.f2">Factory Unit-02</b><p>149/5, Arambagh, Motijheel, Dhaka-1000</p></div></div>
         <div class="item"><div class="ico">👤</div><div><b>Mr. Mohiuddin Masud (Shakil) — Advisor</b><p>Cell: +880 17070 82158<br>shakil@articlelabelbd.com</p></div></div>
-        <div class="item"><div class="ico">✉️</div><div><b>Email</b><p>rphlabel@yahoo.com<br>hanif@articlelabelbd.com</p></div></div>
+        <div class="item"><div class="ico">✉️</div><div><b data-i18n="c.email">Email</b><p>rphlabel@yahoo.com<br>hanif@articlelabelbd.com</p></div></div>
       </div>
 
       <!-- ============================================
@@ -1298,14 +1330,14 @@ nav .brand{transition:opacity .35s ease}
       <p style="font-size:.86rem;max-width:340px">A proud sister concern of R.PH. Group — alongside R.PH. Label & Accessories and Article Printing & Packaging. Manufacturer, supplier & exporter of all kinds of garments accessories.</p>
     </div>
     <div>
-      <h4>Quick Links</h4>
-      <a href="#about">About Us</a>
-      <a href="#products">Our Products</a>
-      <a href="#machineries">Machineries</a>
-      <a href="#career">Career</a>
+      <h4 data-i18n="footer.quick">Quick Links</h4>
+      <a href="#about" data-i18n="nav.about">About Us</a>
+      <a href="#products" data-i18n="nav.products">Our Products</a>
+      <a href="#machineries" data-i18n="nav.mach">Machineries</a>
+      <a href="#career" data-i18n="nav.career">Career</a>
     </div>
     <div>
-      <h4>Contact</h4>
+      <h4 data-i18n="footer.contact">Contact</h4>
       <a href="mailto:rphlabel@yahoo.com">rphlabel@yahoo.com</a>
       <a href="mailto:hanif@articlelabelbd.com">hanif@articlelabelbd.com</a>
       <a href="tel:+8801707082158">+880 17070 82158</a>
@@ -1472,22 +1504,45 @@ nav .brand{transition:opacity .35s ease}
 <div class="wa-box" id="waBox">
   <div class="wa-head">
     <div class="avatar">A</div>
-    <div><b>Article Label & Accessories</b><small>Typically replies within minutes</small></div>
+    <div><b>Article Label & Accessories</b><small data-i18n="wa.small">Typically replies within minutes</small></div>
   </div>
   <div class="wa-body">
-    <div class="wa-msg">👋 Hello! Welcome to Article Label & Accessories Ltd. How can we help you today?</div>
-    <input type="text" id="waInput" placeholder="Type your message...">
-    <button class="wa-send" onclick="sendWA()">Send on WhatsApp ➤</button>
+    <!-- in-page messenger: message gulo ekhane bubble hisebe dekha jay -->
+    <div class="wa-chat" id="waChat">
+      <div class="wa-msg" data-i18n="wa.msg">👋 Hello! Welcome to Article Label & Accessories Ltd. How can we help you today?</div>
+    </div>
+    <input type="text" id="waInput" data-i18n-ph="wa.ph" placeholder="Type your message...">
+    <button class="wa-send" onclick="sendWA()" data-i18n="wa.send">Send on WhatsApp ➤</button>
   </div>
 </div>
-<button class="wa-btn" onclick="document.getElementById('waBox').classList.toggle('open')" aria-label="Chat on WhatsApp">💬</button>
+<!-- quick message button: companir round logo -->
+<button class="wa-btn" onclick="document.getElementById('waBox').classList.toggle('open')" aria-label="Quick message on WhatsApp"><img src="images/logo.png" alt="Article Label quick chat"></button>
 
 <script>
-// WhatsApp chat — EDIT: number ekhane
-const waNumber = "8801324736172";
+// ===== WhatsApp quick messenger (in-page chat) =====
+// EDIT: number change korte ekhane. Message ta page er chat bubble e dekha jay,
+// tarpor WhatsApp e deliver hoy (browser theke WhatsApp na khule direct pathano
+// technically possible na — wa.me khole, message pre-filled thake, Send e tap korlei jay).
+const waNumber = "8801324736170";
 function sendWA(){
-  const msg = document.getElementById('waInput').value.trim() || "Hello! I want to know about your products.";
-  window.open("https://wa.me/" + waNumber + "?text=" + encodeURIComponent(msg), "_blank");
+  const input = document.getElementById('waInput');
+  const bn = siteLang === 'bn';
+  const msg = input.value.trim() || (bn ? "হ্যালো! আপনাদের পণ্য সম্পর্কে জানতে চাই।" : "Hello! I want to know about your products.");
+  const chat = document.getElementById('waChat');
+  const me = document.createElement('div');
+  me.className = 'wa-msg me'; me.textContent = msg;
+  chat.appendChild(me);
+  input.value = "";
+  chat.scrollTop = chat.scrollHeight;
+  setTimeout(()=>{
+    const r = document.createElement('div');
+    r.className = 'wa-msg';
+    r.textContent = bn ? "✅ হোয়াটসঅ্যাপে খুলছে — Send চাপলেই মেসেজটি চলে যাবে।"
+                       : "✅ Opening WhatsApp — just tap Send to deliver your message.";
+    chat.appendChild(r);
+    chat.scrollTop = chat.scrollHeight;
+    window.open("https://wa.me/" + waNumber + "?text=" + encodeURIComponent(msg), "_blank");
+  }, 500);
 }
 document.getElementById('waInput').addEventListener('keydown', e=>{ if(e.key==='Enter') sendWA(); });
 
@@ -1712,7 +1767,11 @@ window.addEventListener('keydown', e=>{
   if(['ArrowDown','PageDown','End',' '].includes(e.key)) collapseIntro();
 });
 // nav er je kono link/button e click korleo intro collapse hoy
-document.querySelector('nav').addEventListener('click', collapseIntro);
+// (language button chara — ota intro te thekei use kora jay)
+document.querySelector('nav').addEventListener('click', e=>{
+  if(e.target.closest('.lang-btn')) return;
+  collapseIntro();
+});
 // overlay te click korleo
 introEl.addEventListener('click', collapseIntro);
 // page jodi already scrolled thake (refresh mid-page), intro dorkar nai
@@ -1720,10 +1779,15 @@ if(window.scrollY > 40) { introDone = true; finishIntro(); }
 
 // ===== ABOUT: "More About R.P.H. Group" inline expand/collapse =====
 function toggleRphMore(){
-  const box = document.getElementById('rphMore');
-  const btn = document.getElementById('rphMoreBtn');
-  const open = box.classList.toggle('open');
-  btn.innerHTML = open ? 'Show Less ↑' : 'More About R.P.H. Group ↓';
+  document.getElementById('rphMore').classList.toggle('open');
+  updateRphBtn();
+}
+function updateRphBtn(){
+  const open = document.getElementById('rphMore').classList.contains('open');
+  const bn = siteLang === 'bn';
+  document.getElementById('rphMoreBtn').innerHTML =
+    open ? (bn ? 'কম দেখুন ↑' : 'Show Less ↑')
+         : (bn ? 'R.P.H. Group সম্পর্কে আরও ↓' : 'More About R.P.H. Group ↓');
 }
 
 // ===== MACHINE DETAILS (Details button → modal) =====
@@ -2118,6 +2182,115 @@ document.addEventListener('keydown', e=>{
 document.querySelectorAll('.nav-links a').forEach(a=>{
   a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
 });
+
+// ===== LANGUAGE SWITCHER (English <-> Bangla) =====
+// EDIT: notun kono text translate korte hole 2 ta kaj:
+//   1) HTML e oi element e data-i18n="key" din
+//   2) niche i18n dict e sei key er [English, Bangla] pair add korun
+// Note: HTML wala entry te innerHTML boshe, tai <span>/<a>/<b> tag rakha jay.
+const i18n = {
+  "nav.about":     ["About Us","আমাদের সম্পর্কে"],
+  "nav.mission":   ["Mission","মিশন"],
+  "nav.cert":      ["Certification","সার্টিফিকেশন"],
+  "nav.mach":      ["Machineries","মেশিনারিজ"],
+  "nav.products":  ["Our Products","আমাদের পণ্য"],
+  "nav.gallery":   ["Gallery","গ্যালারি"],
+  "nav.career":    ["Career","ক্যারিয়ার"],
+  "nav.contact":   ["Contact Us","যোগাযোগ"],
+  "intro.welcome": ["Welcome to","স্বাগতম"],
+  "intro.tagline": ["100% Computerized Woven Label, Printed Label, Offset Paper Item &amp; All Kinds of Garments Accessories — Manufacturer, Supplier &amp; Exporter",
+                    "১০০% কম্পিউটারাইজড ওভেন লেবেল, প্রিন্টেড লেবেল, অফসেট পেপার আইটেম ও সব ধরনের গার্মেন্টস এক্সেসরিজ — প্রস্তুতকারক, সরবরাহকারী ও রপ্তানিকারক"],
+  "intro.hint":    ["Scroll to explore ↓","স্ক্রল করে দেখুন ↓"],
+  "hero.tag":      ["Since 2003 · Dhaka, Bangladesh","২০০৩ থেকে · ঢাকা, বাংলাদেশ"],
+  "hero.h1a":      ["Every garment tells a story.","প্রতিটি পোশাক একটি গল্প বলে।"],
+  "hero.h1b":      ["We make the","আমরা তৈরি করি"],
+  "hero.p":        ["100% computerized woven labels, printed labels, offset paper items & all kinds of garments accessories — manufactured, supplied and exported to the world's leading apparel brands.",
+                    "১০০% কম্পিউটারাইজড ওভেন লেবেল, প্রিন্টেড লেবেল, অফসেট পেপার আইটেম ও সব ধরনের গার্মেন্টস এক্সেসরিজ — বিশ্বের শীর্ষস্থানীয় অ্যাপারেল ব্র্যান্ডের জন্য প্রস্তুত, সরবরাহ ও রপ্তানি করা হয়।"],
+  "hero.btn1":     ["Explore Products →","পণ্য দেখুন →"],
+  "hero.btn2":     ["Get a Quote","কোটেশন নিন"],
+  "hero.cap":      ["DAILY CAPACITY","দৈনিক উৎপাদন"],
+  "stat.s1":       ["Group Roots","গ্রুপের সূচনা"],
+  "stat.s2":       ["SFT Factory","বর্গফুট কারখানা"],
+  "stat.s3":       ["Manpower","জনবল"],
+  "stat.s4":       ["Retailers","রিটেইলার"],
+  "stat.s5":       ["Vendors","ভেন্ডর"],
+  "stat.s6":       ["Annual Revenue","বার্ষিক আয়"],
+  "about.tag":     ["About Us","আমাদের সম্পর্কে"],
+  "about.title":   ["A trusted name in <span>garment accessories</span>","গার্মেন্টস এক্সেসরিজে <span>বিশ্বস্ত নাম</span>"],
+  "about.p1":      ["Article Label & Accessories Ltd., R.P.H. Label & Accessories, and Article Printing & Packaging are proud sister concerns of <b>R.PH. Group</b> — a leading garments accessories manufacturer based in Dhaka, Bangladesh.",
+                    "আর্টিকেল লেবেল অ্যান্ড এক্সেসরিজ লিমিটেড, আর.পি.এইচ. লেবেল অ্যান্ড এক্সেসরিজ এবং আর্টিকেল প্রিন্টিং অ্যান্ড প্যাকেজিং — <b>আর.পি.এইচ. গ্রুপ</b>-এর গর্বিত সিস্টার কনসার্ন; ঢাকা, বাংলাদেশের একটি শীর্ষস্থানীয় গার্মেন্টস এক্সেসরিজ প্রস্তুতকারক প্রতিষ্ঠান।"],
+  "lead.tag":      ["Leadership","নেতৃত্ব"],
+  "lead.title":    ["The people behind <span>the journey</span>","যাত্রার পেছনের <span>মানুষগুলো</span>"],
+  "cert.tag":      ["Certification Status","সার্টিফিকেশন"],
+  "cert.title":    ["Certified for <span>quality & sustainability</span>","মান ও টেকসইতায় <span>সার্টিফায়েড</span>"],
+  "cert.sub":      ["We hold OEKO-TEX®, FSC® and GRS certifications ensuring product safety, sustainability and environmental responsibility. Our products passed the COSTCO Screening Test across all categories and fully comply with California Proposition 65 — Lead-free, Azo-free and Phthalate-free.",
+                    "আমাদের রয়েছে OEKO-TEX®, FSC® ও GRS সার্টিফিকেশন — যা পণ্যের নিরাপত্তা, টেকসইতা ও পরিবেশগত দায়বদ্ধতা নিশ্চিত করে। আমাদের পণ্য সব ক্যাটাগরিতে COSTCO স্ক্রিনিং টেস্ট পাস করেছে এবং California Proposition 65 সম্পূর্ণ মেনে চলে — Lead-free, Azo-free ও Phthalate-free।"],
+  "mission.tag":   ["Our Vision & Mission","আমাদের লক্ষ্য ও উদ্দেশ্য"],
+  "mission.title": ["Building a brighter <span>Bangladesh</span>","গড়ছি উজ্জ্বল <span>বাংলাদেশ</span>"],
+  "mission.sub":   ["Our mission goes beyond labels — it's about empowering people, industry and the nation's backbone RMG sector.",
+                    "আমাদের মিশন শুধু লেবেল নয় — মানুষ, শিল্প এবং দেশের মেরুদণ্ড RMG খাতকে এগিয়ে নেওয়াই আমাদের লক্ষ্য।"],
+  "mach.tag":      ["Machineries & Capacity","মেশিনারিজ ও উৎপাদন ক্ষমতা"],
+  "mach.title":    ["World-class machines, <span>massive capacity</span>","বিশ্বমানের মেশিন, <span>বিশাল উৎপাদন ক্ষমতা</span>"],
+  "mach.sub":      ["Vaupel, MEI, Heidelberg, Fuji, Konica Minolta, HY, Zebra — our production floor runs on globally trusted brands.",
+                    "Vaupel, MEI, Heidelberg, Fuji, Konica Minolta, HY, Zebra — বিশ্বখ্যাত ব্র্যান্ডের মেশিনে চলে আমাদের প্রোডাকশন ফ্লোর।"],
+  "prod.tag":      ["Key Products","প্রধান পণ্যসমূহ"],
+  "prod.title":    ["Everything a garment <span>needs</span>","পোশাকের <span>যা কিছু প্রয়োজন</span>"],
+  "prod.sub":      ["From woven labels to printed poly bags — complete trims & packaging support from a single, reliable source.",
+                    "ওভেন লেবেল থেকে প্রিন্টেড পলি ব্যাগ — এক নির্ভরযোগ্য উৎস থেকে সম্পূর্ণ ট্রিমস ও প্যাকেজিং সাপোর্ট।"],
+  "gal.tag":       ["Gallery","গ্যালারি"],
+  "gal.title":     ["Inside our <span>factory</span>","আমাদের <span>কারখানার ভেতরে</span>"],
+  "career.tag":    ["Career","ক্যারিয়ার"],
+  "career.badge":  ["We're Hiring","নিয়োগ চলছে"],
+  "career.title":  ["Grow with <span>us</span>","<span>আমাদের সাথে</span> এগিয়ে যান"],
+  "career.sub":    ["We are 400+ people strong and always looking for talent. Openings below — or send your CV any time.",
+                    "আমরা ৪০০+ জনের পরিবার এবং সবসময় মেধাবীদের খুঁজছি। নিচে চলমান নিয়োগ — অথবা যেকোনো সময় আপনার সিভি পাঠান।"],
+  "career.apply":  ["Apply →","আবেদন করুন →"],
+  "career.cv":     ["Don't see your role? Email your CV to <a href=\"mailto:rphlabel@yahoo.com\">rphlabel@yahoo.com</a> — we're always looking for talented people.",
+                    "আপনার পদ খুঁজে পাচ্ছেন না? আপনার সিভি পাঠান <a href=\"mailto:rphlabel@yahoo.com\">rphlabel@yahoo.com</a>-এ — আমরা সবসময় মেধাবীদের খুঁজছি।"],
+  "contact.tag":   ["Contact Us","যোগাযোগ"],
+  "contact.title": ["Let's make your <span>next label</span>","চলুন বানাই আপনার <span>পরবর্তী লেবেল</span>"],
+  "c.office":      ["Corporate Office","কর্পোরেট অফিস"],
+  "c.f1":          ["Factory Unit-01","ফ্যাক্টরি ইউনিট-০১"],
+  "c.f2":          ["Factory Unit-02","ফ্যাক্টরি ইউনিট-০২"],
+  "c.email":       ["Email","ইমেইল"],
+  "footer.quick":  ["Quick Links","কুইক লিংক"],
+  "footer.contact":["Contact","যোগাযোগ"],
+  "wa.small":      ["Typically replies within minutes","সাধারণত কয়েক মিনিটেই রিপ্লাই দেয়"],
+  "wa.msg":        ["👋 Hello! Welcome to Article Label & Accessories Ltd. How can we help you today?",
+                    "👋 হ্যালো! আর্টিকেল লেবেল অ্যান্ড এক্সেসরিজ লিমিটেড-এ স্বাগতম। আজ কীভাবে সাহায্য করতে পারি?"],
+  "wa.ph":         ["Type your message...","আপনার মেসেজ লিখুন..."],
+  "wa.send":       ["Send on WhatsApp ➤","হোয়াটসঅ্যাপে পাঠান ➤"]
+};
+
+let siteLang = localStorage.getItem('siteLang') || 'en';
+
+function applyLang(){
+  const ix = siteLang === 'bn' ? 1 : 0;
+  document.documentElement.lang = siteLang;
+  // data-i18n wala shob element
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v = i18n[el.dataset.i18n];
+    if(v) el.innerHTML = v[ix];
+  });
+  // placeholder gulo
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const v = i18n[el.dataset.i18nPh];
+    if(v) el.placeholder = v[ix];
+  });
+  // class-based repeated buttons/labels
+  document.querySelectorAll('.cap-title').forEach(el=>el.textContent = ix ? 'উৎপাদন ক্ষমতা' : 'Production Capacity');
+  document.querySelectorAll('.mach-more').forEach(el=>el.textContent = ix ? 'বিস্তারিত ➜' : 'Details ➜');
+  document.querySelectorAll('.lc-more:not(.mach-more)').forEach(el=>el.textContent = ix ? 'আরও পড়ুন ➜' : 'Read More ➜');
+  updateRphBtn();
+  // button label ta ULTA bhasha dekhay (ekhon EN thakle "বাংলা" dekhabe)
+  document.getElementById('langLabel').textContent = ix ? 'EN' : 'বাংলা';
+}
+function toggleLang(){
+  siteLang = siteLang === 'en' ? 'bn' : 'en';
+  localStorage.setItem('siteLang', siteLang);   // choice save thake — shob page/reload e same
+  applyLang();
+}
+applyLang();
 </script>
 </body>
 </html>
