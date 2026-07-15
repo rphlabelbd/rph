@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Article Label & Accessories Ltd. — R.PH. Group</title>
+<meta name="description" content="Article Label & Accessories Ltd. — 100% computerized woven labels, printed labels, offset paper items & all kinds of garments accessories. Manufacturer, supplier & exporter. Dhaka, Bangladesh.">
+
+<!-- ============================================================
+     EDIT GUIDE (Bangla/Banglish):
+     1) IMAGE change korte: niche "EDIT-IMG" comment khujun.
+        placehold.co link ta replace korun apnar image link/file diye.
+        Example: src="images/factory.jpg"
+     2) TEXT change korte: HTML er moddhe direct text edit korun.
+     3) COLOR change korte: niche :root section e variable gulo edit korun.
+     4) EMAIL change korte: "EDIT-EMAIL" comment khujun (contact form).
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Ubuntu:wght@700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== Ubuntu Bold — local font (fonts/ folder) + Google Fonts fallback =====
+   EDIT: apnar fonts folder er file name check korun. Jodi file name alada hoy
+   (jemon "ubuntu.bold.ttf"), niche src url ta sei name diye change korun. */
+@font-face{
+  font-family:'Ubuntu Local';
+  src:url('fonts/Ubuntu-Bold.woff2') format('woff2'),
+      url('fonts/Ubuntu-Bold.ttf') format('truetype');
+  font-weight:700;
+  font-style:normal;
+  font-display:swap;
+}
+/* ================= COLOR SYSTEM (edit here) ================= */
+:root{
+  --bg:        #F7FBF8;   /* page background - very light mint */
+  --surface:   #FFFFFF;   /* card background */
+  --ink:       #22303C;   /* dark charcoal (brand navy from profile) */
+  --ink-soft:  #55636F;   /* secondary text */
+  --green:     #128A46;   /* brand deep green */
+  --green-dk:  #0B5E30;   /* darker green */
+  --neon:      #2BE87C;   /* halka neon green accent (glow) */
+  --neon-soft: rgba(43,232,124,.35);
+  --line:      #E1EDE5;   /* hairline borders */
+  --radius:    18px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Sora',sans-serif;line-height:1.2}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+section{padding:90px 6vw;position:relative}
+.wrap{max-width:1180px;margin:0 auto}
+
+/* ===== Care-label style eyebrow (stitched tag — signature element) ===== */
+.tag-label{
+  display:inline-block;
+  font-family:'Montserrat',sans-serif;
+  font-weight:700;
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--green-dk);
+  background:#fff;
+  border:1.5px solid var(--green);
+  border-radius:4px;
+  padding:6px 14px;
+  margin-bottom:18px;
+  box-shadow:0 0 0 4px #fff, 0 0 14px var(--neon-soft);
+}
+.sec-title{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800;margin-bottom:14px}
+.sec-title span{color:var(--green)}
+.sec-sub{color:var(--ink-soft);max-width:640px;margin-bottom:44px}
+
+/* ================= NAV ================= */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 5vw;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;box-shadow:0 0 12px var(--neon-soft)}
+.brand-name{font-family:'Ubuntu Local','Ubuntu',sans-serif;font-weight:700;font-size:1.72rem;line-height:1.15}
+.brand-name small{display:block;font-family:'Inter',sans-serif;font-weight:400;font-size:.82rem;letter-spacing:.08em;color:var(--ink-soft);text-align:right;margin-top:2px}
+.brand-name small .rph{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--green)}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{
+  font-size:.86rem;font-weight:600;padding:9px 16px;border-radius:999px;
+  transition:.3s;border:1px solid transparent;
+}
+.nav-links a:hover{
+  background:#fff;border-color:var(--neon);
+  color:var(--green);font-weight:800;
+  box-shadow:0 4px 18px var(--neon-soft);
+  transform:translateY(-2px);
+}
+.menu-btn{display:none;background:none;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;font-size:1.1rem;cursor:pointer;color:var(--ink)}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:150px 6vw 80px;
+  background:
+    radial-gradient(700px 400px at 85% 10%, rgba(43,232,124,.14), transparent 60%),
+    radial-gradient(500px 340px at 5% 90%, rgba(18,138,70,.10), transparent 60%),
+    var(--bg);
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;max-width:1180px;margin:0 auto;width:100%}
+.hero h1{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:800;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--green);position:relative}
+.hero h1 em::after{
+  content:"";position:absolute;left:0;right:0;bottom:4px;height:10px;
+  background:var(--neon-soft);z-index:-1;border-radius:4px;
+}
+/* ===== Slot-machine word: each letter is a vertical reel that scrolls
+       through the alphabet and eases into its final character ===== */
+.spin-word{display:inline-flex;white-space:nowrap;vertical-align:bottom}
+.spin-word .slot{
+  display:inline-block;overflow:hidden;
+  height:1.18em;text-align:center;
+}
+.spin-word .slot .strip{
+  display:block;
+  will-change:transform,filter;
+}
+.spin-word .slot .strip span{
+  display:block;height:1.18em;line-height:1.18em;
+}
+.spin-word .slot .strip.rolling{filter:blur(1.6px)}
+.spin-word .sp{display:inline-block;width:.32em}
+.hero p{color:var(--ink-soft);font-size:1.05rem;max-width:520px;margin-bottom:34px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:999px;font-weight:700;font-size:.95rem;
+  transition:.3s;cursor:pointer;border:none;font-family:'Inter',sans-serif;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--green),var(--green-dk));color:#fff;
+  box-shadow:0 8px 24px rgba(18,138,70,.35), 0 0 0 0 var(--neon-soft);
+}
+.btn-primary:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(18,138,70,.4),0 0 24px var(--neon-soft)}
+.btn-ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--neon);box-shadow:0 8px 22px var(--neon-soft);transform:translateY(-4px)}
+
+/* floating product visual (single large image, rotates) */
+.hero-visual{position:relative;height:480px}
+.hero-slide{
+  position:absolute;inset:0 0 70px 0;
+  display:flex;align-items:center;justify-content:center;
+  filter:drop-shadow(0 20px 36px rgba(18,138,70,.24));
+  animation:float 7s ease-in-out infinite;
+  transition:transform .32s ease;
+}
+.hero-slide.flip{transform:rotateY(90deg)}
+.hero-slide img{max-width:90%;max-height:100%;object-fit:contain;transition:transform .42s cubic-bezier(.16,.9,.3,1.2)}
+/* image spin-swap: purano image spin kore ber hoy, notun image spin kore dhoke */
+.hero-slide img.spin-out{transform:rotateY(90deg) scale(.75);transition:transform .3s cubic-bezier(.5,0,.8,.4)}
+.hex-badge{
+  position:absolute;bottom:0;right:14%;
+  background:#fff;border:1.5px solid var(--green);border-radius:14px;
+  padding:14px 20px;font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  color:var(--green-dk);box-shadow:0 10px 28px var(--neon-soft);
+  animation:float 6s ease-in-out infinite;animation-delay:-1.2s;
+}
+.hex-badge strong{display:block;font-size:1.25rem;font-family:'Sora',sans-serif;color:var(--ink)}
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-18px) rotate(1.2deg)}
+}
+
+/* stats strip */
+.stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;
+  max-width:1180px;margin:70px auto 0;
+}
+.stat{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;text-align:center;transition:.3s;
+}
+.stat:hover{transform:translateY(-6px);border-color:var(--neon);box-shadow:0 12px 28px var(--neon-soft)}
+.stat b{font-family:'Sora',sans-serif;font-size:1.6rem;color:var(--green-dk);display:block}
+.stat span{font-size:.78rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em}
+
+/* ================= ABOUT ================= */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-img{position:relative}
+.about-img img{border-radius:var(--radius);box-shadow:0 24px 50px rgba(34,48,60,.18)}
+.about-img::before{
+  content:"";position:absolute;inset:-14px auto auto -14px;width:110px;height:110px;
+  border:2px solid var(--neon);border-radius:var(--radius);z-index:-1;
+}
+.leaders{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+.leader{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;display:flex;gap:14px;align-items:center;transition:.3s;
+}
+.leader:hover{transform:translateY(-5px);box-shadow:0 12px 26px var(--neon-soft);border-color:var(--neon)}
+.leader img{width:58px;height:58px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.leader b{font-family:'Sora',sans-serif;font-size:.95rem;display:block}
+.leader span{font-size:.78rem;color:var(--green-dk);font-family:'JetBrains Mono',monospace}
+
+/* cert chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chip{
+  font-size:.78rem;font-weight:600;padding:7px 14px;border-radius:999px;
+  background:#fff;border:1px solid var(--line);color:var(--ink-soft);transition:.3s;
+}
+.chip:hover{border-color:var(--neon);color:var(--green-dk);box-shadow:0 4px 14px var(--neon-soft)}
+
+/* ================= MISSION ================= */
+#mission{background:linear-gradient(180deg,#fff, var(--bg))}
+.mission-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.m-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px;transition:.35s;position:relative;overflow:hidden;
+}
+.m-card::before{
+  content:"";position:absolute;top:0;left:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--green),var(--neon));
+  transform:scaleX(0);transform-origin:left;transition:.4s;
+}
+.m-card:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(18,138,70,.16)}
+.m-card:hover::before{transform:scaleX(1)}
+.m-card .ico{
+  width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(43,232,124,.18),rgba(18,138,70,.12));
+  font-size:1.3rem;margin-bottom:16px;
+}
+.m-card h3{font-size:1.02rem;margin-bottom:8px}
+.m-card p{font-size:.9rem;color:var(--ink-soft)}
+
+/* ================= MACHINERIES ================= */
+.mach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
+.mach{
+  background:var(--surface);border:2px solid var(--green);border-radius:var(--radius);
+  overflow:hidden;transition:.35s;display:flex;flex-direction:column;
+}
+.mach:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(18,138,70,.16);border-color:var(--neon)}
+.mach img{height:180px;width:100%;object-fit:cover;display:block}
+/* machine name: image er niche green banner e, center e, white bold */
+.m-banner{
+  background:linear-gradient(135deg,var(--green),var(--green-dk));color:#fff;
+  text-align:center;font-family:'Sora',sans-serif;font-weight:700;
+  font-size:clamp(1.1rem,1.6vw,1.35rem);padding:12px 16px;letter-spacing:.01em;
+}
+.mach .body{padding:20px 24px 24px;display:flex;flex-direction:column;flex:1}
+/* Production Capacity: underline title + boro green value */
+.cap-title{
+  display:inline-block;align-self:flex-start;
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:.98rem;
+  color:var(--ink);border-bottom:2px solid var(--ink);padding-bottom:3px;margin-bottom:8px;
+}
+.cap-val{
+  display:block;font-family:'Sora',sans-serif;font-weight:700;
+  font-size:1.12rem;color:var(--green);margin-bottom:14px;line-height:1.4;
+}
+.cap-pill{
+  display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  background:rgba(43,232,124,.16);color:var(--green-dk);border-radius:999px;
+  padding:4px 12px;margin:8px 0 12px;font-weight:500;
+}
+.mach ul{list-style:none;font-size:.86rem;color:var(--ink-soft);flex:1}
+.mach li{padding:5px 0 5px 20px;position:relative}
+.mach li::before{content:"◆";position:absolute;left:0;color:var(--neon);font-size:.6rem;top:9px}
+.mach-more{margin-top:16px;align-self:flex-end}
+
+/* ===== Machine details modal (Details button e click korle open hoy) ===== */
+.mach-modal{
+  position:fixed;inset:0;background:rgba(34,48,60,.72);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;z-index:999;padding:20px;
+}
+.mach-modal.open{display:flex}
+.mach-modal .mm-box{
+  background:var(--surface);border-radius:22px;max-width:960px;width:100%;
+  max-height:90vh;overflow:hidden;display:grid;grid-template-columns:380px 1fr;
+  box-shadow:0 30px 70px rgba(0,0,0,.35);animation:lmPop .35s ease;
+}
+.mach-modal .mm-img{background:var(--bg);display:flex;flex-direction:column}
+.mach-modal .mm-img img.main{width:100%;flex:1;object-fit:cover;min-height:300px}
+.mm-thumbs{display:flex;gap:8px;padding:10px;background:var(--bg)}
+.mm-thumbs:empty{display:none}
+.mm-thumbs img{width:66px;height:48px;object-fit:cover;border-radius:8px;border:2px solid transparent;cursor:pointer;transition:.25s}
+.mm-thumbs img.act{border-color:var(--green)}
+.mm-thumbs img:hover{border-color:var(--neon)}
+.mach-modal .mm-body{padding:36px 34px;overflow-y:auto;max-height:90vh;position:relative}
+.mach-modal .mm-close{
+  position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;
+  background:#fff;border:1.5px solid var(--line);cursor:pointer;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;transition:.3s;
+}
+.mach-modal .mm-close:hover{border-color:var(--neon);color:var(--green)}
+.mach-modal .mm-body h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.5rem;padding-right:44px}
+.mach-modal .mm-cap{
+  display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.75rem;
+  background:rgba(43,232,124,.16);color:var(--green-dk);border-radius:999px;
+  padding:5px 14px;margin:10px 0 6px;font-weight:500;
+}
+.mm-specs{width:100%;border-collapse:collapse;margin:12px 0 8px}
+.mm-specs td{
+  padding:10px 0;font-size:.9rem;border-bottom:1px dashed var(--line);
+  vertical-align:top;font-family:'Montserrat',sans-serif;
+}
+.mm-specs td:first-child{font-weight:700;color:var(--ink);width:40%;padding-right:14px}
+.mm-specs td:last-child{font-weight:400;color:var(--ink-soft)}
+.mach-modal .mm-desc{
+  font-family:'Montserrat',sans-serif;font-size:.95rem;line-height:1.8;
+  color:var(--ink-soft);margin-top:14px;
+}
+@media(max-width:760px){
+  .mach-modal .mm-box{grid-template-columns:1fr;max-height:92vh;overflow-y:auto}
+  .mach-modal .mm-img img.main{max-height:260px;min-height:0}
+  .mach-modal .mm-body{padding:26px 22px;max-height:none}
+}
+
+/* ===== JOB APPLICATION MODAL ===== */
+.apply-modal{
+  position:fixed;inset:0;background:rgba(34,48,60,.72);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;z-index:999;padding:20px;
+}
+.apply-modal.open{display:flex}
+.ap-box{
+  background:var(--surface);border-radius:22px;max-width:720px;width:100%;
+  max-height:92vh;overflow-y:auto;padding:36px 34px;position:relative;
+  box-shadow:0 30px 70px rgba(0,0,0,.35);animation:lmPop .35s ease;
+}
+.ap-box h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.5rem;padding-right:44px}
+.ap-pos{
+  display:inline-block;font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:.85rem;color:var(--green);letter-spacing:.06em;margin:8px 0 10px;
+}
+.ap-box form{background:none;border:none;padding:0;box-shadow:none}
+.ap-box .mm-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;
+  background:#fff;border:1.5px solid var(--line);cursor:pointer;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;transition:.3s}
+.ap-box .mm-close:hover{border-color:var(--neon);color:var(--green)}
+.ap-photo-row{display:flex;gap:18px;align-items:center;margin:10px 0 4px}
+.ap-photo{
+  width:96px;height:96px;border-radius:16px;flex-shrink:0;overflow:hidden;
+  background:var(--bg);border:1.5px dashed var(--line);
+  display:flex;align-items:center;justify-content:center;font-size:2rem;
+}
+.ap-photo img{width:100%;height:100%;object-fit:cover}
+.ap-photo-label{font-size:.8rem;font-weight:600;display:block;margin-bottom:8px}
+.ap-mini-btn{
+  display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  background:#fff;border:1.5px solid var(--line);border-radius:999px;
+  padding:8px 16px;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:600;
+  color:var(--ink);transition:.3s;margin-right:8px;
+}
+.ap-mini-btn:hover{border-color:var(--neon);color:var(--green);box-shadow:0 0 12px var(--neon-soft)}
+.ap-mini-btn.rec{background:#e74c3c;border-color:#e74c3c;color:#fff}
+.ap-mini-btn.danger:hover{border-color:#e74c3c;color:#e74c3c;box-shadow:none}
+.ap-hint{display:block;font-size:.72rem;color:var(--ink-soft);margin-top:6px}
+.ap-box textarea.ap-addr{min-height:64px}
+#apWhy{min-height:96px}
+.ap-audio-row{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}
+.ap-audio-row audio{height:38px;max-width:250px}
+.ap-rec-time{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:#e74c3c}
+.ap-file{padding:10px 14px;background:var(--bg)}
+@media(max-width:560px){
+  .ap-box{padding:26px 20px}
+  .ap-box .f-row{grid-template-columns:1fr}
+}
+
+/* camera modal */
+.cam-modal{
+  position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:1200;
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+.cam-modal.open{display:flex}
+.cam-box{max-width:560px;width:100%;text-align:center}
+.cam-box video{width:100%;border-radius:18px;background:#000;transform:scaleX(-1)}
+.cam-btns{display:flex;gap:12px;justify-content:center;margin-top:16px}
+
+/* ================= PRODUCTS ================= */
+#products{background:#fff}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px}
+.prod{
+  position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:1/1.05;
+  cursor:pointer;transition:.35s;
+}
+.prod img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.prod:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(18,138,70,.25)}
+.prod:hover img{transform:scale(1.08)}
+.prod .name{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:34px 16px 14px;color:#fff;font-weight:700;font-size:.95rem;
+  background:linear-gradient(transparent,rgba(11,94,48,.9));
+}
+
+/* ================= GALLERY ================= */
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.gal{border-radius:var(--radius);overflow:hidden;transition:.35s;position:relative}
+.gal img{width:100%;height:220px;object-fit:cover;transition:.5s}
+.gal:hover{transform:translateY(-6px);box-shadow:0 16px 34px var(--neon-soft)}
+.gal:hover img{transform:scale(1.07)}
+
+/* client marquee */
+.clients{margin-top:70px;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;background:#fff}
+.marquee{display:flex;gap:56px;width:max-content;animation:scroll 36s linear infinite}
+.marquee span{font-family:'Sora',sans-serif;font-weight:700;font-size:1.1rem;color:#9AACA0;white-space:nowrap;transition:.3s}
+.marquee span:hover{color:var(--green-dk)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ================= CAREER ================= */
+#career{background:linear-gradient(180deg,var(--bg),#fff)}
+.job{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 30px;display:flex;justify-content:space-between;align-items:center;gap:20px;
+  margin-bottom:16px;transition:.3s;flex-wrap:wrap;
+}
+.job:hover{border-color:var(--neon);box-shadow:0 12px 28px var(--neon-soft);transform:translateX(6px)}
+.job b{font-family:'Sora',sans-serif;font-size:1.05rem;display:block}
+.job small{color:var(--ink-soft);font-size:.84rem}
+
+/* ================= CONTACT ================= */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:50px}
+.c-info .item{display:flex;gap:16px;margin-bottom:26px;align-items:flex-start}
+.c-info .ico{
+  width:44px;height:44px;flex-shrink:0;border-radius:12px;
+  background:linear-gradient(135deg,rgba(43,232,124,.2),rgba(18,138,70,.12));
+  display:flex;align-items:center;justify-content:center;font-size:1.15rem;
+}
+.c-info b{display:block;font-size:.92rem;font-family:'Sora',sans-serif}
+.c-info p{font-size:.88rem;color:var(--ink-soft)}
+form{
+  background:var(--surface);border:1px solid var(--line);border-radius:22px;
+  padding:36px;box-shadow:0 20px 46px rgba(34,48,60,.08);
+}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{font-size:.8rem;font-weight:600;display:block;margin:16px 0 6px;color:var(--ink)}
+input,textarea{
+  width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid var(--line);
+  font-family:'Inter',sans-serif;font-size:.92rem;background:var(--bg);
+  transition:.3s;color:var(--ink);
+}
+input:focus,textarea:focus{outline:none;border-color:var(--neon);box-shadow:0 0 0 4px var(--neon-soft);background:#fff}
+textarea{min-height:130px;resize:vertical}
+form .btn-primary{width:100%;justify-content:center;margin-top:24px}
+
+/* ================= FOOTER ================= */
+footer{
+  background:var(--ink);color:#C7D3CC;padding:60px 6vw 30px;
+}
+.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;max-width:1180px;margin:0 auto}
+footer h4{color:#fff;font-size:.95rem;margin-bottom:16px}
+footer a{display:block;font-size:.86rem;padding:4px 0;transition:.3s}
+footer a:hover{color:var(--neon)}
+.f-bottom{max-width:1180px;margin:44px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);font-size:.8rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:#8CA096}
+
+/* ================= LEADERSHIP CARDS ================= */
+.leader-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:30px}
+.leader-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:22px;
+  overflow:hidden;display:grid;grid-template-columns:240px 1fr;transition:.35s;
+}
+.leader-card:hover{transform:translateY(-8px);border-color:var(--neon);box-shadow:0 22px 44px var(--neon-soft)}
+.lc-img img{width:100%;height:100%;object-fit:cover;min-height:300px}
+.lc-body{padding:28px}
+.lc-body h3{font-size:1.25rem}
+.lc-role{
+  display:inline-block;font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:.8rem;color:var(--green);letter-spacing:.04em;
+  margin:8px 0 14px;
+}
+.lc-body p{font-size:.86rem;color:var(--ink-soft);margin-bottom:10px}
+.lc-more{
+  display:inline-flex;align-items:center;gap:8px;margin-top:8px;
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:.78rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--green-dk);
+  background:#fff;border:1.5px solid var(--green);border-radius:8px;
+  padding:9px 18px;cursor:pointer;transition:.3s;
+}
+.lc-more:hover{background:var(--green);color:#fff;box-shadow:0 0 16px var(--neon-soft)}
+
+/* ===== Leader profile modal (More button click korle open hoy) ===== */
+.leader-modal{
+  position:fixed;inset:0;background:rgba(34,48,60,.72);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;z-index:999;padding:20px;
+}
+.leader-modal.open{display:flex}
+.leader-modal .lm-box{
+  background:var(--surface);border-radius:22px;max-width:960px;width:100%;
+  max-height:90vh;overflow:hidden;display:grid;grid-template-columns:340px 1fr;
+  box-shadow:0 30px 70px rgba(0,0,0,.35);animation:lmPop .35s ease;
+}
+@keyframes lmPop{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+.leader-modal .lm-img{background:var(--bg)}
+.leader-modal .lm-img img{width:100%;height:100%;object-fit:cover;min-height:340px}
+.leader-modal .lm-body{padding:36px 34px;overflow-y:auto;max-height:90vh;position:relative}
+.leader-modal .lm-close{
+  position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;
+  background:#fff;border:1.5px solid var(--line);cursor:pointer;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;transition:.3s;
+}
+.leader-modal .lm-close:hover{border-color:var(--neon);color:var(--green)}
+.leader-modal .lm-body h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.5rem;padding-right:44px}
+.leader-modal .lm-role{
+  display:inline-block;font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:.85rem;color:var(--green);letter-spacing:.06em;margin:8px 0 18px;
+}
+.leader-modal .lm-body p{
+  font-family:'Montserrat',sans-serif;font-size:1rem;line-height:1.8;
+  color:var(--ink-soft);margin-bottom:16px;
+}
+@media(max-width:760px){
+  .leader-modal .lm-box{grid-template-columns:1fr;max-height:92vh;overflow-y:auto}
+  .leader-modal .lm-img img{max-height:320px}
+  .leader-modal .lm-body{padding:26px 22px;max-height:none}
+}
+
+/* ================= CERTIFICATION ================= */
+.member-banner{
+  display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:44px;
+}
+.mb-item{
+  display:flex;gap:20px;align-items:center;
+  background:linear-gradient(135deg,rgba(43,232,124,.12),rgba(18,138,70,.06));
+  border:1.5px solid var(--green);border-radius:var(--radius);padding:24px;
+  box-shadow:0 0 22px var(--neon-soft);transition:.35s;
+}
+.mb-item:hover{transform:translateY(-6px);box-shadow:0 14px 34px var(--neon-soft)}
+.mb-item img{width:86px;height:86px;border-radius:14px;object-fit:contain;background:#fff;padding:8px;flex-shrink:0;border:1px solid var(--line)}
+.mb-item b{font-family:'Sora',sans-serif;font-size:1rem;display:block;margin-bottom:6px}
+.mb-item .since{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--green-dk);background:#fff;border:1px solid var(--green);border-radius:999px;padding:2px 10px;margin-left:6px;vertical-align:middle}
+.mb-item p{font-size:.84rem;color:var(--ink-soft)}
+.cert-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,280px));
+  gap:20px;justify-content:center;
+}
+.cert{
+  background:var(--surface);border:1.5px solid var(--green);border-radius:var(--radius);
+  overflow:hidden;transition:.35s;display:block;
+  box-shadow:0 4px 16px rgba(18,138,70,.08);
+}
+.cert:hover{transform:translateY(-8px) rotate(-1deg);border-color:var(--neon);box-shadow:0 20px 40px var(--neon-soft)}
+.cert img{
+  width:100%;aspect-ratio:1/1.3;object-fit:contain;object-position:center;
+  background:#fff;padding:10px;border-bottom:1px solid var(--line);
+}
+.cert-name{padding:14px 16px;font-size:.84rem;font-weight:600;text-align:center}
+
+/* ===== Certificate lightbox (boro view + download) ===== */
+.cert-modal{
+  position:fixed;inset:0;z-index:300;
+  background:rgba(20,30,25,.72);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;padding:30px 16px;
+}
+.cert-modal.open{display:flex}
+.cert-modal .box{
+  background:#fff;border-radius:18px;max-width:760px;width:100%;
+  max-height:92vh;display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
+}
+.cert-modal .box-head{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 20px;border-bottom:1px solid var(--line);
+}
+.cert-modal .box-head b{font-family:'Sora',sans-serif;font-size:.95rem}
+.cert-modal .close{
+  background:none;border:1.5px solid var(--line);border-radius:10px;
+  padding:6px 12px;font-size:1rem;cursor:pointer;color:var(--ink);transition:.25s;
+}
+.cert-modal .close:hover{border-color:var(--neon);color:var(--green)}
+.cert-modal .box-body{overflow:auto;padding:18px;background:var(--bg);flex:1}
+.cert-modal .box-body img{width:100%;border-radius:10px;box-shadow:0 8px 26px rgba(34,48,60,.14)}
+.cert-modal .box-foot{
+  display:flex;gap:12px;flex-wrap:wrap;padding:14px 20px;border-top:1px solid var(--line);
+}
+.cert-modal .box-foot .btn{padding:11px 22px;font-size:.86rem}
+
+/* ===== Product gallery lightbox (next/previous) ===== */
+.prod-modal{
+  position:fixed;inset:0;z-index:300;
+  background:rgba(20,30,25,.78);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+.prod-modal.open{display:flex}
+.prod-modal .pm-stage{
+  position:relative;max-width:820px;width:100%;
+  background:#fff;border-radius:18px;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
+}
+.prod-modal .pm-stage img{
+  width:100%;max-height:76vh;object-fit:contain;background:var(--bg);display:block;
+}
+.prod-modal .pm-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 20px;border-top:1px solid var(--line);
+}
+.prod-modal .pm-bar b{font-family:'Sora',sans-serif;font-size:.95rem}
+.prod-modal .pm-count{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--ink-soft)}
+.pm-close{
+  position:absolute;top:14px;right:14px;z-index:2;
+  background:#fff;border:1.5px solid var(--line);border-radius:10px;
+  padding:6px 12px;font-size:1rem;cursor:pointer;color:var(--ink);transition:.25s;
+}
+.pm-close:hover{border-color:var(--neon);color:var(--green)}
+.pm-nav{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:2;
+  width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(255,255,255,.92);color:var(--ink);font-size:1.5rem;line-height:1;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);transition:.25s;
+  display:flex;align-items:center;justify-content:center;
+}
+.pm-nav:hover{background:var(--green);color:#fff}
+.pm-prev{left:14px}
+.pm-next{right:14px}
+
+/* ================= WHATSAPP CHATBOX ================= */
+.wa-btn{
+  position:fixed;bottom:26px;right:26px;z-index:200;
+  width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-size:1.7rem;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 28px rgba(37,211,102,.45), 0 0 20px var(--neon-soft);
+  animation:pulse 2.6s infinite;transition:.3s;
+}
+.wa-btn:hover{transform:scale(1.1)}
+@keyframes pulse{
+  0%,100%{box-shadow:0 10px 28px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.4)}
+  50%{box-shadow:0 10px 28px rgba(37,211,102,.45),0 0 0 14px rgba(37,211,102,0)}
+}
+.wa-box{
+  position:fixed;bottom:100px;right:26px;z-index:200;width:320px;max-width:calc(100vw - 40px);
+  background:#fff;border-radius:20px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(34,48,60,.28);
+  transform:translateY(20px) scale(.95);opacity:0;pointer-events:none;transition:.35s;
+}
+.wa-box.open{transform:none;opacity:1;pointer-events:auto}
+.wa-head{
+  background:linear-gradient(135deg,#128C7E,#0B5E30);color:#fff;padding:18px 20px;
+  display:flex;align-items:center;gap:12px;
+}
+.wa-head .avatar{
+  width:42px;height:42px;border-radius:50%;background:#fff;color:#128C7E;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Sora',sans-serif;flex-shrink:0;
+}
+.wa-head b{font-size:.92rem;display:block;font-family:'Sora',sans-serif}
+.wa-head small{font-size:.72rem;opacity:.85}
+.wa-body{padding:18px;background:#EFF7F1}
+.wa-msg{
+  background:#fff;border-radius:4px 14px 14px 14px;padding:12px 14px;
+  font-size:.86rem;color:var(--ink);box-shadow:0 2px 6px rgba(0,0,0,.06);margin-bottom:14px;
+}
+.wa-body input{
+  width:100%;padding:12px 14px;border-radius:999px;border:1.5px solid var(--line);
+  font-family:'Inter',sans-serif;font-size:.88rem;background:#fff;
+}
+.wa-body input:focus{outline:none;border-color:#25D366}
+.wa-send{
+  width:100%;margin-top:10px;padding:12px;border:none;border-radius:999px;cursor:pointer;
+  background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-weight:700;
+  font-family:'Inter',sans-serif;font-size:.9rem;transition:.3s;
+}
+.wa-send:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,.4)}
+
+/* ===== BRAND INTRO (page load e boro logo+name center e bose,
+       scroll ba click korle navbar er jaygay fly kore chole jay) ===== */
+#brandIntro{
+  position:fixed;inset:0;z-index:99; /* nav (z:100) er niche — nav button click kora jay */
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:80px 5vw 0;
+}
+/* "Welcome to" — brand er upore chhoto label */
+.intro-welcome{
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:.95rem;
+  letter-spacing:.35em;text-transform:uppercase;color:var(--green);
+  margin-bottom:14px;opacity:0;animation:tagFade .8s ease .15s forwards;
+}
+/* intro corner logos: bam pashe membership (DCCI, BGAPMEA), dan pashe certification
+   NOTE: transparent dekhate hole image file gulo-o transparent PNG hote hobe —
+   dcci/bgmpea jodi white-background JPG hoy, PNG version dile aro clean dekhabe */
+.intro-mems,.intro-certs{position:absolute;top:96px;display:flex;gap:16px;align-items:center}
+.intro-mems{left:30px}
+.intro-certs{right:30px}
+.intro-mems img,.intro-certs img{
+  height:78px;width:auto;object-fit:contain;
+  opacity:0;animation:tagFade .8s ease .3s forwards;
+}
+#brandIntro.fly .intro-welcome,
+#brandIntro.fly .intro-mems,
+#brandIntro.fly .intro-certs{opacity:0;transition:opacity .25s;animation:none}
+@media(max-width:640px){
+  .intro-mems img,.intro-certs img{height:46px}
+  .intro-mems{left:14px}.intro-certs{right:14px}
+}
+/* intro tagline: Montserrat regular, brand er niche still hoye fade-in kore */
+.intro-tagline{
+  margin-top:20px;max-width:720px;text-align:center;
+  font-family:'Montserrat',sans-serif;font-weight:400;
+  font-size:clamp(15px,1.5vw,17px);line-height:1.75;
+  letter-spacing:.02em;color:var(--ink-soft);
+  opacity:0;animation:tagFade .9s ease .4s forwards;
+}
+@keyframes tagFade{to{opacity:1}}
+#brandIntro.fly .intro-tagline{opacity:0;transition:opacity .25s;animation:none}
+/* bg alada pseudo-element e — jate fly er somoy shudhu bg fade hoy, brand na */
+#brandIntro::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(700px 400px at 85% 10%, rgba(43,232,124,.14), transparent 60%),
+    radial-gradient(500px 340px at 5% 90%, rgba(18,138,70,.10), transparent 60%),
+    var(--bg);
+  transition:opacity .6s ease;
+}
+#brandIntro.fly{pointer-events:none}
+#brandIntro.fly::before{opacity:0}
+#brandIntro.fly .intro-hint{opacity:0;transition:opacity .25s;animation:none}
+#brandIntro.gone{display:none}
+/* size sob em e — jate ek scale e navbar brand er sathe exactly mile jay
+   (nav e: img 44px / name 1.72rem = 1.6em, gap 12px = .44em, small = .477em) */
+.intro-brand{
+  display:flex;align-items:center;gap:.44em;
+  font-size:clamp(1.5rem,4.6vw,3.4rem);
+  transform-origin:top left;will-change:transform;
+}
+#brandIntro.fly .intro-brand{transition:transform .85s cubic-bezier(.55,.06,.22,1)}
+.intro-brand img{width:1.6em;height:1.6em;border-radius:50%;object-fit:cover;box-shadow:0 0 .45em var(--neon-soft)}
+.intro-name{font-family:'Ubuntu Local','Ubuntu',sans-serif;font-weight:700;font-size:1em;line-height:1.15;color:var(--ink)}
+.intro-name small{display:block;font-family:'Inter',sans-serif;font-weight:400;font-size:.477em;letter-spacing:.08em;color:var(--ink-soft);text-align:right;margin-top:.07em}
+.intro-name small .rph{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--green)}
+.intro-hint{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  font-size:.8rem;color:var(--ink-soft);letter-spacing:.12em;text-transform:uppercase;
+  animation:hintBob 1.8s ease-in-out infinite;
+}
+@keyframes hintBob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+/* intro cholakalin navbar er brand lukano thake */
+body.intro-active nav .brand{opacity:0}
+nav .brand{transition:opacity .35s ease}
+
+/* ===== DAILY CAPACITY typing cursor ===== */
+.cap-cursor{
+  display:inline-block;width:2px;height:1em;background:var(--green);
+  margin-left:3px;vertical-align:-2px;
+  animation:capBlink .75s steps(1) infinite;
+}
+.cap-cursor.off{opacity:0;animation:none}
+@keyframes capBlink{50%{opacity:0}}
+
+/* ===== ABOUT: "More" expandable (R.PH. Group full profile) ===== */
+.rph-more-btn{margin-top:8px;padding:11px 24px;font-size:.9rem}
+.rph-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s ease}
+.rph-more.open{grid-template-rows:1fr}
+.rph-more-inner{overflow:hidden}
+.rph-more-inner p{
+  font-family:'Montserrat',sans-serif;font-weight:400;
+  font-size:.95rem;line-height:1.8;color:var(--ink-soft);margin-top:16px;
+}
+.rph-more-inner b{font-weight:700;color:var(--ink)}
+.rph-more-inner .sb{font-weight:600;color:var(--ink)}
+.rph-more-inner a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(34px);transition:.7s ease}
+.reveal.show{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  .hex,.hex-badge,.marquee{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .intro-hint,.cap-cursor{animation:none}
+  .intro-tagline,.intro-welcome,.intro-mems img,.intro-certs img{animation:none;opacity:1}
+  #brandIntro.fly .intro-brand{transition:none}
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:960px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-visual{height:420px;margin-top:20px}
+  .nav-links{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    background:#fff;flex-direction:column;padding:16px;border-bottom:1px solid var(--line);
+  }
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+  .f-grid{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr}
+  .leader-grid,.member-banner{grid-template-columns:1fr}
+  .leader-card{grid-template-columns:1fr}
+  .lc-img img{max-height:340px}
+  section{padding:70px 5vw}
+}
+</style>
+</head>
+<body class="intro-active">
+
+<!-- ================= NAVBAR ================= -->
+<nav>
+  <a class="brand" href="#home">
+    <!-- EDIT-IMG: company logo (round). Replace with images/logo.png -->
+    <img src="images/logo.png" alt="Article Label logo">
+    <div class="brand-name">Article Label & Accessories Ltd.
+      <small>a sister concern of <span class="rph">R.PH.GROUP</span></small>
+    </div>
+  </a>
+  <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About Us</a>
+    <a href="#mission">Mission</a>
+    <a href="#certification">Certification</a>
+    <a href="#machineries">Machineries</a>
+    <a href="#products">Our Products</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#career">Career</a>
+    <a href="#contact">Contact Us</a>
+  </div>
+</nav>
+
+<!-- ===== BRAND INTRO: load e boro logo+name center e dekha jay.
+     User scroll korle / kono button-link e click korle eta navbar er
+     brand position e fly kore chole jay. ===== -->
+<div id="brandIntro">
+  <!-- top-left: membership logos (DCCI + BGAPMEA) -->
+  <div class="intro-mems">
+    <img src="images/dcci.jpg" alt="DCCI member">
+    <img src="images/bgmpea.jpg" alt="BGAPMEA member">
+  </div>
+  <!-- top-right: certification logos — images/certificate.png
+       (OEKO-TEX + FSC + GRS ek image e, transparent background) -->
+  <div class="intro-certs">
+    <img src="images/certificate.png" alt="OEKO-TEX, FSC & GRS certified">
+  </div>
+  <div class="intro-welcome">Welcome to</div>
+  <div class="intro-brand">
+    <img src="images/logo.png" alt="Article Label logo">
+    <div class="intro-name">Article Label & Accessories Ltd.
+      <small>a sister concern of <span class="rph">R.PH.GROUP</span></small>
+    </div>
+  </div>
+  <!-- intro tagline: brand er niche, Montserrat regular, fade-in -->
+  <div class="intro-tagline">100% Computerized Woven Label, Printed Label, Offset Paper Item &amp; All Kinds of Garments Accessories — Manufacturer, Supplier &amp; Exporter</div>
+  <div class="intro-hint">Scroll to explore ↓</div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="home">
+  <div class="hero-grid">
+    <div>
+      <span class="tag-label">Since 2003 · Dhaka, Bangladesh</span>
+      <h1>Every garment tells a story.<br>We make the <em class="spin-word" id="spinWord">label</em></h1>
+      <p>100% computerized woven labels, printed labels, offset paper items & all kinds of garments accessories — manufactured, supplied and exported to the world's leading apparel brands.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#products">Explore Products →</a>
+        <a class="btn btn-ghost" href="#contact">Get a Quote</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- Hero product image: spinWords list er img field theke ashe, product name er sathe synced -->
+      <div class="hero-slide"><img src="images/cl01.png" alt="Product"></div>
+      <!-- Daily capacity: product spin er sathe synced, typing style e ashe -->
+      <div class="hex-badge">DAILY CAPACITY<strong><span id="capText">6.5M+ pcs</span><span class="cap-cursor off" id="capCursor"></span></strong></div>
+    </div>
+  </div>
+</header>
+
+<!-- stats strip -->
+<div class="stats reveal">
+  <div class="stat"><b>1997</b><span>Group Roots</span></div>
+  <div class="stat"><b>30,000</b><span>SFT Factory</span></div>
+  <div class="stat"><b>400+</b><span>Manpower</span></div>
+  <div class="stat"><b>80+</b><span>Retailers</span></div>
+  <div class="stat"><b>200+</b><span>Vendors</span></div>
+  <div class="stat"><b>$10M</b><span>Annual Revenue</span></div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-img reveal">
+      <!-- EDIT-IMG: factory building photo -->
+      <img src="images/factory.jpg" alt="Article Label factory">
+    </div>
+    <div class="reveal">
+      <span class="tag-label">About Us</span>
+      <h2 class="sec-title">A trusted name in <span>garment accessories</span></h2>
+      <p style="color:var(--ink-soft);margin-bottom:16px">Article Label & Accessories Ltd., R.P.H. Label & Accessories, and Article Printing & Packaging are proud sister concerns of <b>R.PH. Group</b> — a leading garments accessories manufacturer based in Dhaka, Bangladesh.</p>
+
+      <!-- ===== "More" — R.PH. Group full profile (inline expand, kono page/iframe na)
+           Note: upore je intro paragraph ta ache, seta ekhane ar repeat kora hoy nai —
+           More e শুধু baki details ashe, tai duibar dekha jay na. ===== -->
+      <button class="btn btn-ghost rph-more-btn" id="rphMoreBtn" onclick="toggleRphMore()">More About R.P.H. Group ↓</button>
+      <div class="rph-more" id="rphMore">
+        <div class="rph-more-inner">
+          <p>Since its establishment in <b>2003</b>, R.P.H. Group has been dedicated to producing a wide range of premium-quality garment trims and packaging items, catering to both local and international apparel brands. Our product line includes <span class="sb">woven labels, printed labels, hang tags, barcode tags, photo inlays, adhesive stickers, leather and PU patches, silicon/rubber patches, printed canvas tapes, heat transfer labels, high-density prints, and printed self-adhesive poly bags</span>, among many others.</p>
+          <p>Under the visionary leadership of Managing Director <b>Md. Hanif Mondal</b>, the group has earned a strong reputation for <span class="sb">technical excellence, reliability, and innovation</span>. Environmental responsibility is a core principle of our operations — we strictly comply with Bangladesh's environmental regulations and prioritize eco-friendly materials and sustainable production practices.</p>
+          <p>R.P.H. Group is an active member of the <b>Bangladesh Garments Accessories &amp; Packaging Manufacturers &amp; Exporters Association (BGAPMEA)</b> and <b>DCCI</b> (since 2018), demonstrating our continuous commitment to industry standards and ongoing improvement.</p>
+          <p>Our facilities are located at <b>16/D, Chanpara, Uzampur, Uttarkhan, Uttara, Dhaka-1230</b>. For more information please visit our official website: <a href="https://www.rphgroupbd.com" target="_blank" rel="noopener"><b>www.rphgroupbd.com</b></a></p>
+        </div>
+      </div>
+
+      <div class="chips">
+        <span class="chip">OEKO-TEX®</span><span class="chip">FSC®</span><span class="chip">GRS</span>
+        <span class="chip">Cal Prop 65</span><span class="chip">COSTCO Passed</span>
+        <span class="chip">Lead / Azo / Phthalate Free</span><span class="chip">BGAPMEA</span><span class="chip">DCCI</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LEADERSHIP (boro profile cards) ===== -->
+  <div class="wrap" style="margin-top:80px">
+    <span class="tag-label reveal">Leadership</span>
+    <h2 class="sec-title reveal">The people behind <span>the journey</span></h2>
+    <div class="leader-grid">
+      <div class="leader-card reveal">
+        <!-- EDIT-IMG: Chairman photo (portrait, min 500x600) -->
+        <div class="lc-img"><img src="images/chairman.png" alt="Israt Jahan Merry, Chairman"></div>
+        <div class="lc-body">
+          <h3>Israt Jahan Merry</h3>
+          <span class="lc-role">Chairman</span>
+          <p>The respected Founder Chairman of Article Label & Accessories Ltd. — a passionate entrepreneur whose vision laid the foundation for one of Bangladesh's most trusted garment accessories companies. She founded the company in 2003 with the goal of delivering innovative, sustainable and high-quality accessories to the apparel industry.</p>
+          <p>Under her thoughtful guidance, Article Label has grown from a small setup into a proud sister concern of R.PH. Group, serving both local and international markets. She is admired for her integrity, leadership and sincere focus on ethical business practices.</p>
+          <button class="lc-more" onclick="openLeader('chairman')">Read More ➜</button>
+        </div>
+      </div>
+      <div class="leader-card reveal">
+        <!-- EDIT-IMG: MD photo (portrait, min 500x600) -->
+        <div class="lc-img"><img src="images/md.jpeg" alt="Md. Hanif Mondal, Managing Director"></div>
+        <div class="lc-body">
+          <h3>Md. Hanif Mondal</h3>
+          <span class="lc-role">Managing Director</span>
+          <p>A dynamic leader with a strong vision for innovation, sustainability and operational excellence in the garment accessories sector. Since the establishment of the company, he has played a pivotal role in transforming Article Label & Accessories Ltd. into a modern, customer-focused organization.</p>
+          <p>With a deep understanding of manufacturing processes and market dynamics, he has introduced advanced technologies and eco-friendly practices across production lines. An active member of BGAPMEA, his hands-on approach has earned the company a reputation for trust, quality and professionalism.</p>
+          <button class="lc-more" onclick="openLeader('md')">Read More ➜</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATION ================= -->
+<section id="certification" style="background:#fff">
+  <div class="wrap">
+    <span class="tag-label reveal">Certification Status</span>
+    <h2 class="sec-title reveal">Certified for <span>quality & sustainability</span></h2>
+    <p class="sec-sub reveal">We hold OEKO-TEX®, FSC® and GRS certifications ensuring product safety, sustainability and environmental responsibility. Our products passed the COSTCO Screening Test across all categories and fully comply with California Proposition 65 — Lead-free, Azo-free and Phthalate-free.</p>
+
+    <!-- membership highlight banner -->
+    <div class="member-banner reveal">
+      <div class="mb-item">
+        <!-- EDIT-IMG: BGAPMEA logo/certificate -->
+        <img src="images/bgmpea.jpg" alt="Article Label factory">
+        <div>
+          <b>Proud Member — BGAPMEA</b>
+          <p>Bangladesh Garments Accessories & Packaging Manufacturers & Exporters Association — demonstrating our continuous commitment to industry standards.</p>
+        </div>
+      </div>
+      <div class="mb-item">
+        <!-- EDIT-IMG: DCCI logo/certificate -->
+        <img src="images/dcci.jpg" alt="DCCI logo">
+        <div>
+          <b>Member — DCCI <span class="since">since 2018</span></b>
+          <p>A prestigious member of the Dhaka Chamber of Commerce & Industry, reflecting our standing in Bangladesh's business community.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- certificate cards: click korle boro view + download option -->
+    <div class="cert-grid">
+      <a class="cert reveal" href="certificate/FSC.pdf" data-img="certificate/fsc-preview.jpg" data-name="FSC® — SCS-COC-008303">
+        <img src="certificate/fsc-preview.jpg" alt="FSC Chain of Custody certificate">
+        <div class="cert-name">FSC® — SCS-COC-008303</div>
+      </a>
+      <a class="cert reveal" href="certificate/grs.pdf" data-img="certificate/grs-preview.jpg" data-name="Global Recycled Standard 4.0">
+        <img src="certificate/grs-preview.jpg" alt="GRS certificate">
+        <div class="cert-name">Global Recycled Standard 4.0</div>
+      </a>
+      <a class="cert reveal" href="certificate/oekotex.pdf" data-img="certificate/oekotex-preview.jpg" data-name="OEKO-TEX® Standard 100">
+        <img src="certificate/oekotex-preview.jpg" alt="OEKO-TEX Standard 100 certificate">
+        <div class="cert-name">OEKO-TEX® Standard 100</div>
+      </a>
+    </div>
+
+    <p class="reveal" style="margin-top:34px;color:var(--ink-soft);font-size:.92rem"><b style="color:var(--ink)">Working toward:</b> ISO 9001:2015 · RCS · WRAP · GOTS · SEDEX · amfori BSCI</p>
+  </div>
+</section>
+
+<!-- ================= MISSION ================= -->
+<section id="mission">
+  <div class="wrap">
+    <span class="tag-label reveal">Our Vision & Mission</span>
+    <h2 class="sec-title reveal">Building a brighter <span>Bangladesh</span></h2>
+    <p class="sec-sub reveal">Our mission goes beyond labels — it's about empowering people, industry and the nation's backbone RMG sector.</p>
+    <div class="mission-grid">
+      <div class="m-card reveal"><div class="ico">🌱</div><h3>Sustainable Growth</h3><p>Empowering Bangladesh through sustainable growth and inclusive employment with eco-friendly materials and practices.</p></div>
+      <div class="m-card reveal"><div class="ico">📈</div><h3>Economic Development</h3><p>Driving economic development by expanding opportunities for all and reducing unemployment through innovation.</p></div>
+      <div class="m-card reveal"><div class="ico">🤝</div><h3>Investing in People</h3><p>Building a brighter future by investing in people, progress, workforce development and job creation.</p></div>
+      <div class="m-card reveal"><div class="ico">🌍</div><h3>Made in Bangladesh</h3><p>Promoting 'Made in Bangladesh' as a global standard and creating strong support for the nation's backbone RMG sector.</p></div>
+      <div class="m-card reveal"><div class="ico">✅</div><h3>Quality & Ethics</h3><p>Certified production (OEKO-TEX®, FSC®, GRS) with strict compliance — working toward ISO 9001:2015, WRAP, GOTS, SEDEX & amfori BSCI.</p></div>
+      <div class="m-card reveal"><div class="ico">🚀</div><h3>Global Expansion</h3><p>From ERP-driven automation (2024) to expanding global presence (2025) — serving customers around the world.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MACHINERIES ================= -->
+<section id="machineries">
+  <div class="wrap">
+    <span class="tag-label reveal">Machineries & Capacity</span>
+    <h2 class="sec-title reveal">World-class machines, <span>massive capacity</span></h2>
+    <p class="sec-sub reveal">Vaupel, MEI, Heidelberg, Fuji, Konica Minolta, HY, Zebra — our production floor runs on globally trusted brands.</p>
+    <div class="mach-grid">
+      <!-- EDIT-IMG: machine photo gulo images/machine/ folder e.
+           Details button e click korle machModal e oi machine er full data ashe —
+           data edit korte niche script e "machData" object dekhen. -->
+      <div class="mach reveal">
+        <img src="images/machine/woven.jpg" alt="Woven label loom machines">
+        <h3 class="m-banner">Woven Label</h3>
+        <div class="body">
+          <span class="cap-title">Production Capacity</span>
+          <b class="cap-val">1 Million Pcs / Day</b>
+          <ul>
+            <li>Rapier, Needle, Warping & Shuttle looms (Vaupel, MEI)</li>
+            <li>Ultrasonic, Laser, Heat & Dye cutting</li>
+            <li>Mid & meter folding</li>
+          </ul>
+          <button class="lc-more mach-more" onclick="openMach('woven')">Details ➜</button>
+        </div>
+      </div>
+      <div class="mach reveal">
+        <img src="images/machine/printedlabel.jpg" alt="Printed label machines">
+        <h3 class="m-banner">Printed Label</h3>
+        <div class="body">
+          <span class="cap-title">Production Capacity</span>
+          <b class="cap-val">3.8 Million Pcs / Day</b>
+          <ul>
+            <li>20+ machines — HY speed printing up to 6 colours</li>
+            <li>Ultrasonic cutting, cut & folding, curing</li>
+            <li>Polyester, paper, cotton, canvas & Tyvek print</li>
+          </ul>
+          <button class="lc-more mach-more" onclick="openMach('printed')">Details ➜</button>
+        </div>
+      </div>
+      <div class="mach reveal">
+        <img src="images/machine/offset.jpg" alt="Offset printing machines">
+        <h3 class="m-banner">Offset Printing</h3>
+        <div class="body">
+          <span class="cap-title">Production Capacity</span>
+          <b class="cap-val">1.2 Million Pcs / Day</b>
+          <ul>
+            <li>40+ machines — Heidelberg presses</li>
+            <li>CTP plate making (Fuji), offset up to 4 colours</li>
+            <li>X-Rite colour matching system</li>
+          </ul>
+          <button class="lc-more mach-more" onclick="openMach('offset')">Details ➜</button>
+        </div>
+      </div>
+      <div class="mach reveal">
+        <img src="images/machine/digital.jpg" alt="Digital printing machines">
+        <h3 class="m-banner">Digital Printing</h3>
+        <div class="body">
+          <span class="cap-title">Production Capacity</span>
+          <b class="cap-val">300 Thousand Pcs / Day</b>
+          <ul>
+            <li>Konica Minolta production presses</li>
+            <li>Short-run hang tags, proofs & samples</li>
+            <li>Variable data — barcode, QR & serial print</li>
+          </ul>
+          <button class="lc-more mach-more" onclick="openMach('digital')">Details ➜</button>
+        </div>
+      </div>
+      <div class="mach reveal">
+        <!-- EDIT-IMG: heat transfer machine er photo ekhono nai —
+             images/machine/heattransfer.jpg add kore niche src ta change korun -->
+        <img src="https://placehold.co/640x360/D9EBE0/128A46?text=Heat+Transfer" alt="Heat transfer machines">
+        <h3 class="m-banner">Heat Transfer Label</h3>
+        <div class="body">
+          <span class="cap-title">Production Capacity</span>
+          <b class="cap-val">100 Thousand Pcs / Day</b>
+          <ul>
+            <li>Water-based & solvent-based labels</li>
+            <li>Azo & phthalate free — EU & USA compliant</li>
+            <li>Screen, hologram, DTF, silicon, metallic, 3D HD</li>
+          </ul>
+          <button class="lc-more mach-more" onclick="openMach('heat')">Details ➜</button>
+        </div>
+      </div>
+      <div class="mach reveal">
+        <img src="images/machine/narrowfabric.jpg" alt="Narrow fabrics machines">
+        <h3 class="m-banner">Narrow Fabrics</h3>
+        <div class="body">
+          <span class="cap-title">Production Capacity</span>
+          <b class="cap-val">50 Thousand Yrds / Day</b>
+          <ul>
+            <li>20+ machines — drawcord (16/32/48 spandal)</li>
+            <li>Twill & canvas tape machines</li>
+            <li>Plastic & metal tipping</li>
+          </ul>
+          <button class="lc-more mach-more" onclick="openMach('narrow')">Details ➜</button>
+        </div>
+      </div>
+      <div class="mach reveal">
+        <img src="images/machine/pupatch.jpg" alt="Leather and silicon patch production">
+        <h3 class="m-banner">Patches & Lock String</h3>
+        <div class="body">
+          <span class="cap-title">Production Capacity</span>
+          <b class="cap-val">Leather 25K · Silicon 25K · Lock String 200K / Day</b>
+          <ul>
+            <li>Genuine, PU/faux, suede, embossed & debossed leather</li>
+            <li>2D/3D/PVC/transparent silicon patches</li>
+            <li>Lock string & seal tag production</li>
+          </ul>
+          <button class="lc-more mach-more" onclick="openMach('patch')">Details ➜</button>
+        </div>
+      </div>
+      <div class="mach reveal">
+        <img src="images/machine/zebra.jpg" alt="Zebra thermal barcode printers">
+        <h3 class="m-banner">Thermal Barcode Printing</h3>
+        <div class="body">
+          <span class="cap-title">Production Capacity</span>
+          <b class="cap-val">1.5 Million Stickers / Day</b>
+          <ul>
+            <li>Zebra industrial thermal printers</li>
+            <li>Barcode, price tag & thermal sticker printing</li>
+            <li>Retailer-compliant ticketing & labelling</li>
+          </ul>
+          <button class="lc-more mach-more" onclick="openMach('thermal')">Details ➜</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section id="products">
+  <div class="wrap">
+    <span class="tag-label reveal">Key Products</span>
+    <h2 class="sec-title reveal">Everything a garment <span>needs</span></h2>
+    <p class="sec-sub reveal">From woven labels to printed poly bags — complete trims & packaging support from a single, reliable source.</p>
+    <div class="prod-grid">
+      <!-- EDIT-IMG: prottek product card e:
+           1) img src = card er cover photo
+           2) data-images = gallery er image list (comma diye alada) —
+              click korle ei gula boro view te next/previous kore dekha jabe.
+           Example: data-images="images/wl01.png, images/wl02.png, images/wl03.png" -->
+      <div class="prod reveal"><img src="https://placehold.co/420x440/1B9E4B/ffffff?text=Woven+Label" alt="Woven label"><div class="name">Woven Label</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/128A46/ffffff?text=Printed+Label" alt="Printed label"><div class="name">Printed Label</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Offset+Items" alt="Offset items"><div class="name">Offset Items & Hang Tags</div></div>
+      <div class="prod reveal" data-images="images/hs01.png"><img src="images/hs01.png" alt="Heat seal"><div class="name">Heat Transfer Label</div></div>
+      <div class="prod reveal" data-images="images/lb01.png"><img src="images/lb01.png" alt="Leather patch"><div class="name">Leather & Rubber Patch</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/128A46/ffffff?text=Silicon+Patch" alt="Silicon patch"><div class="name">Silicon Patch</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Drawstring" alt="Drawstring"><div class="name">Drawstring & Drawcord</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/22303C/ffffff?text=Elastic" alt="Elastic"><div class="name">Elastic</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/1B9E4B/ffffff?text=Lock+String" alt="Lock string"><div class="name">Lock String</div></div>
+      <div class="prod reveal" data-images="images/gt01.png"><img src="images/gt01.png" alt="Gum tape"><div class="name">Gum Tape</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Poly+Bag" alt="Poly bag"><div class="name">Printed Poly Bag</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/22303C/ffffff?text=Packaging" alt="Packaging"><div class="name">Packaging Accessories</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section id="gallery">
+  <div class="wrap">
+    <span class="tag-label reveal">Gallery</span>
+    <h2 class="sec-title reveal">Inside our <span>factory</span></h2>
+    <div class="gal-grid">
+      <!-- EDIT-IMG: gallery photos — add/remove as many .gal blocks as you want -->
+      <div class="gal reveal"><img src="https://placehold.co/500x440/D9EBE0/128A46?text=Gallery+1" alt="Gallery 1"></div>
+      <div class="gal reveal"><img src="https://placehold.co/500x440/E1EDE5/0B5E30?text=Gallery+2" alt="Gallery 2"></div>
+      <div class="gal reveal"><img src="https://placehold.co/500x440/D9EBE0/128A46?text=Gallery+3" alt="Gallery 3"></div>
+      <div class="gal reveal"><img src="https://placehold.co/500x440/E1EDE5/0B5E30?text=Gallery+4" alt="Gallery 4"></div>
+      <div class="gal reveal"><img src="https://placehold.co/500x440/D9EBE0/128A46?text=Gallery+5" alt="Gallery 5"></div>
+      <div class="gal reveal"><img src="https://placehold.co/500x440/E1EDE5/0B5E30?text=Gallery+6" alt="Gallery 6"></div>
+      <div class="gal reveal"><img src="https://placehold.co/500x440/D9EBE0/128A46?text=Gallery+7" alt="Gallery 7"></div>
+      <div class="gal reveal"><img src="https://placehold.co/500x440/E1EDE5/0B5E30?text=Gallery+8" alt="Gallery 8"></div>
+    </div>
+  </div>
+
+  <!-- client marquee -->
+  <div class="clients reveal">
+    <div class="marquee">
+      <span>ZARA</span><span>DKNY</span><span>KENNETH COLE</span><span>PRIMARK</span><span>C&A</span><span>TK MAXX</span><span>ALDI</span><span>LIDL</span><span>ROSS</span><span>NKD</span><span>TAKKO</span><span>GIORDANO</span><span>BEN SHERMAN</span><span>JACHS NY</span><span>ALCOTT</span><span>PD&C</span><span>RIPLEY</span><span>WEATHERPROOF</span><span>CREW CLOTHING</span><span>LIVINGSTONE</span><span>HENBURY</span><span>COPPEL</span><span>LI & FUNG</span><span>XRAY</span>
+      <!-- duplicate for seamless loop -->
+      <span>ZARA</span><span>DKNY</span><span>KENNETH COLE</span><span>PRIMARK</span><span>C&A</span><span>TK MAXX</span><span>ALDI</span><span>LIDL</span><span>ROSS</span><span>NKD</span><span>TAKKO</span><span>GIORDANO</span><span>BEN SHERMAN</span><span>JACHS NY</span><span>ALCOTT</span><span>PD&C</span><span>RIPLEY</span><span>WEATHERPROOF</span><span>CREW CLOTHING</span><span>LIVINGSTONE</span><span>HENBURY</span><span>COPPEL</span><span>LI & FUNG</span><span>XRAY</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CAREER ================= -->
+<section id="career">
+  <div class="wrap">
+    <span class="tag-label reveal">Career</span>
+    <h2 class="sec-title reveal">Grow with <span>us</span></h2>
+    <p class="sec-sub reveal">We are 400+ people strong and always looking for talent. Openings below — or send your CV any time.</p>
+
+    <!-- EDIT: job openings — copy/paste a .job block to add more, delete to remove.
+         Apply button e openApply('Position Name') dilei oi position soho form khole. -->
+    <div class="job reveal">
+      <div><b>Merchandiser (Trims & Accessories)</b><small>Full time · Uttara, Dhaka · Experience: 2+ years</small></div>
+      <button class="btn btn-ghost" onclick="openApply('Merchandiser (Trims & Accessories)')">Apply →</button>
+    </div>
+    
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <span class="tag-label reveal">Contact Us</span>
+    <h2 class="sec-title reveal">Let's make your <span>next label</span></h2>
+    <div class="contact-grid" style="margin-top:40px">
+      <div class="c-info reveal">
+        <div class="item"><div class="ico">🏢</div><div><b>Corporate Office</b><p>KA-86/C, Kuril Bishwa Road, Vatara, Dhaka-1230</p></div></div>
+        <div class="item"><div class="ico">🏭</div><div><b>Factory Unit-01</b><p>16/D, Chanpara, Uzampur, Uttarkhan, Uttara, Dhaka-1230</p></div></div>
+        <div class="item"><div class="ico">🏭</div><div><b>Factory Unit-02</b><p>149/5, Arambagh, Motijheel, Dhaka-1000</p></div></div>
+        <div class="item"><div class="ico">👤</div><div><b>Mr. Mohiuddin Masud (Shakil) — Advisor</b><p>Cell: +880 17070 82158<br>shakil@articlelabelbd.com</p></div></div>
+        <div class="item"><div class="ico">✉️</div><div><b>Email</b><p>rphlabel@yahoo.com<br>hanif@articlelabelbd.com</p></div></div>
+      </div>
+
+      <!-- ============================================
+           EDIT-EMAIL: Contact form (FormSubmit.co)
+           Mail jabe: rphlabel@yahoo.com (main) + hanif@articlelabelbd.com (CC)
+           IMPORTANT: প্রথমবার live site theke ekta test message pathaben —
+           FormSubmit tokhon rphlabel@yahoo.com e ekta activation email pathabe,
+           sei email er confirm link e click korlei form active hoye jabe.
+           ============================================ -->
+      <form class="reveal" action="https://formsubmit.co/rphlabel@yahoo.com" method="POST">
+        <input type="hidden" name="_cc" value="hanif@articlelabelbd.com">
+        <input type="hidden" name="_subject" value="New inquiry from Article Label website">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_template" value="table">
+        <!-- EDIT: thank-you redirect — apnar live domain diye replace korun -->
+        <input type="hidden" name="_next" value="https://articlelabelbd.com/thanks.html">
+
+        <div class="f-row">
+          <div><label>Your Name *</label><input type="text" name="name" required placeholder="Full name"></div>
+          <div><label>Company</label><input type="text" name="company" placeholder="Company name"></div>
+        </div>
+        <div class="f-row">
+          <div><label>Email *</label><input type="email" name="email" required placeholder="you@company.com"></div>
+          <div><label>Phone</label><input type="tel" name="phone" placeholder="+880..."></div>
+        </div>
+        <label>Product Interest</label>
+        <input type="text" name="product" placeholder="e.g. Woven label, Hang tag, Leather patch...">
+        <label>Message *</label>
+        <textarea name="message" required placeholder="Tell us about your requirement, quantity, target date..."></textarea>
+        <button type="submit" class="btn btn-primary">Send Message ✉</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="f-grid">
+    <div>
+      <h4>Article Label & Accessories Ltd.</h4>
+      <p style="font-size:.86rem;max-width:340px">A proud sister concern of R.PH. Group — alongside R.PH. Label & Accessories and Article Printing & Packaging. Manufacturer, supplier & exporter of all kinds of garments accessories.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#about">About Us</a>
+      <a href="#products">Our Products</a>
+      <a href="#machineries">Machineries</a>
+      <a href="#career">Career</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:rphlabel@yahoo.com">rphlabel@yahoo.com</a>
+      <a href="mailto:hanif@articlelabelbd.com">hanif@articlelabelbd.com</a>
+      <a href="tel:+8801707082158">+880 17070 82158</a>
+      <a href="https://www.rphgroupbd.com" target="_blank" rel="noopener">www.rphgroupbd.com</a>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span>© 2026 Article Label & Accessories Ltd. — R.PH. Group. All rights reserved.</span>
+    <span>OEKO-TEX® · FSC® · GRS Certified</span>
+    <span>developed by
+      <a href="https://gravalley.com" target="_blank" rel="noopener" style="display:inline;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem"><span style="color:#9BA9BD">grav</span><span style="color:#D87427">alley</span></a>
+    </span>
+  </div>
+</footer>
+
+<!-- ================= LEADER PROFILE MODAL (Read More button) ================= -->
+<div class="leader-modal" id="leaderModal">
+  <div class="lm-box">
+    <div class="lm-img"><img id="lmImg" src="" alt="Leader photo"></div>
+    <div class="lm-body">
+      <button class="lm-close" onclick="closeLeader()">✕</button>
+      <h3 id="lmName"></h3>
+      <span class="lm-role" id="lmRole"></span>
+      <div id="lmDesc"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MACHINE DETAILS MODAL =================
+     Details button e click korle machData theke oi machine er
+     shob data (image, capacity, machine count, specs) ekhane ashe. -->
+<div class="mach-modal" id="machModal">
+  <div class="mm-box">
+    <div class="mm-img">
+      <img class="main" id="mmImg" src="" alt="Machine photo">
+      <div class="mm-thumbs" id="mmThumbs"></div>
+    </div>
+    <div class="mm-body">
+      <button class="mm-close" onclick="closeMach()">✕</button>
+      <h3 id="mmTitle"></h3>
+      <span class="mm-cap" id="mmCap"></span>
+      <table class="mm-specs" id="mmSpecs"></table>
+      <p class="mm-desc" id="mmDesc"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= JOB APPLICATION MODAL =================
+     Career section er Apply button e click korle ei form khole.
+     Photo: upload ba camera diye tola jay. "Why applying": likhe ba
+     audio record kore deya jay. Submit hoy FormSubmit diye (email e ashe). -->
+<div class="apply-modal" id="applyModal">
+  <div class="ap-box">
+    <button class="mm-close" onclick="closeApply()">✕</button>
+    <h3>Job Application</h3>
+    <span class="ap-pos" id="apPos"></span>
+    <form id="applyForm" action="https://formsubmit.co/rphlabel@yahoo.com" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_cc" value="hanif@articlelabelbd.com">
+      <input type="hidden" name="_subject" id="apSubject" value="Job Application">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_template" value="table">
+      <!-- EDIT: thank-you redirect — apnar live domain diye replace korun -->
+      <input type="hidden" name="_next" value="https://articlelabelbd.com/thanks.html">
+      <input type="hidden" name="Position" id="apPosition" value="">
+
+      <!-- photo: upload ba camera -->
+      <div class="ap-photo-row">
+        <div class="ap-photo" id="apPhotoBox">👤</div>
+        <div class="ap-photo-btns">
+          <span class="ap-photo-label">Recent Photograph *</span>
+          <div>
+            <label class="ap-mini-btn" for="apPhotoInput">📁 Upload</label>
+            <button type="button" class="ap-mini-btn" onclick="openCamera()">📷 Camera</button>
+          </div>
+          <input type="file" id="apPhotoInput" name="Photo" accept="image/*" required hidden>
+          <small class="ap-hint">JPG/PNG — or take one instantly with your camera</small>
+        </div>
+      </div>
+
+      <div class="f-row">
+        <div><label>Full Name *</label><input type="text" name="Name" required placeholder="Your full name"></div>
+        <div><label>Date of Birth *</label><input type="date" name="Date of Birth" required></div>
+      </div>
+      <div class="f-row">
+        <div><label>Father's Name *</label><input type="text" name="Fathers Name" required placeholder="Father's name"></div>
+        <div><label>Mother's Name *</label><input type="text" name="Mothers Name" required placeholder="Mother's name"></div>
+      </div>
+      <div class="f-row">
+        <div><label>Phone *</label><input type="tel" name="Phone" required placeholder="+880..."></div>
+        <div><label>Email</label><input type="email" name="Email" placeholder="you@email.com"></div>
+      </div>
+      <label>Present Address *</label>
+      <textarea name="Present Address" class="ap-addr" required placeholder="House, road, area, city"></textarea>
+      <label>Permanent Address *</label>
+      <textarea name="Permanent Address" class="ap-addr" required placeholder="Village/house, post office, district"></textarea>
+      <div class="f-row">
+        <div><label>Experience (years) *</label><input type="number" name="Experience Years" min="0" max="50" required placeholder="e.g. 3"></div>
+        <div><label>Asking Salary (BDT) *</label><input type="text" name="Asking Salary" required placeholder="e.g. 35,000"></div>
+      </div>
+
+      <label>Why are you applying for this job? *</label>
+      <textarea name="Why Applying" id="apWhy" placeholder="Write your answer here — or record a voice answer below 🎙️"></textarea>
+      <!-- voice answer: record kore audio file attach hoy -->
+      <div class="ap-audio-row">
+        <button type="button" class="ap-mini-btn" id="apRecBtn" onclick="toggleRec()">🎙️ Record Voice Answer</button>
+        <span class="ap-rec-time" id="apRecTime"></span>
+        <audio id="apAudioPreview" controls style="display:none"></audio>
+        <button type="button" class="ap-mini-btn danger" id="apAudioDel" style="display:none" onclick="removeAudio()">🗑️</button>
+      </div>
+      <input type="file" id="apAudioInput" name="Voice Answer" accept="audio/*" hidden>
+
+      <label>Attach Recent CV *</label>
+      <input type="file" name="CV" accept=".pdf,.doc,.docx" required class="ap-file">
+      <small class="ap-hint">PDF or Word file</small>
+
+      <button type="submit" class="btn btn-primary">Submit Application ➜</button>
+    </form>
+  </div>
+</div>
+
+<!-- camera modal: getUserMedia diye photo tola -->
+<div class="cam-modal" id="camModal">
+  <div class="cam-box">
+    <video id="camVideo" autoplay playsinline muted></video>
+    <div class="cam-btns">
+      <button type="button" class="btn btn-primary" onclick="snapPhoto()">📸 Capture</button>
+      <button type="button" class="btn btn-ghost" onclick="closeCamera()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CERTIFICATE LIGHTBOX ================= -->
+<div class="cert-modal" id="certModal">
+  <div class="box">
+    <div class="box-head">
+      <b id="certTitle">Certificate</b>
+      <button class="close" onclick="closeCert()">✕ Close</button>
+    </div>
+    <div class="box-body"><img id="certBig" src="" alt="Certificate large view"></div>
+    <div class="box-foot">
+      <a class="btn btn-primary" id="certDownload" href="" download>⬇ Download PDF</a>
+      <a class="btn btn-ghost" id="certOpen" href="" target="_blank" rel="noopener">Open PDF ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PRODUCT GALLERY LIGHTBOX ================= -->
+<div class="prod-modal" id="prodModal">
+  <div class="pm-stage">
+    <button class="pm-close" onclick="closeProd()">✕</button>
+    <button class="pm-nav pm-prev" onclick="stepProd(-1)">‹</button>
+    <img id="prodBig" src="" alt="Product large view">
+    <button class="pm-nav pm-next" onclick="stepProd(1)">›</button>
+    <div class="pm-bar">
+      <b id="prodTitle">Product</b>
+      <span class="pm-count" id="prodCount">1 / 1</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= WHATSAPP CHATBOX =================
+     EDIT: number change korte niche waNumber variable ta edit korun (script e) -->
+<div class="wa-box" id="waBox">
+  <div class="wa-head">
+    <div class="avatar">A</div>
+    <div><b>Article Label & Accessories</b><small>Typically replies within minutes</small></div>
+  </div>
+  <div class="wa-body">
+    <div class="wa-msg">👋 Hello! Welcome to Article Label & Accessories Ltd. How can we help you today?</div>
+    <input type="text" id="waInput" placeholder="Type your message...">
+    <button class="wa-send" onclick="sendWA()">Send on WhatsApp ➤</button>
+  </div>
+</div>
+<button class="wa-btn" onclick="document.getElementById('waBox').classList.toggle('open')" aria-label="Chat on WhatsApp">💬</button>
+
+<script>
+// WhatsApp chat — EDIT: number ekhane
+const waNumber = "8801324736172";
+function sendWA(){
+  const msg = document.getElementById('waInput').value.trim() || "Hello! I want to know about your products.";
+  window.open("https://wa.me/" + waNumber + "?text=" + encodeURIComponent(msg), "_blank");
+}
+document.getElementById('waInput').addEventListener('keydown', e=>{ if(e.key==='Enter') sendWA(); });
+
+// scroll reveal animation
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ===== Hero slot-machine word (vertical reel / odometer style) =====
+// Each letter is a vertical strip that scrolls through the alphabet
+// with motion blur, then eases smoothly into its final character.
+// Letters stop one after another, left to right.
+// EDIT: word add/remove korte niche list ta edit korun (item.txt theke)
+// EDIT: prottek product er name + image ekhane pair kora.
+// Notun image "images/displayproduct/" folder e rakhun, file name niche jeta lekha ache thik oi name e.
+// EDIT: "cap" = oi product er DAILY CAPACITY — ekhon placeholder deya ache,
+//        real value boshan (jemon "1.5M+ pcs", "200K+ mtr"). Product spin er
+//        sathe sathe hex-badge e typing style e ei value ta ashe.
+const spinWords = [
+  { txt:"woven label",            img:"images/displayproduct/woven-label.png",            cap:"1.5M+ pcs" },
+  { txt:"hang tag",               img:"images/displayproduct/hang-tag.png",               cap:"1M+ pcs"   },
+  { txt:"back board",             img:"images/displayproduct/back-board.png",             cap:"300K+ pcs" },
+  { txt:"pu patch",               img:"images/displayproduct/pu-patch.png",               cap:"150K+ pcs" },
+  { txt:"printed label",          img:"images/displayproduct/printed-label.png",          cap:"1.2M+ pcs" },
+  { txt:"band roll",              img:"images/displayproduct/band-roll.png",              cap:"200K+ pcs" },
+  { txt:"canvas label",           img:"images/displayproduct/canvas-label.png",           cap:"250K+ pcs" },
+  { txt:"original leather patch", img:"images/displayproduct/original-leather-patch.png", cap:"80K+ pcs"  },
+  { txt:"printed tissue",         img:"images/displayproduct/printed-tissue.png",         cap:"400K+ pcs" },
+  { txt:"silicon tag",            img:"images/displayproduct/silicon-tag.png",            cap:"120K+ pcs" },
+  { txt:"elastic",                img:"images/displayproduct/elastic.png",                cap:"100K+ mtr" },
+  { txt:"embroidery patch",       img:"images/displayproduct/embroidery-patch.png",       cap:"100K+ pcs" },
+  { txt:"tyvek label",            img:"images/displayproduct/tyvek-label.png",            cap:"300K+ pcs" },
+  { txt:"lock string",            img:"images/displayproduct/lock-string.png",            cap:"500K+ pcs" },
+  { txt:"canvas tag",             img:"images/displayproduct/canvas-tag.png",             cap:"200K+ pcs" },
+  { txt:"neck board",             img:"images/displayproduct/neck-board.png",             cap:"250K+ pcs" },
+  { txt:"barcode sticker",        img:"images/displayproduct/barcode-sticker.png",        cap:"2M+ pcs"   },
+  { txt:"drawstring",             img:"images/displayproduct/drawstring.png",             cap:"150K+ mtr" },
+  { txt:"grosgrain tape",         img:"images/displayproduct/grosgrain-tape.png",         cap:"200K+ mtr" },
+  { txt:"lurex label",            img:"images/displayproduct/lurex-label.png",            cap:"100K+ pcs" },
+  { txt:"jackron patch",          img:"images/displayproduct/jackron-patch.png",          cap:"90K+ pcs"  },
+  { txt:"thermal sticker",        img:"images/displayproduct/thermal-sticker.png",        cap:"1.5M+ pcs" },
+  { txt:"heat seal",              img:"images/displayproduct/heat-seal.png",              cap:"300K+ pcs" },
+  { txt:"recycling string",       img:"images/displayproduct/recycling-string.png",       cap:"400K+ pcs" },
+  { txt:"pvc tag",                img:"images/displayproduct/pvc-tag.png",                cap:"120K+ pcs" },
+  { txt:"paper gum tape",         img:"images/displayproduct/paper-gum-tape.png",         cap:"150K+ mtr" },
+  { txt:"cotton tape",            img:"images/displayproduct/cotton-tape.png",            cap:"250K+ mtr" },
+  { txt:"suede leather patch",    img:"images/displayproduct/suede-leather-patch.png",    cap:"70K+ pcs"  },
+  { txt:"woven patch",            img:"images/displayproduct/woven-patch.png",            cap:"180K+ pcs" },
+  { txt:"damask label",           img:"images/displayproduct/damask-label.png",           cap:"800K+ pcs" },
+  { txt:"hot stamping",           img:"images/displayproduct/hot-stamping.png",           cap:"200K+ pcs" },
+  { txt:"twill tape",             img:"images/displayproduct/twill-tape.png",             cap:"220K+ mtr" },
+  { txt:"laser cutting",          img:"images/displayproduct/laser-cutting.png",          cap:"100K+ pcs" },
+  { txt:"3d & vinyl",             img:"images/displayproduct/3d-vinyl.png",               cap:"90K+ pcs"  }
+];
+const spinEl  = document.getElementById('spinWord');
+const ALPHA   = "abcdefghijklmnopqrstuvwxyz";
+const DUR_BASE = 800;   // ms — first letter spin duration
+const DUR_GAP  = 130;   // ms — each next letter spins this much longer (stops later)
+const DUR_MAX  = 2400;  // ms — cap (longest letter)
+const REEL_CELLS = 2;   // each letter cycles through max 2 letters before landing
+const HOLD     = 2600;  // ms — word stays before next spin
+const EASE     = "cubic-bezier(.14,.75,.22,1)"; // fast start → very smooth landing
+let spinIdx = 0;
+
+// hidden measurer to lock each slot's width to its final character
+const meas = document.createElement('span');
+meas.style.cssText = "position:absolute;visibility:hidden;white-space:pre";
+spinEl.parentNode.appendChild(meas);
+function charW(c){
+  meas.style.font = getComputedStyle(spinEl).font;
+  meas.textContent = c;
+  return meas.getBoundingClientRect().width;
+}
+
+function spinTo(item){
+  const word = item.txt;
+  swapHeroImage(item.img);   // name spin shuru hobar sathe sathe image o spin kore change hoy
+  typeCapacity(item.cap || "6.5M+ pcs"); // daily capacity o sathe sathe typing style e change hoy
+  spinEl.innerHTML = "";
+  const slots = [];
+  [...word].forEach(c=>{
+    if(c === " "){
+      const s = document.createElement('span');
+      s.className = "sp"; s.innerHTML = "&nbsp;";
+      spinEl.appendChild(s);
+      return;
+    }
+    const slot  = document.createElement('span');
+    slot.className = "slot";
+    slot.style.width = Math.ceil(charW(c)) + "px";
+    const strip = document.createElement('span');
+    strip.className = "strip";
+    slot.appendChild(strip);
+    spinEl.appendChild(slot);
+    slots.push({slot, strip, final:c});
+  });
+
+  let maxDur = 0;
+  const esc = c => c.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+  slots.forEach((o,i)=>{
+    const dur   = Math.min(DUR_BASE + i*DUR_GAP, DUR_MAX);
+    const cells = REEL_CELLS;
+    const down  = i % 2 === 1;   // odd letters spin from bottom, even from top
+    maxDur = Math.max(maxDur, dur);
+
+    // build strip: random letters + final char
+    let rand = "";
+    for(let k=0;k<cells;k++) rand += "<span>"+ALPHA[Math.floor(Math.random()*26)]+"</span>";
+    const fin = "<span>"+esc(o.final)+"</span>";
+
+    o.strip.style.transition = "none";
+    o.strip.classList.add('rolling');
+    if(down){
+      // final char on TOP — strip slides downward into place
+      o.strip.innerHTML = fin + rand;
+      o.strip.style.transform = "translateY(-"+(cells*1.18)+"em)";
+      void o.strip.offsetHeight;
+      o.strip.style.transition = "transform "+dur+"ms "+EASE;
+      o.strip.style.transform  = "translateY(0)";
+    }else{
+      // final char at BOTTOM — strip slides upward into place
+      o.strip.innerHTML = rand + fin;
+      o.strip.style.transform = "translateY(0)";
+      void o.strip.offsetHeight;
+      o.strip.style.transition = "transform "+dur+"ms "+EASE;
+      o.strip.style.transform  = "translateY(-"+(cells*1.18)+"em)";
+    }
+
+    // remove blur just before landing
+    setTimeout(()=>o.strip.classList.remove('rolling'), dur*0.72);
+  });
+
+  setTimeout(()=>{
+    spinIdx = (spinIdx+1) % spinWords.length;
+    spinTo(spinWords[spinIdx]);
+  }, maxDur + HOLD);
+}
+
+// ===== Hero product image (name er sathe synced) =====
+// Image gulo spinWords list er "img" field theke ashe — alada kono list nai.
+const FALLBACK_IMG = "images/cl01.png"; // kono image missing thakle eta dekhabe
+
+const heroImg = document.querySelector('.hero-slide img');
+heroImg.addEventListener('error', ()=>{ heroImg.src = FALLBACK_IMG; });
+
+// preload sob product image, jate spin er somoy atke na thake
+spinWords.forEach(it => { const im = new Image(); im.src = it.img; });
+
+function swapHeroImage(src){
+  if(heroImg.getAttribute('src') === src) return;
+  heroImg.classList.add('spin-out');                 // spin kore ber hoy (0 → 90deg)
+  setTimeout(()=>{
+    heroImg.src = src;
+    heroImg.style.transition = "none";               // ulta dik theke dhukbe (-90deg)
+    heroImg.style.transform  = "rotateY(-90deg) scale(.75)";
+    void heroImg.offsetHeight;
+    heroImg.style.transition = "";
+    heroImg.classList.remove('spin-out');
+    heroImg.style.transform = "";                    // spin kore dhoke (-90 → 0deg)
+  }, 300);
+}
+
+// ===== Daily capacity typing effect (product spin er sathe synced) =====
+// Notun product ashar sathe sathe purano value muche giye notun value
+// letter-by-letter type hoy, sathe blinking cursor.
+const capText   = document.getElementById('capText');
+const capCursor = document.getElementById('capCursor');
+const TYPE_SPEED = 55;   // ms — prottek character type hote
+let capTimer = null, capHideTimer = null;
+
+function typeCapacity(str){
+  clearInterval(capTimer); clearTimeout(capHideTimer);
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){
+    capText.textContent = str; return;
+  }
+  capCursor.classList.remove('off');
+  capText.textContent = "";
+  let i = 0;
+  capTimer = setInterval(()=>{
+    capText.textContent = str.slice(0, ++i);
+    if(i >= str.length){
+      clearInterval(capTimer);
+      // type sesh hole cursor kichukkhon blink kore off hoye jay
+      capHideTimer = setTimeout(()=>capCursor.classList.add('off'), 1400);
+    }
+  }, TYPE_SPEED);
+}
+
+spinTo(spinWords[0]);
+
+// ===== BRAND INTRO: boro logo+name → navbar e fly =====
+// Trigger: user scroll korle (wheel/touch/scroll/key) ba kono nav link/button e click korle.
+// FLIP technique: navbar brand er position mepe intro brand ke translate+scale
+// kore thik oi jaygay boshano hoy — tarpor real navbar brand dekha jay.
+const introEl    = document.getElementById('brandIntro');
+const introBrand = introEl.querySelector('.intro-brand');
+const navBrandEl = document.querySelector('nav .brand');
+let introDone = false;
+
+function collapseIntro(){
+  if(introDone) return; introDone = true;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){ finishIntro(); return; }
+  const nr = navBrandEl.getBoundingClientRect();   // target: navbar brand
+  const ir = introBrand.getBoundingClientRect();   // ekhon boro intro brand
+  const s  = nr.width / ir.width;                  // uniform scale (structure same, tai mile jay)
+  introEl.classList.add('fly');                    // bg fade + click-through
+  introBrand.style.transform =
+    "translate("+(nr.left-ir.left)+"px,"+(nr.top-ir.top)+"px) scale("+s+")";
+  // flight sesh hobar age navbar brand fade-in shuru hoy (crossfade, kono flicker nai)
+  setTimeout(()=>document.body.classList.remove('intro-active'), 620);
+  setTimeout(()=>introEl.classList.add('gone'), 950);
+}
+function finishIntro(){
+  introEl.classList.add('gone');
+  document.body.classList.remove('intro-active');  // navbar brand fade in
+}
+// scroll/gesture triggers
+['wheel','touchmove','scroll'].forEach(ev =>
+  window.addEventListener(ev, collapseIntro, {passive:true, once:true}));
+window.addEventListener('keydown', e=>{
+  if(['ArrowDown','PageDown','End',' '].includes(e.key)) collapseIntro();
+});
+// nav er je kono link/button e click korleo intro collapse hoy
+document.querySelector('nav').addEventListener('click', collapseIntro);
+// overlay te click korleo
+introEl.addEventListener('click', collapseIntro);
+// page jodi already scrolled thake (refresh mid-page), intro dorkar nai
+if(window.scrollY > 40) { introDone = true; finishIntro(); }
+
+// ===== ABOUT: "More About R.P.H. Group" inline expand/collapse =====
+function toggleRphMore(){
+  const box = document.getElementById('rphMore');
+  const btn = document.getElementById('rphMoreBtn');
+  const open = box.classList.toggle('open');
+  btn.innerHTML = open ? 'Show Less ↑' : 'More About R.P.H. Group ↓';
+}
+
+// ===== MACHINE DETAILS (Details button → modal) =====
+// EDIT: prottek machine er full data ekhane. "count" (koyta machine ache),
+//        specs er value — jekono kichu real data diye update korun.
+//        imgs = images/machine/ folder er photo; ekadhik dile modal e thumbnail ashe.
+const machData = {
+  woven: {
+    title: "Woven Label — Loom Section",
+    cap:   "1 Million pcs / day",
+    imgs:  ["images/machine/woven.jpg"],
+    specs: [
+      ["Machine Types", "Rapier, Needle, Warping & Shuttle looms"],
+      ["Brands",        "Vaupel, MEI"],
+      ["Total Machines","30+ looms"],  // EDIT: real count boshan
+      ["Cutting",       "Ultrasonic, Laser, Heat & Dye cutting"],
+      ["Folding",       "Mid fold & meter folding"],
+      ["Daily Capacity","1 Million+ pcs"]
+    ],
+    desc:  "Our fully computerized woven label section runs on European Vaupel and MEI looms, producing damask, taffeta and satin labels with sharp definition — from small size labels to large woven patches."
+  },
+  printed: {
+    title: "Printed Label Section",
+    cap:   "3.8 Million pcs / day",
+    imgs:  ["images/machine/printedlabel.jpg"],
+    specs: [
+      ["Total Machines","20+ machines"],
+      ["Brands",        "HY high-speed printing"],
+      ["Colours",       "Up to 6 colours"],
+      ["Finishing",     "Ultrasonic cutting, cut & folding, curing"],
+      ["Materials",     "Polyester, paper, cotton, canvas & Tyvek"],
+      ["Daily Capacity","3.8 Million+ pcs"]
+    ],
+    desc:  "High-speed rotary printing lines deliver consistent, colour-accurate printed labels on a wide range of substrates, with in-line cutting, folding and curing for export-ready finishing."
+  },
+  offset: {
+    title: "Offset Printing Section",
+    cap:   "1.2 Million pcs / day",   // EDIT: offset er real capacity boshan
+    imgs:  ["images/machine/offset.jpg"],
+    specs: [
+      ["Total Machines","40+ machines"],  // EDIT: real count boshan
+      ["Brands",        "Heidelberg"],
+      ["Pre-press",     "CTP plate making (Fuji)"],
+      ["Printing",      "Offset up to 4 colours"],
+      ["Colour Control","X-Rite colour matching system"],
+      ["Daily Capacity","1.2 Million+ pcs"]
+    ],
+    desc:  "Our offset floor runs on Heidelberg presses with in-house Fuji CTP plate making — hang tags, photo inlays and paper items in up to 4 colours, verified with X-Rite colour matching."
+  },
+  digital: {
+    title: "Digital Printing Section",
+    cap:   "300 Thousand pcs / day",  // EDIT: digital er real capacity boshan
+    imgs:  ["images/machine/digital.jpg"],
+    specs: [
+      ["Total Machines","10+ machines"],  // EDIT: real count boshan
+      ["Brands",        "Konica Minolta"],
+      ["Printing",      "Digital production press"],
+      ["Specialty",     "Short-run, proofs, samples & variable data"],
+      ["Variable Data", "Barcode, QR & serial printing"],
+      ["Daily Capacity","300 Thousand+ pcs"]
+    ],
+    desc:  "Konica Minolta digital presses handle short-run orders, instant proofs and variable-data jobs — perfect for quick-turnaround hang tags, sample approvals and serialized printing."
+  },
+  heat: {
+    title: "Heat Transfer Label Section",
+    cap:   "100 Thousand pcs / day",
+    imgs:  ["https://placehold.co/640x480/D9EBE0/128A46?text=Heat+Transfer"], // EDIT: images/machine/heattransfer.jpg add korle ekhane boshan
+    specs: [
+      ["Label Base",    "Water-based & solvent-based"],
+      ["Compliance",    "Azo & phthalate free — EU & USA compliant"],
+      ["Techniques",    "Screen, hologram, DTF, silicon, metallic, 3D HD"],
+      ["Daily Capacity","100 Thousand+ pcs"]
+    ],
+    desc:  "Eco-compliant heat transfer labels for activewear and kidswear — soft-hand screen transfers to premium 3D high-density and metallic finishes, fully EU & USA compliant."
+  },
+  narrow: {
+    title: "Narrow Fabrics Section",
+    cap:   "50 Thousand yrds / day",
+    imgs:  ["images/machine/narrowfabric.jpg"],
+    specs: [
+      ["Total Machines","20+ machines"],
+      ["Drawcord",      "16 / 32 / 48 spandal"],
+      ["Tapes",         "Twill & canvas tape machines"],
+      ["Finishing",     "Plastic & metal tipping"],
+      ["Daily Capacity","50 Thousand+ yards"]
+    ],
+    desc:  "Dedicated narrow fabrics lines weave drawcords, twill and canvas tapes in-house, with plastic and metal tipping for ready-to-attach drawstrings."
+  },
+  patch: {
+    title: "Patches & Lock String",
+    cap:   "Leather 25K · Silicon 25K · Lock String 200K / day",
+    imgs:  ["images/machine/pupatch.jpg"],
+    specs: [
+      ["Leather Patch", "Genuine, PU/faux, suede, embossed & debossed"],
+      ["Silicon Patch", "2D / 3D / PVC / transparent"],
+      ["Lock String",   "Lock string & seal tag production"],
+      ["Daily Capacity","Leather 25K · Silicon 25K · Lock String 200K pcs"]
+    ],
+    desc:  "From embossed genuine leather and 3D silicon patches to lock strings and seal tags — complete branding attachments produced under one roof."
+  },
+  thermal: {
+    title: "Thermal Barcode Printing",
+    cap:   "1.5 Million stickers / day",  // EDIT: thermal er real capacity boshan
+    imgs:  ["images/machine/zebra.jpg"],
+    specs: [
+      ["Printers",      "Zebra industrial thermal printers"],
+      ["Output",        "Barcode, price tag & thermal stickers"],
+      ["Compliance",    "Retailer-compliant ticketing & labelling"],
+      ["Daily Capacity","1.5 Million+ stickers"]
+    ],
+    desc:  "Zebra industrial thermal printers produce retailer-compliant barcodes, price tags and thermal stickers at high volume — accurate, scannable and ready for the shop floor."
+  }
+};
+
+const machModal = document.getElementById('machModal');
+const mmImg = document.getElementById('mmImg');
+
+function openMach(key){
+  const d = machData[key];
+  if(!d) return;
+  document.getElementById('mmTitle').textContent = d.title;
+  document.getElementById('mmCap').textContent = d.cap;
+  document.getElementById('mmSpecs').innerHTML =
+    d.specs.map(r => "<tr><td>"+r[0]+"</td><td>"+r[1]+"</td></tr>").join("");
+  document.getElementById('mmDesc').textContent = d.desc;
+  mmImg.src = d.imgs[0];
+  mmImg.alt = d.title;
+  // ekadhik image thakle thumbnail dekhay, click e main image swap hoy
+  const th = document.getElementById('mmThumbs');
+  th.innerHTML = "";
+  if(d.imgs.length > 1){
+    d.imgs.forEach((src,i)=>{
+      const t = document.createElement('img');
+      t.src = src; t.alt = d.title + " photo " + (i+1);
+      if(i===0) t.classList.add('act');
+      t.onclick = ()=>{
+        mmImg.src = src;
+        th.querySelectorAll('img').forEach(x=>x.classList.remove('act'));
+        t.classList.add('act');
+      };
+      th.appendChild(t);
+    });
+  }
+  machModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMach(){
+  machModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+machModal.addEventListener('click', e=>{ if(e.target === machModal) closeMach(); });
+document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeMach(); });
+
+// ===== JOB APPLICATION (Apply button → form modal) =====
+const applyModal = document.getElementById('applyModal');
+
+function openApply(position){
+  document.getElementById('apPos').textContent = position;
+  document.getElementById('apPosition').value = position;
+  document.getElementById('apSubject').value = "Job Application — " + position;
+  applyModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeApply(){
+  applyModal.classList.remove('open');
+  document.body.style.overflow = '';
+  stopRecIfRunning();
+}
+applyModal.addEventListener('click', e=>{ if(e.target === applyModal) closeApply(); });
+
+// --- photo: upload preview ---
+const apPhotoInput = document.getElementById('apPhotoInput');
+const apPhotoBox   = document.getElementById('apPhotoBox');
+apPhotoInput.addEventListener('change', ()=>{
+  const f = apPhotoInput.files[0];
+  if(!f) return;
+  apPhotoBox.innerHTML = "<img src='"+URL.createObjectURL(f)+"' alt='Photo preview'>";
+});
+
+// --- photo: camera diye tola (getUserMedia) ---
+const camModal = document.getElementById('camModal');
+const camVideo = document.getElementById('camVideo');
+let camStream = null;
+
+async function openCamera(){
+  try{
+    camStream = await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'}, audio:false});
+    camVideo.srcObject = camStream;
+    camModal.classList.add('open');
+  }catch(err){
+    // camera na pele fallback: mobile e capture attribute wala file picker khole
+    const tmp = document.createElement('input');
+    tmp.type = 'file'; tmp.accept = 'image/*'; tmp.capture = 'user';
+    tmp.onchange = ()=>{
+      if(!tmp.files[0]) return;
+      setPhotoFile(tmp.files[0]);
+    };
+    tmp.click();
+  }
+}
+function closeCamera(){
+  camModal.classList.remove('open');
+  if(camStream){ camStream.getTracks().forEach(t=>t.stop()); camStream = null; }
+}
+function snapPhoto(){
+  const c = document.createElement('canvas');
+  c.width = camVideo.videoWidth; c.height = camVideo.videoHeight;
+  c.getContext('2d').drawImage(camVideo, 0, 0);
+  c.toBlob(blob=>{
+    setPhotoFile(new File([blob], "photo.jpg", {type:"image/jpeg"}));
+    closeCamera();
+  }, 'image/jpeg', .92);
+}
+// programmatically tola photo ke file input e boshano (DataTransfer trick)
+function setPhotoFile(file){
+  const dt = new DataTransfer();
+  dt.items.add(file);
+  apPhotoInput.files = dt.files;
+  apPhotoBox.innerHTML = "<img src='"+URL.createObjectURL(file)+"' alt='Photo preview'>";
+}
+
+// --- "Why applying" voice answer (MediaRecorder) ---
+const apRecBtn  = document.getElementById('apRecBtn');
+const apRecTime = document.getElementById('apRecTime');
+const apAudio   = document.getElementById('apAudioPreview');
+const apAudioDel= document.getElementById('apAudioDel');
+const apAudioInput = document.getElementById('apAudioInput');
+let recRecorder = null, recChunks = [], recTimer = null, recSecs = 0, recStream = null;
+
+async function toggleRec(){
+  if(recRecorder && recRecorder.state === 'recording'){ recRecorder.stop(); return; }
+  try{
+    recStream = await navigator.mediaDevices.getUserMedia({audio:true});
+  }catch(err){
+    alert("Microphone access is required to record a voice answer.");
+    return;
+  }
+  recChunks = [];
+  recRecorder = new MediaRecorder(recStream);
+  recRecorder.ondataavailable = e=>recChunks.push(e.data);
+  recRecorder.onstop = ()=>{
+    const blob = new Blob(recChunks, {type: recRecorder.mimeType || 'audio/webm'});
+    const ext  = (recRecorder.mimeType||'').includes('mp4') ? 'm4a' : 'webm';
+    const file = new File([blob], "voice-answer."+ext, {type: blob.type});
+    const dt = new DataTransfer(); dt.items.add(file);
+    apAudioInput.files = dt.files;
+    apAudio.src = URL.createObjectURL(blob);
+    apAudio.style.display = ''; apAudioDel.style.display = '';
+    recStream.getTracks().forEach(t=>t.stop()); recStream = null;
+    clearInterval(recTimer); apRecTime.textContent = "";
+    apRecBtn.classList.remove('rec');
+    apRecBtn.innerHTML = "🎙️ Re-record";
+  };
+  recRecorder.start();
+  recSecs = 0; apRecTime.textContent = "● 0:00";
+  recTimer = setInterval(()=>{
+    recSecs++;
+    apRecTime.textContent = "● " + Math.floor(recSecs/60) + ":" + String(recSecs%60).padStart(2,'0');
+    if(recSecs >= 120) recRecorder.stop();   // max 2 min
+  }, 1000);
+  apRecBtn.classList.add('rec');
+  apRecBtn.innerHTML = "⏹ Stop Recording";
+}
+function stopRecIfRunning(){
+  if(recRecorder && recRecorder.state === 'recording') recRecorder.stop();
+}
+function removeAudio(){
+  apAudioInput.value = "";
+  apAudio.src = ""; apAudio.style.display = 'none'; apAudioDel.style.display = 'none';
+  apRecBtn.innerHTML = "🎙️ Record Voice Answer";
+}
+
+// form validation: likha ba voice — jekono ekta answer lagbe
+document.getElementById('applyForm').addEventListener('submit', e=>{
+  const why = document.getElementById('apWhy').value.trim();
+  if(!why && !apAudioInput.files.length){
+    e.preventDefault();
+    alert('Please answer "Why are you applying" — write it or record a voice answer.');
+  }
+});
+
+// Esc: age camera bondho hoy, tarpor apply modal
+document.addEventListener('keydown', e=>{
+  if(e.key !== 'Escape') return;
+  if(camModal.classList.contains('open')) closeCamera();
+  else if(applyModal.classList.contains('open')) closeApply();
+});
+
+// ===== Leader profile modal (Read More) =====
+const leaderData = {
+  chairman: {
+    name: "Israt Jahan Merry",
+    role: "Founder Chairman",
+    img: "images/chairman.png",
+    desc: [
+      "Israt Jahan Merry, the respected Founder Chairman of Article Label & Accessories Ltd., is a passionate entrepreneur whose vision and dedication laid the foundation for one of Bangladesh's most trusted garment accessories companies.",
+      "She founded the company in 2003 with the goal of delivering innovative, sustainable, and high-quality accessories to the apparel industry.",
+      "Under her thoughtful guidance, Article Label has grown from a small setup into a proud sister concern of the R.PH. Group, serving both local and international markets. She is admired for her integrity, leadership, and sincere focus on ethical business practices. Her care for people, attention to detail, and commitment to sustainability continue to guide the company's steady growth and solid reputation in the industry.",
+      "Today, Article Label & Accessories Ltd. stands as a reflection of her vision — a company built on trust, quality, and responsibility. Her continuous inspiration keeps the team motivated to move forward with the same passion and purpose that began the journey more than two decades ago."
+    ]
+  },
+  md: {
+    name: "Md. Hanif Mondal",
+    role: "Managing Director",
+    img: "images/md.jpeg",
+    desc: [
+      "Md. Hanif Mondal, the Managing Director of Article Label & Accessories Ltd., is a dynamic leader with a strong vision for innovation, sustainability, and operational excellence in the garment accessories sector. Since the establishment of the company, he has played a pivotal role in transforming Article Label & Accessories Ltd. into a modern, customer-focused organization that meets the evolving demands of both local and international apparel brands.",
+      "With a deep understanding of manufacturing processes and market dynamics, he has introduced advanced technologies and eco-friendly practices across production lines, ensuring high-quality output while maintaining environmental compliance. His leadership is marked by a commitment to continuous improvement, workforce development, and strategic expansion, positioning the company as a reliable name in the industry.",
+      "A proactive member of the business community, Md. Hanif Mondal actively engages with industry associations such as BGAPMEA, contributing to broader discussions on industry standards and sustainable practices. His hands-on approach and dedication to excellence have earned Article Label & Accessories Ltd. a reputation for trust, quality, and professionalism."
+    ]
+  }
+};
+const leaderModal = document.getElementById('leaderModal');
+function openLeader(key){
+  const d = leaderData[key];
+  if(!d) return;
+  document.getElementById('lmImg').src = d.img;
+  document.getElementById('lmImg').alt = d.name + ", " + d.role;
+  document.getElementById('lmName').textContent = d.name;
+  document.getElementById('lmRole').textContent = d.role;
+  document.getElementById('lmDesc').innerHTML = d.desc.map(p => "<p>" + p + "</p>").join("");
+  leaderModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLeader(){
+  leaderModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+leaderModal.addEventListener('click', e=>{ if(e.target === leaderModal) closeLeader(); });
+document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeLeader(); });
+
+// ===== Certificate lightbox =====
+const certModal = document.getElementById('certModal');
+document.querySelectorAll('.cert').forEach(c=>{
+  c.addEventListener('click', e=>{
+    e.preventDefault();
+    document.getElementById('certTitle').textContent = c.dataset.name;
+    document.getElementById('certBig').src = c.dataset.img;
+    document.getElementById('certDownload').href = c.getAttribute('href');
+    document.getElementById('certOpen').href = c.getAttribute('href');
+    certModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeCert(){
+  certModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+certModal.addEventListener('click', e=>{ if(e.target === certModal) closeCert(); });
+document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeCert(); });
+
+// ===== Product gallery lightbox (next/previous) =====
+const prodModal = document.getElementById('prodModal');
+let prodImgs = [], prodIdx = 0;
+
+document.querySelectorAll('.prod').forEach(p=>{
+  p.addEventListener('click', ()=>{
+    // data-images thakle sei list, na thakle card er cover image tai
+    const list = p.dataset.images
+      ? p.dataset.images.split(',').map(s=>s.trim()).filter(Boolean)
+      : [p.querySelector('img').src];
+    prodImgs = list; prodIdx = 0;
+    document.getElementById('prodTitle').textContent = p.querySelector('.name').textContent;
+    showProd();
+    prodModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function showProd(){
+  document.getElementById('prodBig').src = prodImgs[prodIdx];
+  document.getElementById('prodCount').textContent = (prodIdx+1) + " / " + prodImgs.length;
+  // ekta matro image hole arrow gula lukiye rakhi
+  document.querySelectorAll('.pm-nav').forEach(n=>n.style.display = prodImgs.length > 1 ? 'flex' : 'none');
+}
+function stepProd(dir){
+  prodIdx = (prodIdx + dir + prodImgs.length) % prodImgs.length;
+  showProd();
+}
+function closeProd(){
+  prodModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+prodModal.addEventListener('click', e=>{ if(e.target === prodModal) closeProd(); });
+document.addEventListener('keydown', e=>{
+  if(!prodModal.classList.contains('open')) return;
+  if(e.key === 'ArrowRight') stepProd(1);
+  if(e.key === 'ArrowLeft')  stepProd(-1);
+  if(e.key === 'Escape')     closeProd();
+});
+
+// close mobile menu on link click
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+});
+</script>
+</body>
+</html>
