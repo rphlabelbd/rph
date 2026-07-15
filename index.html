@@ -255,6 +255,46 @@ html[lang="bn"] h1,html[lang="bn"] h2,html[lang="bn"] h3,html[lang="bn"] h4{font
 .m-card h3{font-size:1.02rem;margin-bottom:8px}
 .m-card p{font-size:.9rem;color:var(--ink-soft)}
 
+/* ===== OUR JOURNEY — vertical alternating timeline ===== */
+.journey{position:relative;max-width:1000px;margin:60px auto 0;padding:10px 0}
+.journey::before{
+  content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--green),var(--neon),var(--green));
+  transform:translateX(-50%);
+}
+.j-item{position:relative;width:50%;padding:0 46px 56px;box-sizing:border-box}
+.j-item:nth-child(odd){margin-right:50%;text-align:right}
+.j-item:nth-child(even){margin-left:50%;text-align:left}
+.j-dot{
+  position:absolute;top:6px;
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.74rem;
+  color:#fff;background:linear-gradient(135deg,var(--green),var(--green-dk));
+  border:3px solid var(--bg);border-radius:999px;padding:6px 12px;
+  box-shadow:0 0 0 3px var(--neon-soft), 0 4px 14px rgba(18,138,70,.3);
+  z-index:2;
+}
+.j-item:nth-child(odd) .j-dot{right:-30px;transform:translateX(50%)}
+.j-item:nth-child(even) .j-dot{left:-30px;transform:translateX(-50%)}
+.j-card{
+  display:inline-block;text-align:left;width:100%;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:0 10px 26px rgba(34,48,60,.08);transition:.35s;
+}
+.j-item:hover .j-card{transform:translateY(-6px);border-color:var(--neon);box-shadow:0 18px 38px var(--neon-soft)}
+.j-card img{width:100%;height:170px;object-fit:cover}
+.j-card .j-body{padding:20px 22px 22px}
+.j-body .j-year{
+  display:inline-block;font-family:'Sora',sans-serif;font-weight:800;
+  font-size:1.4rem;color:var(--green-dk);margin-bottom:4px;
+}
+.j-body h3{font-size:1.02rem;margin-bottom:8px}
+.j-body p{font-size:.88rem;color:var(--ink-soft)}
+@media(max-width:760px){
+  .journey::before{left:22px}
+  .j-item{width:100%;padding:0 0 40px 56px;margin:0 !important;text-align:left !important}
+  .j-item:nth-child(odd) .j-dot,.j-item:nth-child(even) .j-dot{left:-8px;right:auto;transform:none;top:0}
+}
+
 /* ================= MACHINERIES ================= */
 .mach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
 .mach{
@@ -867,7 +907,7 @@ body.intro-active .menu-btn{opacity:0;pointer-events:none}
   </a>
   <div class="nav-links" id="navLinks">
     <a href="#about" data-i18n="nav.about">About Us</a>
-    <a href="#mission" data-i18n="nav.mission">Mission</a>
+    <a href="#mission" data-i18n="nav.mission">Our Journey</a>
     <a href="#certification" data-i18n="nav.cert">Certification</a>
     <a href="#machineries" data-i18n="nav.mach">Machineries</a>
     <a href="#products" data-i18n="nav.products">Our Products</a>
@@ -1059,7 +1099,7 @@ body.intro-active .menu-btn{opacity:0;pointer-events:none}
 <!-- ================= MISSION ================= -->
 <section id="mission">
   <div class="wrap">
-    <span class="tag-label reveal" data-i18n="mission.tag">Our Vision & Mission</span>
+    <span class="tag-label reveal" data-i18n="mission.tag">Our Journey</span>
     <h2 class="sec-title reveal" data-i18n="mission.title">Building a brighter <span>Bangladesh</span></h2>
     <p class="sec-sub reveal" data-i18n="mission.sub">Our mission goes beyond labels — it's about empowering people, industry and the nation's backbone RMG sector.</p>
     <div class="mission-grid">
@@ -1069,6 +1109,91 @@ body.intro-active .menu-btn{opacity:0;pointer-events:none}
       <div class="m-card reveal"><div class="ico">🌍</div><h3>Made in Bangladesh</h3><p>Promoting 'Made in Bangladesh' as a global standard and creating strong support for the nation's backbone RMG sector.</p></div>
       <div class="m-card reveal"><div class="ico">✅</div><h3>Quality & Ethics</h3><p>Certified production (OEKO-TEX®, FSC®, GRS) with strict compliance — working toward ISO 9001:2015, WRAP, GOTS, SEDEX & amfori BSCI.</p></div>
       <div class="m-card reveal"><div class="ico">🚀</div><h3>Global Expansion</h3><p>From ERP-driven automation (2024) to expanding global presence (2025) — serving customers around the world.</p></div>
+    </div>
+
+    <!-- ===== OUR JOURNEY — year by year timeline =====
+         EDIT-IMG: prottek milestone er image "images/journey/" folder e rakhun,
+         niche src ta sei file name diye replace korun.
+         EDIT: year/title/description sob direct HTML e edit kora jay.
+         Notun year add korte ekta .j-item block copy-paste korun (order matters — line er upor niche onujayi bosbe). -->
+    <div class="wrap" style="margin-top:80px;padding:0">
+      <span class="tag-label reveal" data-i18n="journey.tag">Our Journey</span>
+      <h2 class="sec-title reveal" data-i18n="journey.title">Two decades of <span>growth, year by year</span></h2>
+      <p class="sec-sub reveal" data-i18n="journey.sub">From a single vision in 1997 to a globally trusted name — here's how our story unfolded.</p>
+    </div>
+    <div class="journey">
+      <div class="j-item reveal">
+        <span class="j-dot">1997</span>
+        <div class="j-card">
+          <!-- EDIT-IMG -->
+          <img src="https://placehold.co/560x320/D9EBE0/128A46?text=1997" alt="R.PH. Group founded 1997">
+          <div class="j-body">
+            <b class="j-year">1997</b>
+            <h3 data-i18n="journey.y1997.t">The Beginning of R.PH. Group</h3>
+            <p data-i18n="journey.y1997.d">Our journey started in 1997, laying the foundation of R.PH. Group — the parent company behind Article Label & Accessories Ltd.</p>
+          </div>
+        </div>
+      </div>
+      <div class="j-item reveal">
+        <span class="j-dot">2003</span>
+        <div class="j-card">
+          <!-- EDIT-IMG -->
+          <img src="https://placehold.co/560x320/128A46/ffffff?text=2003" alt="Article Label founded 2003">
+          <div class="j-body">
+            <b class="j-year">2003</b>
+            <h3 data-i18n="journey.y2003.t">Article Label & Accessories Ltd. Founded</h3>
+            <p data-i18n="journey.y2003.d">Under the vision of Founder Chairman Israt Jahan Merry, Article Label & Accessories Ltd. was established to deliver premium garment accessories.</p>
+          </div>
+        </div>
+      </div>
+      <div class="j-item reveal">
+        <span class="j-dot">2018</span>
+        <div class="j-card">
+          <!-- EDIT-IMG -->
+          <img src="https://placehold.co/560x320/D9EBE0/128A46?text=2018" alt="DCCI membership 2018">
+          <div class="j-body">
+            <b class="j-year">2018</b>
+            <h3 data-i18n="journey.y2018.t">DCCI Membership</h3>
+            <p data-i18n="journey.y2018.d">We became a proud member of the Dhaka Chamber of Commerce & Industry (DCCI), strengthening our position in Bangladesh's business community.</p>
+          </div>
+        </div>
+      </div>
+      <div class="j-item reveal">
+        <span class="j-dot">2022</span>
+        <div class="j-card">
+          <!-- EDIT-IMG -->
+          <img src="https://placehold.co/560x320/128A46/ffffff?text=2022" alt="International certifications 2022">
+          <div class="j-body">
+            <b class="j-year">2022</b>
+            <h3 data-i18n="journey.y2022.t">International Certifications</h3>
+            <p data-i18n="journey.y2022.d">Achieved OEKO-TEX®, FSC® and GRS certifications, reaffirming our commitment to quality, safety and sustainability.</p>
+          </div>
+        </div>
+      </div>
+      <div class="j-item reveal">
+        <span class="j-dot">2024</span>
+        <div class="j-card">
+          <!-- EDIT-IMG -->
+          <img src="https://placehold.co/560x320/D9EBE0/128A46?text=2024" alt="ERP-driven automation 2024">
+          <div class="j-body">
+            <b class="j-year">2024</b>
+            <h3 data-i18n="journey.y2024.t">ERP-Driven Automation</h3>
+            <p data-i18n="journey.y2024.d">Introduced ERP-driven automation across our production floor, boosting efficiency, accuracy and on-time delivery.</p>
+          </div>
+        </div>
+      </div>
+      <div class="j-item reveal">
+        <span class="j-dot">2025</span>
+        <div class="j-card">
+          <!-- EDIT-IMG -->
+          <img src="https://placehold.co/560x320/128A46/ffffff?text=2025" alt="Global expansion 2025">
+          <div class="j-body">
+            <b class="j-year">2025</b>
+            <h3 data-i18n="journey.y2025.t">Global Expansion</h3>
+            <p data-i18n="journey.y2025.d">Expanded our global presence, serving apparel brands across new international markets.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2190,7 +2315,7 @@ document.querySelectorAll('.nav-links a').forEach(a=>{
 // Note: HTML wala entry te innerHTML boshe, tai <span>/<a>/<b> tag rakha jay.
 const i18n = {
   "nav.about":     ["About Us","আমাদের সম্পর্কে"],
-  "nav.mission":   ["Mission","মিশন"],
+  "nav.mission":   ["Our Journey","আমাদের যাত্রা"],
   "nav.cert":      ["Certification","সার্টিফিকেশন"],
   "nav.mach":      ["Machineries","মেশিনারিজ"],
   "nav.products":  ["Our Products","আমাদের পণ্য"],
@@ -2225,10 +2350,32 @@ const i18n = {
   "cert.title":    ["Certified for <span>quality & sustainability</span>","মান ও টেকসইতায় <span>সার্টিফায়েড</span>"],
   "cert.sub":      ["We hold OEKO-TEX®, FSC® and GRS certifications ensuring product safety, sustainability and environmental responsibility. Our products passed the COSTCO Screening Test across all categories and fully comply with California Proposition 65 — Lead-free, Azo-free and Phthalate-free.",
                     "আমাদের রয়েছে OEKO-TEX®, FSC® ও GRS সার্টিফিকেশন — যা পণ্যের নিরাপত্তা, টেকসইতা ও পরিবেশগত দায়বদ্ধতা নিশ্চিত করে। আমাদের পণ্য সব ক্যাটাগরিতে COSTCO স্ক্রিনিং টেস্ট পাস করেছে এবং California Proposition 65 সম্পূর্ণ মেনে চলে — Lead-free, Azo-free ও Phthalate-free।"],
-  "mission.tag":   ["Our Vision & Mission","আমাদের লক্ষ্য ও উদ্দেশ্য"],
+  "mission.tag":   ["Our Journey","আমাদের যাত্রা"],
   "mission.title": ["Building a brighter <span>Bangladesh</span>","গড়ছি উজ্জ্বল <span>বাংলাদেশ</span>"],
   "mission.sub":   ["Our mission goes beyond labels — it's about empowering people, industry and the nation's backbone RMG sector.",
                     "আমাদের মিশন শুধু লেবেল নয় — মানুষ, শিল্প এবং দেশের মেরুদণ্ড RMG খাতকে এগিয়ে নেওয়াই আমাদের লক্ষ্য।"],
+  "journey.tag":   ["Our Journey","আমাদের যাত্রা"],
+  "journey.title": ["Two decades of <span>growth, year by year</span>","দুই দশকের <span>ক্রমবর্ধমান যাত্রা</span>"],
+  "journey.sub":   ["From a single vision in 1997 to a globally trusted name — here's how our story unfolded.",
+                    "১৯৯৭ সালের একটি স্বপ্ন থেকে আজ বিশ্বব্যাপী বিশ্বস্ত একটি নাম — এভাবেই এগিয়েছে আমাদের গল্প।"],
+  "journey.y1997.t":["The Beginning of R.PH. Group","আর.পি.এইচ. গ্রুপের সূচনা"],
+  "journey.y1997.d":["Our journey started in 1997, laying the foundation of R.PH. Group — the parent company behind Article Label & Accessories Ltd.",
+                     "১৯৯৭ সালে আমাদের যাত্রা শুরু হয়, যা আর.পি.এইচ. গ্রুপের ভিত্তি স্থাপন করে — আর্টিকেল লেবেল অ্যান্ড এক্সেসরিজ লিমিটেডের মূল প্রতিষ্ঠান।"],
+  "journey.y2003.t":["Article Label & Accessories Ltd. Founded","আর্টিকেল লেবেল অ্যান্ড এক্সেসরিজ লিমিটেড প্রতিষ্ঠিত"],
+  "journey.y2003.d":["Under the vision of Founder Chairman Israt Jahan Merry, Article Label & Accessories Ltd. was established to deliver premium garment accessories.",
+                     "প্রতিষ্ঠাতা চেয়ারম্যান ইসরাত জাহান মেরীর দূরদর্শী নেতৃত্বে, প্রিমিয়াম গার্মেন্টস এক্সেসরিজ সরবরাহের লক্ষ্যে আর্টিকেল লেবেল অ্যান্ড এক্সেসরিজ লিমিটেড প্রতিষ্ঠিত হয়।"],
+  "journey.y2018.t":["DCCI Membership","DCCI সদস্যপদ"],
+  "journey.y2018.d":["We became a proud member of the Dhaka Chamber of Commerce & Industry (DCCI), strengthening our position in Bangladesh's business community.",
+                     "আমরা ঢাকা চেম্বার অব কমার্স অ্যান্ড ইন্ডাস্ট্রি (DCCI)-এর গর্বিত সদস্য হই, যা বাংলাদেশের ব্যবসায়িক সমাজে আমাদের অবস্থান আরও মজবুত করে।"],
+  "journey.y2022.t":["International Certifications","আন্তর্জাতিক সার্টিফিকেশন"],
+  "journey.y2022.d":["Achieved OEKO-TEX®, FSC® and GRS certifications, reaffirming our commitment to quality, safety and sustainability.",
+                     "OEKO-TEX®, FSC® ও GRS সার্টিফিকেশন অর্জন করি, যা মান, নিরাপত্তা ও টেকসইতার প্রতি আমাদের প্রতিশ্রুতিকে আরও দৃঢ় করে।"],
+  "journey.y2024.t":["ERP-Driven Automation","ERP-চালিত অটোমেশন"],
+  "journey.y2024.d":["Introduced ERP-driven automation across our production floor, boosting efficiency, accuracy and on-time delivery.",
+                     "আমাদের প্রোডাকশন ফ্লোরে ERP-চালিত অটোমেশন চালু করি, যা কার্যকারিতা, নির্ভুলতা ও সময়মতো ডেলিভারি বাড়িয়ে দেয়।"],
+  "journey.y2025.t":["Global Expansion","বৈশ্বিক সম্প্রসারণ"],
+  "journey.y2025.d":["Expanded our global presence, serving apparel brands across new international markets.",
+                     "নতুন আন্তর্জাতিক বাজারে অ্যাপারেল ব্র্যান্ডদের সেবা দিয়ে আমরা আমাদের বৈশ্বিক উপস্থিতি সম্প্রসারিত করি।"],
   "mach.tag":      ["Machineries & Capacity","মেশিনারিজ ও উৎপাদন ক্ষমতা"],
   "mach.title":    ["World-class machines, <span>massive capacity</span>","বিশ্বমানের মেশিন, <span>বিশাল উৎপাদন ক্ষমতা</span>"],
   "mach.sub":      ["Vaupel, MEI, Heidelberg, Fuji, Konica Minolta, HY, Zebra — our production floor runs on globally trusted brands.",
