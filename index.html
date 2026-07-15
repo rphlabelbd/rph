@@ -248,6 +248,40 @@ html[lang="bn"] h1,html[lang="bn"] h2,html[lang="bn"] h3,html[lang="bn"] h4{font
 
 /* cert chips */
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+
+/* ===== R.PH. GROUP tree (About er shurute: ek group -> 3 company) ===== */
+.group-tree{margin:4px 0 24px;text-align:center}
+.gt-parent{
+  display:inline-block;background:linear-gradient(135deg,var(--green),var(--green-dk));
+  color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:.12em;
+  padding:10px 28px;border-radius:12px;font-size:.95rem;
+  box-shadow:0 8px 22px rgba(18,138,70,.25);
+}
+.gt-stem{width:2px;height:18px;background:var(--green);margin:0 auto}
+.gt-kids{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;position:relative;padding-top:14px}
+.gt-kids::before{
+  content:"";position:absolute;top:0;left:16.66%;right:16.66%;height:2px;background:var(--green);
+}
+.gt-kid{
+  position:relative;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;
+  padding:14px 10px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.8rem;
+  color:var(--ink);line-height:1.45;transition:.3s;
+}
+.gt-kid::before{
+  content:"";position:absolute;top:-14px;left:50%;width:2px;height:14px;
+  background:var(--green);transform:translateX(-50%);
+}
+.gt-kid:hover{border-color:var(--neon);transform:translateY(-3px)}
+.gt-kid small{
+  display:block;margin-top:6px;font-weight:700;font-size:.6rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--green);
+}
+.gt-kid.act{border-color:var(--neon);box-shadow:0 8px 22px var(--neon-soft)}
+@media(max-width:640px){
+  .gt-kids{grid-template-columns:1fr;gap:14px;padding-top:14px}
+  .gt-kids::before{left:50%;right:auto;width:2px;height:100%;top:-14px}
+  .gt-kid::before{display:none}
+}
 .chip{
   font-size:.78rem;font-weight:600;padding:7px 14px;border-radius:999px;
   background:#fff;border:1px solid var(--line);color:var(--ink-soft);transition:.3s;
@@ -825,6 +859,11 @@ nav .brand{transition:opacity .35s ease}
    certificate gulo tai ekdom top e boshe. Intro sesh hole nav fade in kore. */
 body.intro-active nav{opacity:0;pointer-events:none}
 nav{transition:opacity .4s ease}
+/* intro te language button-o hidden — nav er sathe ek sathe fade in kore */
+body.intro-active .lang-wrap{opacity:0;pointer-events:none}
+.lang-wrap{transition:opacity .4s ease}
+/* intro cholakalin page scroll LOCK — click korlei kebol intro sesh hoy */
+body.intro-active{overflow:hidden}
 
 /* ===== DAILY CAPACITY typing cursor ===== */
 .cap-cursor{
@@ -968,7 +1007,7 @@ nav{transition:opacity .4s ease}
   </div>
   <!-- intro tagline: brand er niche, Montserrat regular, fade-in -->
   <div class="intro-tagline" data-i18n="intro.tagline">100% Computerized Woven Label, Printed Label, Offset Paper Item &amp; All Kinds of Garments Accessories — Manufacturer, Supplier &amp; Exporter</div>
-  <div class="intro-hint" data-i18n="intro.hint">Scroll to explore ↓</div>
+  <div class="intro-hint" data-i18n="intro.hint">Click anywhere to enter</div>
 </div>
 
 <!-- ================= HERO ================= -->
@@ -1012,6 +1051,18 @@ nav{transition:opacity .4s ease}
     <div class="reveal">
       <span class="tag-label" data-i18n="about.tag">About Us</span>
       <h2 class="sec-title" data-i18n="about.title">A trusted name in <span>garment accessories</span></h2>
+
+      <!-- ===== R.PH. GROUP structure: ek group, 3 company (journey er shuru) ===== -->
+      <div class="group-tree reveal">
+        <div class="gt-parent">R.PH. GROUP</div>
+        <div class="gt-stem"></div>
+        <div class="gt-kids">
+          <div class="gt-kid act">Article Label &amp; Accessories Ltd.<small data-i18n="about.here">This Website</small></div>
+          <div class="gt-kid">R.PH. Label &amp; Accessories</div>
+          <div class="gt-kid">Article Printing &amp; Packaging</div>
+        </div>
+      </div>
+
       <p style="color:var(--ink-soft);margin-bottom:16px" data-i18n="about.p1">Article Label & Accessories Ltd., R.P.H. Label & Accessories, and Article Printing & Packaging are proud sister concerns of <b>R.PH. Group</b> — a leading garments accessories manufacturer based in Dhaka, Bangladesh.</p>
 
       <!-- ===== "More" — R.PH. Group full profile (inline expand, kono page/iframe na)
@@ -1850,19 +1901,7 @@ function finishIntro(){
   introEl.classList.add('gone');
   document.body.classList.remove('intro-active');  // navbar brand fade in
 }
-// scroll/gesture triggers
-['wheel','touchmove','scroll'].forEach(ev =>
-  window.addEventListener(ev, collapseIntro, {passive:true, once:true}));
-window.addEventListener('keydown', e=>{
-  if(['ArrowDown','PageDown','End',' '].includes(e.key)) collapseIntro();
-});
-// nav er je kono link/button e click korleo intro collapse hoy
-// (language button chara — ota intro te thekei use kora jay)
-document.querySelector('nav').addEventListener('click', e=>{
-  if(e.target.closest('.lang-btn')) return;
-  collapseIntro();
-});
-// overlay te click korleo
+// intro sesh hoy SHUDHU mouse click e (scroll lock kora, key/gesture trigger nai)
 introEl.addEventListener('click', collapseIntro);
 // page jodi already scrolled thake (refresh mid-page), intro dorkar nai
 if(window.scrollY > 40) { introDone = true; finishIntro(); }
@@ -2290,7 +2329,7 @@ const i18n = {
   "intro.welcome": ["Welcome to","স্বাগতম"],
   "intro.tagline": ["100% Computerized Woven Label, Printed Label, Offset Paper Item &amp; All Kinds of Garments Accessories — Manufacturer, Supplier &amp; Exporter",
                     "১০০% কম্পিউটারাইজড ওভেন লেবেল, প্রিন্টেড লেবেল, অফসেট পেপার আইটেম ও সব ধরনের গার্মেন্টস এক্সেসরিজ — প্রস্তুতকারক, সরবরাহকারী ও রপ্তানিকারক"],
-  "intro.hint":    ["Scroll to explore ↓","স্ক্রল করে দেখুন ↓"],
+  "intro.hint":    ["Click anywhere to enter","যেকোনো জায়গায় ক্লিক করে প্রবেশ করুন"],
   "hero.tag":      ["Since 2003 · Dhaka, Bangladesh","২০০৩ থেকে · ঢাকা, বাংলাদেশ"],
   "hero.h1a":      ["Every garment tells a story.","প্রতিটি পোশাক একটি গল্প বলে।"],
   "hero.h1b":      ["We make the","আমরা তৈরি করি"],
@@ -2307,6 +2346,7 @@ const i18n = {
   "stat.s6":       ["Annual Revenue","বার্ষিক আয়"],
   "about.tag":     ["About Us","আমাদের সম্পর্কে"],
   "about.title":   ["A trusted name in <span>garment accessories</span>","গার্মেন্টস এক্সেসরিজে <span>বিশ্বস্ত নাম</span>"],
+  "about.here":    ["This Website","এই ওয়েবসাইট"],
   "about.p1":      ["Article Label & Accessories Ltd., R.P.H. Label & Accessories, and Article Printing & Packaging are proud sister concerns of <b>R.PH. Group</b> — a leading garments accessories manufacturer based in Dhaka, Bangladesh.",
                     "আর্টিকেল লেবেল অ্যান্ড এক্সেসরিজ লিমিটেড, আর.পি.এইচ. লেবেল অ্যান্ড এক্সেসরিজ এবং আর্টিকেল প্রিন্টিং অ্যান্ড প্যাকেজিং — <b>আর.পি.এইচ. গ্রুপ</b>-এর গর্বিত সিস্টার কনসার্ন; ঢাকা, বাংলাদেশের একটি শীর্ষস্থানীয় গার্মেন্টস এক্সেসরিজ প্রস্তুতকারক প্রতিষ্ঠান।"],
   "lead.tag":      ["Leadership","নেতৃত্ব"],
@@ -2426,13 +2466,6 @@ function setGT(code){
   s.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
   document.head.appendChild(s);
 })();
-
-// intro er certificate/membership logo te hover ba click korleo intro collapse hoy
-// (cert niche neme jay, page link gulo appear kore)
-document.querySelectorAll('.intro-certs, .intro-mems').forEach(el=>{
-  el.addEventListener('mouseenter', collapseIntro);
-  el.addEventListener('click', collapseIntro);
-});
 
 applyLang();
 </script>
