@@ -288,6 +288,29 @@ html[lang="bn"] h1,html[lang="bn"] h2,html[lang="bn"] h3,html[lang="bn"] h4{font
 }
 .chip:hover{border-color:var(--neon);color:var(--green-dk);box-shadow:0 4px 14px var(--neon-soft)}
 
+/* ================= JOURNEY (timeline: image ekbar bame, ekbar dane) ================= */
+.journey{display:flex;flex-direction:column;gap:24px;margin:6px 0 56px}
+.j-item{
+  display:grid;grid-template-columns:1fr 1.15fr;gap:0;align-items:stretch;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;transition:.35s;
+}
+.j-item:hover{transform:translateY(-6px);border-color:var(--neon);box-shadow:0 14px 34px var(--neon-soft)}
+.j-item.rev .j-img{order:2}
+.j-img{min-height:220px}
+.j-img img{width:100%;height:100%;object-fit:cover;display:block}
+.j-body{padding:26px 30px;display:flex;flex-direction:column;justify-content:center}
+.j-year{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.1rem);color:var(--green);line-height:1}
+.j-body h3{font-size:1.05rem;margin:8px 0 10px}
+.j-body p{font-family:'Montserrat',sans-serif;font-size:.9rem;line-height:1.75;color:var(--ink-soft)}
+@media(max-width:760px){
+  .j-item,.j-item.rev{grid-template-columns:1fr}
+  .j-item.rev .j-img{order:0}
+  .j-img{min-height:0}
+  .j-img img{height:200px}
+  .j-body{padding:20px 22px}
+}
+
 /* ================= MISSION ================= */
 #mission{background:linear-gradient(180deg,#fff, var(--bg))}
 .mission-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
@@ -919,6 +942,12 @@ body.intro-active{overflow:hidden}
   }
   .nav-links.open{display:flex}
   .menu-btn{display:block}
+  /* mobile e brand jate screen er baire na jay — logo+name choto hoye fit hoy */
+  nav{padding:12px calc(4vw + 50px) 12px 4vw}
+  .brand{min-width:0;gap:9px;flex-shrink:1}
+  .brand img{width:34px;height:34px}
+  .brand-name{font-size:clamp(.92rem,4.2vw,1.18rem)}
+  .brand-name small{font-size:.6rem;letter-spacing:.05em}
 }
 </style>
 </head>
@@ -935,11 +964,10 @@ body.intro-active{overflow:hidden}
   </a>
   <div class="nav-links" id="navLinks">
     <a href="#about" data-i18n="nav.about">About Us</a>
-    <a href="#mission" data-i18n="nav.mission">Mission</a>
+    <a href="#mission" data-i18n="nav.mission">Journey</a>
     <a href="#certification" data-i18n="nav.cert">Certification</a>
     <a href="#machineries" data-i18n="nav.mach">Machineries</a>
     <a href="#products" data-i18n="nav.products">Our Products</a>
-    <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
     <a href="#career" data-i18n="nav.career">Career</a>
     <a href="#contact" data-i18n="nav.contact">Contact Us</a>
   </div>
@@ -1167,9 +1195,81 @@ body.intro-active{overflow:hidden}
 <!-- ================= MISSION ================= -->
 <section id="mission">
   <div class="wrap">
-    <span class="tag-label reveal" data-i18n="mission.tag">Our Vision & Mission</span>
-    <h2 class="sec-title reveal" data-i18n="mission.title">Building a brighter <span>Bangladesh</span></h2>
+    <span class="tag-label reveal" data-i18n="mission.tag">Our Journey</span>
+    <h2 class="sec-title reveal" data-i18n="mission.title">Our journey through <span>the years</span></h2>
+    <p class="sec-sub reveal" data-i18n="mission.jsub">From a small label unit in 2003 to a certified, export-ready accessories manufacturer — every year added a new chapter to our story. Here are the milestones that shaped who we are today.</p>
     <p class="sec-sub reveal" data-i18n="mission.sub">Our mission goes beyond labels — it's about empowering people, industry and the nation's backbone RMG sector.</p>
+
+    <!-- ===== JOURNEY TIMELINE: image ekbar bame, ekbar dane (zigzag).
+         EDIT-IMG: image gulo images/machine/ folder e — 2003.png, 2005.png ... 2027.png -->
+    <div class="journey">
+      <div class="j-item reveal">
+        <div class="j-img"><img src="images/machine/2003.png" alt="2003 — Foundation Year"></div>
+        <div class="j-body">
+          <span class="j-year">2003</span>
+          <h3 data-i18n="j.2003.t">Foundation Year</h3>
+          <p data-i18n="j.2003.d">Founded in 2003, Article Label & Accessories Ltd. grew from our early journey with R.PH. Label (1997). Under the leadership of Ms. Israt Jahan Merry and Mr. Hanif Mondol, the company has become a trusted name in Bangladesh's garment accessories sector.</p>
+        </div>
+      </div>
+      <div class="j-item rev reveal">
+        <div class="j-img"><img src="images/machine/2005.png" alt="2005 — Expansion in Woven & Printed Label"></div>
+        <div class="j-body">
+          <span class="j-year">2005</span>
+          <h3 data-i18n="j.2005.t">Expansion in Woven & Printed Label</h3>
+          <p data-i18n="j.2005.d">We expanded our production by introducing woven and printed label manufacturing — a major milestone in our growth. This step enhanced our product range and laid a strong foundation for future innovations in label solutions.</p>
+        </div>
+      </div>
+      <div class="j-item reveal">
+        <div class="j-img"><img src="images/machine/2008.png" alt="2008 — Started Offset Production"></div>
+        <div class="j-body">
+          <span class="j-year">2008</span>
+          <h3 data-i18n="j.2008.t">Started Offset Production</h3>
+          <p data-i18n="j.2008.d">We introduced German Heidelberg offset printing machines to our production line, boosting our capabilities. This upgrade improved quality and opened new possibilities for diverse labels and accessories.</p>
+        </div>
+      </div>
+      <div class="j-item rev reveal">
+        <div class="j-img"><img src="images/machine/2017.png" alt="2017 — Expanding Factory & Production Line"></div>
+        <div class="j-body">
+          <span class="j-year">2017</span>
+          <h3 data-i18n="j.2017.t">Expanding Factory & Production Line</h3>
+          <p data-i18n="j.2017.d">We expanded our production line by adding poly bags, narrow fabrics, leather and silicon patches, and many other items — allowing us to offer a wider range of products to put our footstep in the world market.</p>
+        </div>
+      </div>
+      <div class="j-item reveal">
+        <div class="j-img"><img src="images/machine/2020.png" alt="2020 — Global Standard Achievements"></div>
+        <div class="j-body">
+          <span class="j-year">2020</span>
+          <h3 data-i18n="j.2020.t">Global Standard Achievements</h3>
+          <p data-i18n="j.2020.d">We proudly achieved OEKO-TEX®, FSC® and GRS certifications, marking a major milestone in our journey. These certifications reflect our strong commitment to safe chemical use, sustainable practices, and environmental responsibilities.</p>
+        </div>
+      </div>
+      <div class="j-item rev reveal">
+        <div class="j-img"><img src="images/machine/2025.png" alt="2025 — Expanding Global Presence"></div>
+        <div class="j-body">
+          <span class="j-year">2025</span>
+          <h3 data-i18n="j.2025.t">Expanding Global Presence</h3>
+          <p data-i18n="j.2025.d">Building on our strong local foundation, we began expanding into the global market, bringing our products to customers around the world. This move shows our commitment to growth, quality, and serving customers worldwide.</p>
+        </div>
+      </div>
+      <div class="j-item reveal">
+        <div class="j-img"><img src="images/machine/2026.png" alt="2026 — Narrow Fabric & PU Patch Production"></div>
+        <div class="j-body">
+          <span class="j-year">2026</span>
+          <h3 data-i18n="j.2026.t">Narrow Fabric & PU Patch Production Start</h3>
+          <p data-i18n="j.2026.d">We started dedicated narrow fabric and PU patch production, expanding our in-house capabilities and giving customers even more trims from a single reliable source.</p>
+        </div>
+      </div>
+      <div class="j-item rev reveal">
+        <div class="j-img"><img src="images/machine/2027.png" alt="2027 — Introducing RFID"></div>
+        <div class="j-body">
+          <span class="j-year">2027</span>
+          <h3 data-i18n="j.2027.t">Introducing RFID</h3>
+          <p data-i18n="j.2027.d">We are introducing RFID technology to our labels and accessories — enabling smarter inventory tracking and connected products for global brands.</p>
+        </div>
+      </div>
+    </div>
+
+    <span class="tag-label reveal" data-i18n="mission.vtag">Our Vision & Mission</span>
     <div class="mission-grid">
       <div class="m-card reveal"><div class="ico">🌱</div><h3>Sustainable Growth</h3><p>Empowering Bangladesh through sustainable growth and inclusive employment with eco-friendly materials and practices.</p></div>
       <div class="m-card reveal"><div class="ico">📈</div><h3>Economic Development</h3><p>Driving economic development by expanding opportunities for all and reducing unemployment through innovation.</p></div>
@@ -2319,7 +2419,7 @@ document.querySelectorAll('.nav-links a').forEach(a=>{
 // Note: HTML wala entry te innerHTML boshe, tai <span>/<a>/<b> tag rakha jay.
 const i18n = {
   "nav.about":     ["About Us","আমাদের সম্পর্কে"],
-  "nav.mission":   ["Mission","মিশন"],
+  "nav.mission":   ["Journey","যাত্রা"],
   "nav.cert":      ["Certification","সার্টিফিকেশন"],
   "nav.mach":      ["Machineries","মেশিনারিজ"],
   "nav.products":  ["Our Products","আমাদের পণ্য"],
@@ -2355,8 +2455,35 @@ const i18n = {
   "cert.title":    ["Certified for <span>quality & sustainability</span>","মান ও টেকসইতায় <span>সার্টিফায়েড</span>"],
   "cert.sub":      ["We hold OEKO-TEX®, FSC® and GRS certifications ensuring product safety, sustainability and environmental responsibility. Our products passed the COSTCO Screening Test across all categories and fully comply with California Proposition 65 — Lead-free, Azo-free and Phthalate-free.",
                     "আমাদের রয়েছে OEKO-TEX®, FSC® ও GRS সার্টিফিকেশন — যা পণ্যের নিরাপত্তা, টেকসইতা ও পরিবেশগত দায়বদ্ধতা নিশ্চিত করে। আমাদের পণ্য সব ক্যাটাগরিতে COSTCO স্ক্রিনিং টেস্ট পাস করেছে এবং California Proposition 65 সম্পূর্ণ মেনে চলে — Lead-free, Azo-free ও Phthalate-free।"],
-  "mission.tag":   ["Our Vision & Mission","আমাদের লক্ষ্য ও উদ্দেশ্য"],
-  "mission.title": ["Building a brighter <span>Bangladesh</span>","গড়ছি উজ্জ্বল <span>বাংলাদেশ</span>"],
+  "mission.tag":   ["Our Journey","আমাদের যাত্রা"],
+  "mission.title": ["Our journey through <span>the years</span>","বছরের পর বছর <span>আমাদের যাত্রা</span>"],
+  "mission.jsub":  ["From a small label unit in 2003 to a certified, export-ready accessories manufacturer — every year added a new chapter to our story. Here are the milestones that shaped who we are today.",
+                    "২০০৩ সালের ছোট একটি লেবেল ইউনিট থেকে আজকের সার্টিফায়েড, রপ্তানিমুখী অ্যাক্সেসরিজ প্রস্তুতকারক — প্রতিটি বছর আমাদের গল্পে যোগ করেছে নতুন অধ্যায়। এই মাইলফলকগুলোই আজকের আমাদের গড়ে তুলেছে।"],
+  "mission.vtag":  ["Our Vision & Mission","আমাদের লক্ষ্য ও উদ্দেশ্য"],
+  "j.2003.t":      ["Foundation Year","প্রতিষ্ঠা বছর"],
+  "j.2003.d":      ["Founded in 2003, Article Label & Accessories Ltd. grew from our early journey with R.PH. Label (1997). Under the leadership of Ms. Israt Jahan Merry and Mr. Hanif Mondol, the company has become a trusted name in Bangladesh's garment accessories sector.",
+                    "২০০৩ সালে প্রতিষ্ঠিত Article Label & Accessories Ltd. গড়ে উঠেছে R.PH. Label (১৯৯৭)-এর হাত ধরে। মিসেস ইসরাত জাহান মেরি ও মিস্টার হানিফ মন্ডলের নেতৃত্বে প্রতিষ্ঠানটি বাংলাদেশের গার্মেন্টস অ্যাক্সেসরিজ খাতে একটি বিশ্বস্ত নাম হয়ে উঠেছে।"],
+  "j.2005.t":      ["Expansion in Woven & Printed Label","ওভেন ও প্রিন্টেড লেবেলে সম্প্রসারণ"],
+  "j.2005.d":      ["We expanded our production by introducing woven and printed label manufacturing — a major milestone in our growth. This step enhanced our product range and laid a strong foundation for future innovations in label solutions.",
+                    "ওভেন ও প্রিন্টেড লেবেল উৎপাদন চালুর মাধ্যমে আমরা আমাদের প্রোডাকশন সম্প্রসারণ করি — যা ছিল আমাদের অগ্রযাত্রার এক বড় মাইলফলক। এই পদক্ষেপ আমাদের পণ্যের পরিসর বাড়িয়ে ভবিষ্যৎ উদ্ভাবনের শক্ত ভিত্তি গড়ে দেয়।"],
+  "j.2008.t":      ["Started Offset Production","অফসেট প্রোডাকশন শুরু"],
+  "j.2008.d":      ["We introduced German Heidelberg offset printing machines to our production line, boosting our capabilities. This upgrade improved quality and opened new possibilities for diverse labels and accessories.",
+                    "আমাদের প্রোডাকশন লাইনে যুক্ত হয় জার্মান Heidelberg অফসেট প্রিন্টিং মেশিন — যা আমাদের সক্ষমতা বহুগুণ বাড়িয়ে দেয়। এই আপগ্রেড মান উন্নত করে এবং বৈচিত্র্যময় লেবেল ও অ্যাক্সেসরিজের নতুন সম্ভাবনার দ্বার খুলে দেয়।"],
+  "j.2017.t":      ["Expanding Factory & Production Line","কারখানা ও প্রোডাকশন লাইন সম্প্রসারণ"],
+  "j.2017.d":      ["We expanded our production line by adding poly bags, narrow fabrics, leather and silicon patches, and many other items — allowing us to offer a wider range of products to put our footstep in the world market.",
+                    "পলি ব্যাগ, ন্যারো ফেব্রিক, লেদার ও সিলিকন প্যাচসহ আরও অনেক আইটেম যুক্ত করে আমরা প্রোডাকশন লাইন সম্প্রসারণ করি — যা বিশ্ববাজারে পা রাখতে আমাদের পণ্যের পরিসর অনেক বাড়িয়ে দেয়।"],
+  "j.2020.t":      ["Global Standard Achievements","আন্তর্জাতিক মানের অর্জন"],
+  "j.2020.d":      ["We proudly achieved OEKO-TEX®, FSC® and GRS certifications, marking a major milestone in our journey. These certifications reflect our strong commitment to safe chemical use, sustainable practices, and environmental responsibilities.",
+                    "আমরা গর্বের সাথে OEKO-TEX®, FSC® ও GRS সার্টিফিকেশন অর্জন করি — যা আমাদের যাত্রার এক বড় মাইলফলক। এই সার্টিফিকেশনগুলো নিরাপদ কেমিক্যাল ব্যবহার, টেকসই চর্চা ও পরিবেশগত দায়বদ্ধতায় আমাদের অঙ্গীকারের প্রতিফলন।"],
+  "j.2025.t":      ["Expanding Global Presence","বৈশ্বিক বাজারে সম্প্রসারণ"],
+  "j.2025.d":      ["Building on our strong local foundation, we began expanding into the global market, bringing our products to customers around the world. This move shows our commitment to growth, quality, and serving customers worldwide.",
+                    "দেশীয় শক্ত ভিত্তির ওপর দাঁড়িয়ে আমরা বৈশ্বিক বাজারে সম্প্রসারণ শুরু করি — বিশ্বজুড়ে গ্রাহকদের কাছে পৌঁছে দিই আমাদের পণ্য। এটি প্রবৃদ্ধি, মান ও বিশ্বব্যাপী সেবার প্রতি আমাদের অঙ্গীকারের প্রমাণ।"],
+  "j.2026.t":      ["Narrow Fabric & PU Patch Production Start","ন্যারো ফেব্রিক ও পিইউ প্যাচ প্রোডাকশন শুরু"],
+  "j.2026.d":      ["We started dedicated narrow fabric and PU patch production, expanding our in-house capabilities and giving customers even more trims from a single reliable source.",
+                    "আমরা ডেডিকেটেড ন্যারো ফেব্রিক ও পিইউ প্যাচ প্রোডাকশন শুরু করি — যা আমাদের ইন-হাউস সক্ষমতা বাড়িয়ে এক নির্ভরযোগ্য উৎস থেকে গ্রাহকদের আরও বেশি ট্রিমস দেওয়ার সুযোগ করে দেয়।"],
+  "j.2027.t":      ["Introducing RFID","RFID প্রযুক্তির সূচনা"],
+  "j.2027.d":      ["We are introducing RFID technology to our labels and accessories — enabling smarter inventory tracking and connected products for global brands.",
+                    "আমাদের লেবেল ও অ্যাক্সেসরিজে আমরা RFID প্রযুক্তি যুক্ত করছি — যা গ্লোবাল ব্র্যান্ডদের জন্য স্মার্ট ইনভেন্টরি ট্র্যাকিং ও কানেক্টেড প্রোডাক্টের সুযোগ তৈরি করবে।"],
   "mission.sub":   ["Our mission goes beyond labels — it's about empowering people, industry and the nation's backbone RMG sector.",
                     "আমাদের মিশন শুধু লেবেল নয় — মানুষ, শিল্প এবং দেশের মেরুদণ্ড RMG খাতকে এগিয়ে নেওয়াই আমাদের লক্ষ্য।"],
   "mach.tag":      ["Machineries & Capacity","মেশিনারিজ ও উৎপাদন ক্ষমতা"],
