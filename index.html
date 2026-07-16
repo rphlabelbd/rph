@@ -1097,7 +1097,7 @@ body.intro-active{overflow:hidden}
 <section id="about">
   <div class="wrap about-grid">
     <div class="about-img reveal">
-      <!-- EDIT-IMG: factory photos — 1 sec por por auto change hoy, click korleo change hoy.
+      <!-- EDIT-IMG: factory photos — 3 sec por por auto change hoy, click korleo change hoy.
            Aro image add korte niche script e "factoryImgs" list e path add korun -->
       <img src="images/factory1.png" alt="Article Label factory" id="aboutFactoryImg" title="Click to see next photo">
     </div>
@@ -1749,7 +1749,7 @@ body.intro-active{overflow:hidden}
 <script>
 // WhatsApp button ekhon direct wa.me link — kono chatbox/JS lage na.
 
-// ===== About factory image slideshow: 1 sec por por change + click e change =====
+// ===== About factory image slideshow: 3 sec por por change + click e change =====
 const factoryImgs = ["images/factory1.png","images/factory2.png"];
 factoryImgs.forEach(p => { const im = new Image(); im.src = p; }); // preload — flicker hobe na
 let factoryIx = 0;
@@ -1759,7 +1759,7 @@ function factoryNext(){
   factoryEl.classList.add('fading');
   setTimeout(()=>{ factoryEl.src = factoryImgs[factoryIx]; factoryEl.classList.remove('fading'); }, 180);
 }
-setInterval(factoryNext, 1000);
+setInterval(factoryNext, 3000);
 factoryEl.addEventListener('click', factoryNext);
 
 // scroll reveal animation
