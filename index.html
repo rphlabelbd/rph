@@ -291,14 +291,14 @@ html[lang="bn"] h1,html[lang="bn"] h2,html[lang="bn"] h3,html[lang="bn"] h4{font
 /* ================= JOURNEY (timeline: image ekbar bame, ekbar dane) ================= */
 .journey{display:flex;flex-direction:column;gap:24px;margin:6px 0 56px}
 .j-item{
-  display:grid;grid-template-columns:1fr 1.15fr;gap:0;align-items:stretch;
+  display:grid;grid-template-columns:.75fr 1.25fr;gap:0;align-items:stretch;
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
   overflow:hidden;transition:.35s;
 }
 .j-item:hover{transform:translateY(-6px);border-color:var(--neon);box-shadow:0 14px 34px var(--neon-soft)}
 .j-item.rev .j-img{order:2}
-.j-img{min-height:220px}
-.j-img img{width:100%;height:100%;object-fit:cover;display:block}
+.j-img{min-height:0}
+.j-img img{width:100%;height:100%;max-height:190px;object-fit:cover;display:block}
 .j-body{padding:26px 30px;display:flex;flex-direction:column;justify-content:center}
 .j-year{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.1rem);color:var(--green);line-height:1}
 .j-body h3{font-size:1.05rem;margin:8px 0 10px}
@@ -307,12 +307,15 @@ html[lang="bn"] h1,html[lang="bn"] h2,html[lang="bn"] h3,html[lang="bn"] h4{font
   .j-item,.j-item.rev{grid-template-columns:1fr}
   .j-item.rev .j-img{order:0}
   .j-img{min-height:0}
-  .j-img img{height:200px}
+  .j-img img{height:160px;max-height:160px}
   .j-body{padding:20px 22px}
 }
 
 /* ================= MISSION ================= */
 #mission{background:linear-gradient(180deg,#fff, var(--bg))}
+/* journey+mission description full line — right side e faka thakbe na */
+#mission .sec-sub{max-width:none;margin-bottom:14px}
+#mission .sec-sub + .sec-sub{margin-bottom:44px}
 .mission-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
 .m-card{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
