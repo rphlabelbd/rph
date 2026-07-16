@@ -291,14 +291,14 @@ html[lang="bn"] h1,html[lang="bn"] h2,html[lang="bn"] h3,html[lang="bn"] h4{font
 /* ================= JOURNEY (timeline: image ekbar bame, ekbar dane) ================= */
 .journey{display:flex;flex-direction:column;gap:24px;margin:6px 0 56px}
 .j-item{
-  display:grid;grid-template-columns:.75fr 1.25fr;gap:0;align-items:stretch;
+  display:grid;grid-template-columns:.75fr 1.4fr;gap:0;align-items:stretch;
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
   overflow:hidden;transition:.35s;
 }
 .j-item:hover{transform:translateY(-6px);border-color:var(--neon);box-shadow:0 14px 34px var(--neon-soft)}
 .j-item.rev .j-img{order:2}
-.j-img{min-height:0}
-.j-img img{width:100%;height:100%;max-height:190px;object-fit:cover;display:block}
+.j-img{min-height:165px}
+.j-img img{width:100%;height:100%;object-fit:cover;display:block}
 .j-body{padding:26px 30px;display:flex;flex-direction:column;justify-content:center}
 .j-year{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.1rem);color:var(--green);line-height:1}
 .j-body h3{font-size:1.05rem;margin:8px 0 10px}
@@ -307,7 +307,7 @@ html[lang="bn"] h1,html[lang="bn"] h2,html[lang="bn"] h3,html[lang="bn"] h4{font
   .j-item,.j-item.rev{grid-template-columns:1fr}
   .j-item.rev .j-img{order:0}
   .j-img{min-height:0}
-  .j-img img{height:160px;max-height:160px}
+  .j-img img{height:150px}
   .j-body{padding:20px 22px}
 }
 
@@ -834,8 +834,12 @@ footer a:hover{color:var(--neon)}
 #brandIntro.fly .intro-mems img,
 #brandIntro.fly .intro-certs img{animation:none;opacity:1}
 @media(max-width:640px){
-  .intro-mems img,.intro-certs img{height:58px}
-  .intro-mems{left:14px}.intro-certs{right:14px}
+  /* mobile e duita corner logo group jate majhkhane overlap na kore —
+     prottek group max 46vw width pay, gap kome, height-o kome */
+  .intro-mems{left:10px;gap:8px;max-width:44vw}
+  .intro-certs{right:10px;max-width:46vw;justify-content:flex-end}
+  .intro-mems img{height:40px}
+  .intro-certs img{height:auto;max-height:40px;max-width:100%}
 }
 /* intro tagline: Montserrat regular, brand er niche still hoye fade-in kore */
 .intro-tagline{
@@ -1102,10 +1106,10 @@ body.intro-active{overflow:hidden}
       <button class="btn btn-ghost rph-more-btn" id="rphMoreBtn" onclick="toggleRphMore()">More About R.P.H. Group ↓</button>
       <div class="rph-more" id="rphMore">
         <div class="rph-more-inner">
-          <p>Since its establishment in <b>2003</b>, R.P.H. Group has been dedicated to producing a wide range of premium-quality garment trims and packaging items, catering to both local and international apparel brands. Our product line includes <span class="sb">woven labels, printed labels, hang tags, barcode tags, photo inlays, adhesive stickers, leather and PU patches, silicon/rubber patches, printed canvas tapes, heat transfer labels, high-density prints, and printed self-adhesive poly bags</span>, among many others.</p>
-          <p>Under the visionary leadership of Managing Director <b>Md. Hanif Mondal</b>, the group has earned a strong reputation for <span class="sb">technical excellence, reliability, and innovation</span>. Environmental responsibility is a core principle of our operations — we strictly comply with Bangladesh's environmental regulations and prioritize eco-friendly materials and sustainable production practices.</p>
-          <p>R.P.H. Group is an active member of the <b>Bangladesh Garments Accessories &amp; Packaging Manufacturers &amp; Exporters Association (BGAPMEA)</b> and <b>DCCI</b> (since 2018), demonstrating our continuous commitment to industry standards and ongoing improvement.</p>
-          <p>Our facilities are located at <b>16/D, Chanpara, Uzampur, Uttarkhan, Uttara, Dhaka-1230</b>. For more information please visit our official website: <a href="https://www.rphgroupbd.com" target="_blank" rel="noopener"><b>www.rphgroupbd.com</b></a></p>
+          <p data-i18n="about.m1">Since its establishment in <b>2003</b>, R.P.H. Group has been dedicated to producing a wide range of premium-quality garment trims and packaging items, catering to both local and international apparel brands. Our product line includes <span class="sb">woven labels, printed labels, hang tags, barcode tags, photo inlays, adhesive stickers, leather and PU patches, silicon/rubber patches, printed canvas tapes, heat transfer labels, high-density prints, and printed self-adhesive poly bags</span>, among many others.</p>
+          <p data-i18n="about.m2">Under the visionary leadership of Managing Director <b>Md. Hanif Mondal</b>, the group has earned a strong reputation for <span class="sb">technical excellence, reliability, and innovation</span>. Environmental responsibility is a core principle of our operations — we strictly comply with Bangladesh's environmental regulations and prioritize eco-friendly materials and sustainable production practices.</p>
+          <p data-i18n="about.m3">R.P.H. Group is an active member of the <b>Bangladesh Garments Accessories &amp; Packaging Manufacturers &amp; Exporters Association (BGAPMEA)</b> and <b>DCCI</b> (since 2018), demonstrating our continuous commitment to industry standards and ongoing improvement.</p>
+          <p data-i18n="about.m4">Our facilities are located at <b>16/D, Chanpara, Uzampur, Uttarkhan, Uttara, Dhaka-1230</b>. For more information please visit our official website: <a href="https://www.rphgroupbd.com" target="_blank" rel="noopener"><b>www.rphgroupbd.com</b></a></p>
         </div>
       </div>
 
@@ -1126,10 +1130,10 @@ body.intro-active{overflow:hidden}
         <!-- EDIT-IMG: Chairman photo (portrait, min 500x600) -->
         <div class="lc-img"><img src="images/chairman.png" alt="Israt Jahan Merry, Chairman"></div>
         <div class="lc-body">
-          <h3>Israt Jahan Merry</h3>
-          <span class="lc-role">Chairman</span>
-          <p>The respected Founder Chairman of Article Label & Accessories Ltd. — a passionate entrepreneur whose vision laid the foundation for one of Bangladesh's most trusted garment accessories companies. She founded the company in 2003 with the goal of delivering innovative, sustainable and high-quality accessories to the apparel industry.</p>
-          <p>Under her thoughtful guidance, Article Label has grown from a small setup into a proud sister concern of R.PH. Group, serving both local and international markets. She is admired for her integrity, leadership and sincere focus on ethical business practices.</p>
+          <h3 data-i18n="lead.ch.name">Israt Jahan Merry</h3>
+          <span class="lc-role" data-i18n="lead.ch.role">Chairman</span>
+          <p data-i18n="lead.ch.p1">The respected Founder Chairman of Article Label & Accessories Ltd. — a passionate entrepreneur whose vision laid the foundation for one of Bangladesh's most trusted garment accessories companies. She founded the company in 2003 with the goal of delivering innovative, sustainable and high-quality accessories to the apparel industry.</p>
+          <p data-i18n="lead.ch.p2">Under her thoughtful guidance, Article Label has grown from a small setup into a proud sister concern of R.PH. Group, serving both local and international markets. She is admired for her integrity, leadership and sincere focus on ethical business practices.</p>
           <button class="lc-more" onclick="openLeader('chairman')">Read More ➜</button>
         </div>
       </div>
@@ -1137,10 +1141,10 @@ body.intro-active{overflow:hidden}
         <!-- EDIT-IMG: MD photo (portrait, min 500x600) -->
         <div class="lc-img"><img src="images/md.jpeg" alt="Md. Hanif Mondal, Managing Director"></div>
         <div class="lc-body">
-          <h3>Md. Hanif Mondal</h3>
-          <span class="lc-role">Managing Director</span>
-          <p>A dynamic leader with a strong vision for innovation, sustainability and operational excellence in the garment accessories sector. Since the establishment of the company, he has played a pivotal role in transforming Article Label & Accessories Ltd. into a modern, customer-focused organization.</p>
-          <p>With a deep understanding of manufacturing processes and market dynamics, he has introduced advanced technologies and eco-friendly practices across production lines. An active member of BGAPMEA, his hands-on approach has earned the company a reputation for trust, quality and professionalism.</p>
+          <h3 data-i18n="lead.md.name">Md. Hanif Mondal</h3>
+          <span class="lc-role" data-i18n="lead.md.role">Managing Director</span>
+          <p data-i18n="lead.md.p1">A dynamic leader with a strong vision for innovation, sustainability and operational excellence in the garment accessories sector. Since the establishment of the company, he has played a pivotal role in transforming Article Label & Accessories Ltd. into a modern, customer-focused organization.</p>
+          <p data-i18n="lead.md.p2">With a deep understanding of manufacturing processes and market dynamics, he has introduced advanced technologies and eco-friendly practices across production lines. An active member of BGAPMEA, his hands-on approach has earned the company a reputation for trust, quality and professionalism.</p>
           <button class="lc-more" onclick="openLeader('md')">Read More ➜</button>
         </div>
       </div>
@@ -1161,16 +1165,16 @@ body.intro-active{overflow:hidden}
         <!-- EDIT-IMG: BGAPMEA logo/certificate -->
         <img src="images/bgmpea.jpg" alt="Article Label factory">
         <div>
-          <b>Proud Member — BGAPMEA</b>
-          <p>Bangladesh Garments Accessories & Packaging Manufacturers & Exporters Association — demonstrating our continuous commitment to industry standards.</p>
+          <b data-i18n="mb.bg.t">Proud Member — BGAPMEA</b>
+          <p data-i18n="mb.bg.d">Bangladesh Garments Accessories & Packaging Manufacturers & Exporters Association — demonstrating our continuous commitment to industry standards.</p>
         </div>
       </div>
       <div class="mb-item">
         <!-- EDIT-IMG: DCCI logo/certificate -->
         <img src="images/dcci.jpg" alt="DCCI logo">
         <div>
-          <b>Member — DCCI <span class="since">since 2018</span></b>
-          <p>A prestigious member of the Dhaka Chamber of Commerce & Industry, reflecting our standing in Bangladesh's business community.</p>
+          <b data-i18n="mb.dc.t">Member — DCCI <span class="since">since 2018</span></b>
+          <p data-i18n="mb.dc.d">A prestigious member of the Dhaka Chamber of Commerce & Industry, reflecting our standing in Bangladesh's business community.</p>
         </div>
       </div>
     </div>
@@ -1191,7 +1195,7 @@ body.intro-active{overflow:hidden}
       </a>
     </div>
 
-    <p class="reveal" style="margin-top:34px;color:var(--ink-soft);font-size:.92rem"><b style="color:var(--ink)">Working toward:</b> ISO 9001:2015 · RCS · WRAP · GOTS · SEDEX · amfori BSCI</p>
+    <p class="reveal" style="margin-top:34px;color:var(--ink-soft);font-size:.92rem" data-i18n="cert.working"><b style="color:var(--ink)">Working toward:</b> ISO 9001:2015 · RCS · WRAP · GOTS · SEDEX · amfori BSCI</p>
   </div>
 </section>
 
@@ -1274,12 +1278,12 @@ body.intro-active{overflow:hidden}
 
     <span class="tag-label reveal" data-i18n="mission.vtag">Our Vision & Mission</span>
     <div class="mission-grid">
-      <div class="m-card reveal"><div class="ico">🌱</div><h3>Sustainable Growth</h3><p>Empowering Bangladesh through sustainable growth and inclusive employment with eco-friendly materials and practices.</p></div>
-      <div class="m-card reveal"><div class="ico">📈</div><h3>Economic Development</h3><p>Driving economic development by expanding opportunities for all and reducing unemployment through innovation.</p></div>
-      <div class="m-card reveal"><div class="ico">🤝</div><h3>Investing in People</h3><p>Building a brighter future by investing in people, progress, workforce development and job creation.</p></div>
-      <div class="m-card reveal"><div class="ico">🌍</div><h3>Made in Bangladesh</h3><p>Promoting 'Made in Bangladesh' as a global standard and creating strong support for the nation's backbone RMG sector.</p></div>
-      <div class="m-card reveal"><div class="ico">✅</div><h3>Quality & Ethics</h3><p>Certified production (OEKO-TEX®, FSC®, GRS) with strict compliance — working toward ISO 9001:2015, WRAP, GOTS, SEDEX & amfori BSCI.</p></div>
-      <div class="m-card reveal"><div class="ico">🚀</div><h3>Global Expansion</h3><p>From ERP-driven automation (2024) to expanding global presence (2025) — serving customers around the world.</p></div>
+      <div class="m-card reveal"><div class="ico">🌱</div><h3 data-i18n="m1.t">Sustainable Growth</h3><p data-i18n="m1.d">Empowering Bangladesh through sustainable growth and inclusive employment with eco-friendly materials and practices.</p></div>
+      <div class="m-card reveal"><div class="ico">📈</div><h3 data-i18n="m2.t">Economic Development</h3><p data-i18n="m2.d">Driving economic development by expanding opportunities for all and reducing unemployment through innovation.</p></div>
+      <div class="m-card reveal"><div class="ico">🤝</div><h3 data-i18n="m3.t">Investing in People</h3><p data-i18n="m3.d">Building a brighter future by investing in people, progress, workforce development and job creation.</p></div>
+      <div class="m-card reveal"><div class="ico">🌍</div><h3 data-i18n="m4.t">Made in Bangladesh</h3><p data-i18n="m4.d">Promoting 'Made in Bangladesh' as a global standard and creating strong support for the nation's backbone RMG sector.</p></div>
+      <div class="m-card reveal"><div class="ico">✅</div><h3 data-i18n="m5.t">Quality & Ethics</h3><p data-i18n="m5.d">Certified production (OEKO-TEX®, FSC®, GRS) with strict compliance — working toward ISO 9001:2015, WRAP, GOTS, SEDEX & amfori BSCI.</p></div>
+      <div class="m-card reveal"><div class="ico">🚀</div><h3 data-i18n="m6.t">Global Expansion</h3><p data-i18n="m6.d">From ERP-driven automation (2024) to expanding global presence (2025) — serving customers around the world.</p></div>
     </div>
   </div>
 </section>
@@ -1296,56 +1300,56 @@ body.intro-active{overflow:hidden}
            data edit korte niche script e "machData" object dekhen. -->
       <div class="mach reveal">
         <img src="images/machine/woven.jpg" alt="Woven label loom machines">
-        <h3 class="m-banner">Woven Label</h3>
+        <h3 class="m-banner" data-i18n="mc.woven.n">Woven Label</h3>
         <div class="body">
           <span class="cap-title">Production Capacity</span>
-          <b class="cap-val">1 Million Pcs / Day</b>
+          <b class="cap-val" data-i18n="mc.woven.c">1 Million Pcs / Day</b>
           <ul>
-            <li>Rapier, Needle, Warping & Shuttle looms (Vaupel, MEI)</li>
-            <li>Ultrasonic, Laser, Heat & Dye cutting</li>
-            <li>Mid & meter folding</li>
+            <li data-i18n="mc.woven.l1">Rapier, Needle, Warping & Shuttle looms (Vaupel, MEI)</li>
+            <li data-i18n="mc.woven.l2">Ultrasonic, Laser, Heat & Dye cutting</li>
+            <li data-i18n="mc.woven.l3">Mid & meter folding</li>
           </ul>
           <button class="lc-more mach-more" onclick="openMach('woven')">Details ➜</button>
         </div>
       </div>
       <div class="mach reveal">
         <img src="images/machine/printedlabel.jpg" alt="Printed label machines">
-        <h3 class="m-banner">Printed Label</h3>
+        <h3 class="m-banner" data-i18n="mc.printed.n">Printed Label</h3>
         <div class="body">
           <span class="cap-title">Production Capacity</span>
-          <b class="cap-val">3.8 Million Pcs / Day</b>
+          <b class="cap-val" data-i18n="mc.printed.c">3.8 Million Pcs / Day</b>
           <ul>
-            <li>20+ machines — HY speed printing up to 6 colours</li>
-            <li>Ultrasonic cutting, cut & folding, curing</li>
-            <li>Polyester, paper, cotton, canvas & Tyvek print</li>
+            <li data-i18n="mc.printed.l1">20+ machines — HY speed printing up to 6 colours</li>
+            <li data-i18n="mc.printed.l2">Ultrasonic cutting, cut & folding, curing</li>
+            <li data-i18n="mc.printed.l3">Polyester, paper, cotton, canvas & Tyvek print</li>
           </ul>
           <button class="lc-more mach-more" onclick="openMach('printed')">Details ➜</button>
         </div>
       </div>
       <div class="mach reveal">
         <img src="images/machine/offset.jpg" alt="Offset printing machines">
-        <h3 class="m-banner">Offset Printing</h3>
+        <h3 class="m-banner" data-i18n="mc.offset.n">Offset Printing</h3>
         <div class="body">
           <span class="cap-title">Production Capacity</span>
-          <b class="cap-val">1.2 Million Pcs / Day</b>
+          <b class="cap-val" data-i18n="mc.offset.c">1.2 Million Pcs / Day</b>
           <ul>
-            <li>40+ machines — Heidelberg presses</li>
-            <li>CTP plate making (Fuji), offset up to 4 colours</li>
-            <li>X-Rite colour matching system</li>
+            <li data-i18n="mc.offset.l1">40+ machines — Heidelberg presses</li>
+            <li data-i18n="mc.offset.l2">CTP plate making (Fuji), offset up to 4 colours</li>
+            <li data-i18n="mc.offset.l3">X-Rite colour matching system</li>
           </ul>
           <button class="lc-more mach-more" onclick="openMach('offset')">Details ➜</button>
         </div>
       </div>
       <div class="mach reveal">
         <img src="images/machine/digital.jpg" alt="Digital printing machines">
-        <h3 class="m-banner">Digital Printing</h3>
+        <h3 class="m-banner" data-i18n="mc.digital.n">Digital Printing</h3>
         <div class="body">
           <span class="cap-title">Production Capacity</span>
-          <b class="cap-val">300 Thousand Pcs / Day</b>
+          <b class="cap-val" data-i18n="mc.digital.c">300 Thousand Pcs / Day</b>
           <ul>
-            <li>Konica Minolta production presses</li>
-            <li>Short-run hang tags, proofs & samples</li>
-            <li>Variable data — barcode, QR & serial print</li>
+            <li data-i18n="mc.digital.l1">Konica Minolta production presses</li>
+            <li data-i18n="mc.digital.l2">Short-run hang tags, proofs & samples</li>
+            <li data-i18n="mc.digital.l3">Variable data — barcode, QR & serial print</li>
           </ul>
           <button class="lc-more mach-more" onclick="openMach('digital')">Details ➜</button>
         </div>
@@ -1354,56 +1358,56 @@ body.intro-active{overflow:hidden}
         <!-- EDIT-IMG: heat transfer machine er photo ekhono nai —
              images/machine/heattransfer.jpg add kore niche src ta change korun -->
         <img src="images/machine/dtf.jpg" alt="Heat transfer machines">
-        <h3 class="m-banner">Heat Transfer Label</h3>
+        <h3 class="m-banner" data-i18n="mc.heat.n">Heat Transfer Label</h3>
         <div class="body">
           <span class="cap-title">Production Capacity</span>
-          <b class="cap-val">100 Thousand Pcs / Day</b>
+          <b class="cap-val" data-i18n="mc.heat.c">100 Thousand Pcs / Day</b>
           <ul>
-            <li>Water-based & solvent-based labels</li>
-            <li>Azo & phthalate free — EU & USA compliant</li>
-            <li>Screen, hologram, DTF, silicon, metallic, 3D HD</li>
+            <li data-i18n="mc.heat.l1">Water-based & solvent-based labels</li>
+            <li data-i18n="mc.heat.l2">Azo & phthalate free — EU & USA compliant</li>
+            <li data-i18n="mc.heat.l3">Screen, hologram, DTF, silicon, metallic, 3D HD</li>
           </ul>
           <button class="lc-more mach-more" onclick="openMach('heat')">Details ➜</button>
         </div>
       </div>
       <div class="mach reveal">
         <img src="images/machine/narrowfabric.jpg" alt="Narrow fabrics machines">
-        <h3 class="m-banner">Narrow Fabrics</h3>
+        <h3 class="m-banner" data-i18n="mc.narrow.n">Narrow Fabrics</h3>
         <div class="body">
           <span class="cap-title">Production Capacity</span>
-          <b class="cap-val">50 Thousand Yrds / Day</b>
+          <b class="cap-val" data-i18n="mc.narrow.c">50 Thousand Yrds / Day</b>
           <ul>
-            <li>20+ machines — drawcord (16/32/48 spandal)</li>
-            <li>Twill & canvas tape machines</li>
-            <li>Plastic & metal tipping</li>
+            <li data-i18n="mc.narrow.l1">20+ machines — drawcord (16/32/48 spandal)</li>
+            <li data-i18n="mc.narrow.l2">Twill & canvas tape machines</li>
+            <li data-i18n="mc.narrow.l3">Plastic & metal tipping</li>
           </ul>
           <button class="lc-more mach-more" onclick="openMach('narrow')">Details ➜</button>
         </div>
       </div>
       <div class="mach reveal">
         <img src="images/machine/pupatch.jpg" alt="Leather and silicon patch production">
-        <h3 class="m-banner">Patches & Lock String</h3>
+        <h3 class="m-banner" data-i18n="mc.patch.n">Patches & Lock String</h3>
         <div class="body">
           <span class="cap-title">Production Capacity</span>
-          <b class="cap-val">Leather 25K · Silicon 25K · Lock String 200K / Day</b>
+          <b class="cap-val" data-i18n="mc.patch.c">Leather 25K · Silicon 25K · Lock String 200K / Day</b>
           <ul>
-            <li>Genuine, PU/faux, suede, embossed & debossed leather</li>
-            <li>2D/3D/PVC/transparent silicon patches</li>
-            <li>Lock string & seal tag production</li>
+            <li data-i18n="mc.patch.l1">Genuine, PU/faux, suede, embossed & debossed leather</li>
+            <li data-i18n="mc.patch.l2">2D/3D/PVC/transparent silicon patches</li>
+            <li data-i18n="mc.patch.l3">Lock string & seal tag production</li>
           </ul>
           <button class="lc-more mach-more" onclick="openMach('patch')">Details ➜</button>
         </div>
       </div>
       <div class="mach reveal">
         <img src="images/machine/zebra.jpg" alt="Zebra thermal barcode printers">
-        <h3 class="m-banner">Thermal Barcode Printing</h3>
+        <h3 class="m-banner" data-i18n="mc.thermal.n">Thermal Barcode Printing</h3>
         <div class="body">
           <span class="cap-title">Production Capacity</span>
-          <b class="cap-val">1.5 Million Stickers / Day</b>
+          <b class="cap-val" data-i18n="mc.thermal.c">1.5 Million Stickers / Day</b>
           <ul>
-            <li>Zebra industrial thermal printers</li>
-            <li>Barcode, price tag & thermal sticker printing</li>
-            <li>Retailer-compliant ticketing & labelling</li>
+            <li data-i18n="mc.thermal.l1">Zebra industrial thermal printers</li>
+            <li data-i18n="mc.thermal.l2">Barcode, price tag & thermal sticker printing</li>
+            <li data-i18n="mc.thermal.l3">Retailer-compliant ticketing & labelling</li>
           </ul>
           <button class="lc-more mach-more" onclick="openMach('thermal')">Details ➜</button>
         </div>
@@ -1424,18 +1428,18 @@ body.intro-active{overflow:hidden}
            2) data-images = gallery er image list (comma diye alada) —
               click korle ei gula boro view te next/previous kore dekha jabe.
            Example: data-images="images/wl01.png, images/wl02.png, images/wl03.png" -->
-      <div class="prod reveal"><img src="https://placehold.co/420x440/1B9E4B/ffffff?text=Woven+Label" alt="Woven label"><div class="name">Woven Label</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/128A46/ffffff?text=Printed+Label" alt="Printed label"><div class="name">Printed Label</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Offset+Items" alt="Offset items"><div class="name">Offset Items & Hang Tags</div></div>
-      <div class="prod reveal" data-images="images/hs01.png"><img src="images/hs01.png" alt="Heat seal"><div class="name">Heat Transfer Label</div></div>
-      <div class="prod reveal" data-images="images/lb01.png"><img src="images/lb01.png" alt="Leather patch"><div class="name">Leather & Rubber Patch</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/128A46/ffffff?text=Silicon+Patch" alt="Silicon patch"><div class="name">Silicon Patch</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Drawstring" alt="Drawstring"><div class="name">Drawstring & Drawcord</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/22303C/ffffff?text=Elastic" alt="Elastic"><div class="name">Elastic</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/1B9E4B/ffffff?text=Lock+String" alt="Lock string"><div class="name">Lock String</div></div>
-      <div class="prod reveal" data-images="images/gt01.png"><img src="images/gt01.png" alt="Gum tape"><div class="name">Gum Tape</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Poly+Bag" alt="Poly bag"><div class="name">Printed Poly Bag</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/22303C/ffffff?text=Packaging" alt="Packaging"><div class="name">Packaging Accessories</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/1B9E4B/ffffff?text=Woven+Label" alt="Woven label"><div class="name" data-i18n="pr1">Woven Label</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/128A46/ffffff?text=Printed+Label" alt="Printed label"><div class="name" data-i18n="pr2">Printed Label</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Offset+Items" alt="Offset items"><div class="name" data-i18n="pr3">Offset Items & Hang Tags</div></div>
+      <div class="prod reveal" data-images="images/hs01.png"><img src="images/hs01.png" alt="Heat seal"><div class="name" data-i18n="pr4">Heat Transfer Label</div></div>
+      <div class="prod reveal" data-images="images/lb01.png"><img src="images/lb01.png" alt="Leather patch"><div class="name" data-i18n="pr5">Leather & Rubber Patch</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/128A46/ffffff?text=Silicon+Patch" alt="Silicon patch"><div class="name" data-i18n="pr6">Silicon Patch</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Drawstring" alt="Drawstring"><div class="name" data-i18n="pr7">Drawstring & Drawcord</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/22303C/ffffff?text=Elastic" alt="Elastic"><div class="name" data-i18n="pr8">Elastic</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/1B9E4B/ffffff?text=Lock+String" alt="Lock string"><div class="name" data-i18n="pr9">Lock String</div></div>
+      <div class="prod reveal" data-images="images/gt01.png"><img src="images/gt01.png" alt="Gum tape"><div class="name" data-i18n="pr10">Gum Tape</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Poly+Bag" alt="Poly bag"><div class="name" data-i18n="pr11">Printed Poly Bag</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/22303C/ffffff?text=Packaging" alt="Packaging"><div class="name" data-i18n="pr12">Packaging Accessories</div></div>
     </div>
   </div>
 </section>
@@ -1478,7 +1482,7 @@ body.intro-active{overflow:hidden}
     <!-- EDIT: job openings — copy/paste a .job block to add more, delete to remove.
          Apply button e openApply('Position Name') dilei oi position soho form khole. -->
     <div class="job reveal">
-      <div><b>Merchandiser (Trims & Accessories)</b><small>Full time · Uttara, Dhaka · Experience: 2+ years</small></div>
+      <div><b data-i18n="job.m.t">Merchandiser (Trims & Accessories)</b><small data-i18n="job.m.d">Full time · Uttara, Dhaka · Experience: 2+ years</small></div>
       <button class="btn btn-ghost" onclick="openApply('Merchandiser (Trims & Accessories)')" data-i18n="career.apply">Apply →</button>
     </div>
 
@@ -1493,10 +1497,10 @@ body.intro-active{overflow:hidden}
     <h2 class="sec-title reveal" data-i18n="contact.title">Let's make your <span>next label</span></h2>
     <div class="contact-grid" style="margin-top:40px">
       <div class="c-info reveal">
-        <div class="item"><div class="ico">🏢</div><div><b data-i18n="c.office">Corporate Office</b><p>KA-86/C, Kuril Bishwa Road, Vatara, Dhaka-1230</p></div></div>
-        <div class="item"><div class="ico">🏭</div><div><b data-i18n="c.f1">Factory Unit-01</b><p>16/D, Chanpara, Uzampur, Uttarkhan, Uttara, Dhaka-1230</p></div></div>
-        <div class="item"><div class="ico">🏭</div><div><b data-i18n="c.f2">Factory Unit-02</b><p>149/5, Arambagh, Motijheel, Dhaka-1000</p></div></div>
-        <div class="item"><div class="ico">👤</div><div><b>Mr. Mohiuddin Masud (Shakil) — Advisor</b><p>Cell: +880 17070 82158<br>shakil@articlelabelbd.com</p></div></div>
+        <div class="item"><div class="ico">🏢</div><div><b data-i18n="c.office">Corporate Office</b><p data-i18n="c.addr1">KA-86/C, Kuril Bishwa Road, Vatara, Dhaka-1230</p></div></div>
+        <div class="item"><div class="ico">🏭</div><div><b data-i18n="c.f1">Factory Unit-01</b><p data-i18n="c.addr2">16/D, Chanpara, Uzampur, Uttarkhan, Uttara, Dhaka-1230</p></div></div>
+        <div class="item"><div class="ico">🏭</div><div><b data-i18n="c.f2">Factory Unit-02</b><p data-i18n="c.addr3">149/5, Arambagh, Motijheel, Dhaka-1000</p></div></div>
+        <div class="item"><div class="ico">👤</div><div><b data-i18n="c.advisor">Mr. Mohiuddin Masud (Shakil) — Advisor</b><p>Cell: +880 17070 82158<br>shakil@articlelabelbd.com</p></div></div>
         <div class="item"><div class="ico">✉️</div><div><b data-i18n="c.email">Email</b><p>rphlabel@yahoo.com<br>hanif@articlelabelbd.com</p></div></div>
       </div>
 
@@ -1516,18 +1520,18 @@ body.intro-active{overflow:hidden}
         <input type="hidden" name="_next" value="https://articlelabelbd.com/thanks.html">
 
         <div class="f-row">
-          <div><label>Your Name *</label><input type="text" name="name" required placeholder="Full name"></div>
-          <div><label>Company</label><input type="text" name="company" placeholder="Company name"></div>
+          <div><label data-i18n="c.fname">Your Name *</label><input type="text" name="name" required placeholder="Full name" data-i18n-ph="ph.fname"></div>
+          <div><label data-i18n="c.fcompany">Company</label><input type="text" name="company" placeholder="Company name" data-i18n-ph="ph.fcompany"></div>
         </div>
         <div class="f-row">
-          <div><label>Email *</label><input type="email" name="email" required placeholder="you@company.com"></div>
-          <div><label>Phone</label><input type="tel" name="phone" placeholder="+880..."></div>
+          <div><label data-i18n="c.femail">Email *</label><input type="email" name="email" required placeholder="you@company.com"></div>
+          <div><label data-i18n="c.fphone">Phone</label><input type="tel" name="phone" placeholder="+880..."></div>
         </div>
-        <label>Product Interest</label>
-        <input type="text" name="product" placeholder="e.g. Woven label, Hang tag, Leather patch...">
-        <label>Message *</label>
-        <textarea name="message" required placeholder="Tell us about your requirement, quantity, target date..."></textarea>
-        <button type="submit" class="btn btn-primary">Send Message ✉</button>
+        <label data-i18n="c.fproduct">Product Interest</label>
+        <input type="text" name="product" placeholder="e.g. Woven label, Hang tag, Leather patch..." data-i18n-ph="ph.fproduct">
+        <label data-i18n="c.fmsg">Message *</label>
+        <textarea name="message" required placeholder="Tell us about your requirement, quantity, target date..." data-i18n-ph="ph.fmsg"></textarea>
+        <button type="submit" class="btn btn-primary" data-i18n="c.fsend">Send Message ✉</button>
       </form>
     </div>
   </div>
@@ -1538,7 +1542,7 @@ body.intro-active{overflow:hidden}
   <div class="f-grid">
     <div>
       <h4>Article Label & Accessories Ltd.</h4>
-      <p style="font-size:.86rem;max-width:340px">A proud sister concern of R.PH. Group — alongside R.PH. Label & Accessories and Article Printing & Packaging. Manufacturer, supplier & exporter of all kinds of garments accessories.</p>
+      <p style="font-size:.86rem;max-width:340px" data-i18n="footer.desc">A proud sister concern of R.PH. Group — alongside R.PH. Label & Accessories and Article Printing & Packaging. Manufacturer, supplier & exporter of all kinds of garments accessories.</p>
     </div>
     <div>
       <h4 data-i18n="footer.quick">Quick Links</h4>
@@ -1556,8 +1560,8 @@ body.intro-active{overflow:hidden}
     </div>
   </div>
   <div class="f-bottom">
-    <span>© 2026 Article Label & Accessories Ltd. — R.PH. Group. All rights reserved.</span>
-    <span>OEKO-TEX® · FSC® · GRS Certified</span>
+    <span data-i18n="footer.rights">© 2026 Article Label & Accessories Ltd. — R.PH. Group. All rights reserved.</span>
+    <span data-i18n="footer.certline">OEKO-TEX® · FSC® · GRS Certified</span>
     <span>developed by
       <a href="https://gravalley.com" target="_blank" rel="noopener" style="display:inline;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem"><span style="color:#9BA9BD">grav</span><span style="color:#D87427">alley</span></a>
     </span>
@@ -2028,132 +2032,142 @@ function updateRphBtn(){
 //        imgs = images/machine/ folder er photo; ekadhik dile modal e thumbnail ashe.
 const machData = {
   woven: {
-    title: "Woven Label — Loom Section",
-    cap:   "1 Million pcs / day",
+    title: ["Woven Label — Loom Section","ওভেন লেবেল — লুম সেকশন"],
+    cap:   ["1 Million pcs / day","১০ লক্ষ পিস / দিন"],
     imgs:  ["images/machine/woven.jpg"],
     specs: [
-      ["Machine Types", "Rapier, Needle, Warping & Shuttle looms"],
-      ["Brands",        "Vaupel, MEI"],
-      ["Total Machines","30+ looms"],  // EDIT: real count boshan
-      ["Cutting",       "Ultrasonic, Laser, Heat & Dye cutting"],
-      ["Folding",       "Mid fold & meter folding"],
-      ["Daily Capacity","1 Million+ pcs"]
+      [["Machine Types","মেশিনের ধরন"], ["Rapier, Needle, Warping & Shuttle looms","রেপিয়ার, নিডল, ওয়ার্পিং ও শাটল লুম"]],
+      [["Brands","ব্র্যান্ড"],        "Vaupel, MEI"],
+      [["Total Machines","মোট মেশিন"],["30+ looms","৩০+ লুম"]],  // EDIT: real count boshan
+      [["Cutting","কাটিং"],       ["Ultrasonic, Laser, Heat & Dye cutting","আল্ট্রাসনিক, লেজার, হিট ও ডাই কাটিং"]],
+      [["Folding","ফোল্ডিং"],       ["Mid fold & meter folding","মিড ফোল্ড ও মিটার ফোল্ডিং"]],
+      [["Daily Capacity","দৈনিক ক্ষমতা"],["1 Million+ pcs","১০ লক্ষ+ পিস"]]
     ],
-    desc:  "Our fully computerized woven label section runs on European Vaupel and MEI looms, producing damask, taffeta and satin labels with sharp definition — from small size labels to large woven patches."
+    desc:  ["Our fully computerized woven label section runs on European Vaupel and MEI looms, producing damask, taffeta and satin labels with sharp definition — from small size labels to large woven patches.",
+            "আমাদের সম্পূর্ণ কম্পিউটারাইজড ওভেন লেবেল সেকশন চলে ইউরোপিয়ান Vaupel ও MEI লুমে — ড্যামাস্ক, টাফেটা ও সাটিন লেবেল তৈরি হয় শার্প ডেফিনিশনে; ছোট সাইজের লেবেল থেকে বড় ওভেন প্যাচ পর্যন্ত।"]
   },
   printed: {
-    title: "Printed Label Section",
-    cap:   "3.8 Million pcs / day",
+    title: ["Printed Label Section","প্রিন্টেড লেবেল সেকশন"],
+    cap:   ["3.8 Million pcs / day","৩৮ লক্ষ পিস / দিন"],
     imgs:  ["images/machine/printedlabel.jpg"],
     specs: [
-      ["Total Machines","20+ machines"],
-      ["Brands",        "HY high-speed printing"],
-      ["Colours",       "Up to 6 colours"],
-      ["Finishing",     "Ultrasonic cutting, cut & folding, curing"],
-      ["Materials",     "Polyester, paper, cotton, canvas & Tyvek"],
-      ["Daily Capacity","3.8 Million+ pcs"]
+      [["Total Machines","মোট মেশিন"],["20+ machines","২০+ মেশিন"]],
+      [["Brands","ব্র্যান্ড"],        ["HY high-speed printing","HY হাই-স্পিড প্রিন্টিং"]],
+      [["Colours","কালার"],       ["Up to 6 colours","৬ কালার পর্যন্ত"]],
+      [["Finishing","ফিনিশিং"],     ["Ultrasonic cutting, cut & folding, curing","আল্ট্রাসনিক কাটিং, কাট ও ফোল্ডিং, কিউরিং"]],
+      [["Materials","ম্যাটেরিয়াল"],     ["Polyester, paper, cotton, canvas & Tyvek","পলিয়েস্টার, পেপার, কটন, ক্যানভাস ও Tyvek"]],
+      [["Daily Capacity","দৈনিক ক্ষমতা"],["3.8 Million+ pcs","৩৮ লক্ষ+ পিস"]]
     ],
-    desc:  "High-speed rotary printing lines deliver consistent, colour-accurate printed labels on a wide range of substrates, with in-line cutting, folding and curing for export-ready finishing."
+    desc:  ["High-speed rotary printing lines deliver consistent, colour-accurate printed labels on a wide range of substrates, with in-line cutting, folding and curing for export-ready finishing.",
+            "হাই-স্পিড রোটারি প্রিন্টিং লাইনে বিভিন্ন সাবস্ট্রেটে তৈরি হয় কনসিসটেন্ট, কালার-নিখুঁত প্রিন্টেড লেবেল — ইন-লাইন কাটিং, ফোল্ডিং ও কিউরিং সহ, এক্সপোর্ট-রেডি ফিনিশিংয়ে।"]
   },
   offset: {
-    title: "Offset Printing Section",
-    cap:   "1.2 Million pcs / day",   // EDIT: offset er real capacity boshan
+    title: ["Offset Printing Section","অফসেট প্রিন্টিং সেকশন"],
+    cap:   ["1.2 Million pcs / day","১২ লক্ষ পিস / দিন"],   // EDIT: offset er real capacity boshan
     imgs:  ["images/machine/offset.jpg"],
     specs: [
-      ["Total Machines","40+ machines"],  // EDIT: real count boshan
-      ["Brands",        "Heidelberg"],
-      ["Pre-press",     "CTP plate making (Fuji)"],
-      ["Printing",      "Offset up to 4 colours"],
-      ["Colour Control","X-Rite colour matching system"],
-      ["Daily Capacity","1.2 Million+ pcs"]
+      [["Total Machines","মোট মেশিন"],["40+ machines","৪০+ মেশিন"]],  // EDIT: real count boshan
+      [["Brands","ব্র্যান্ড"],        "Heidelberg"],
+      [["Pre-press","প্রি-প্রেস"],     ["CTP plate making (Fuji)","CTP প্লেট মেকিং (Fuji)"]],
+      [["Printing","প্রিন্টিং"],      ["Offset up to 4 colours","৪ কালার পর্যন্ত অফসেট"]],
+      [["Colour Control","কালার কন্ট্রোল"],["X-Rite colour matching system","X-Rite কালার ম্যাচিং সিস্টেম"]],
+      [["Daily Capacity","দৈনিক ক্ষমতা"],["1.2 Million+ pcs","১২ লক্ষ+ পিস"]]
     ],
-    desc:  "Our offset floor runs on Heidelberg presses with in-house Fuji CTP plate making — hang tags, photo inlays and paper items in up to 4 colours, verified with X-Rite colour matching."
+    desc:  ["Our offset floor runs on Heidelberg presses with in-house Fuji CTP plate making — hang tags, photo inlays and paper items in up to 4 colours, verified with X-Rite colour matching.",
+            "আমাদের অফসেট ফ্লোর চলে Heidelberg প্রেসে, ইন-হাউস Fuji CTP প্লেট মেকিং সহ — ৪ কালার পর্যন্ত হ্যাং ট্যাগ, ফটো ইনলে ও পেপার আইটেম, X-Rite কালার ম্যাচিংয়ে ভেরিফায়েড।"]
   },
   digital: {
-    title: "Digital Printing Section",
-    cap:   "300 Thousand pcs / day",  // EDIT: digital er real capacity boshan
+    title: ["Digital Printing Section","ডিজিটাল প্রিন্টিং সেকশন"],
+    cap:   ["300 Thousand pcs / day","৩ লক্ষ পিস / দিন"],  // EDIT: digital er real capacity boshan
     imgs:  ["images/machine/digital.jpg"],
     specs: [
-      ["Total Machines","10+ machines"],  // EDIT: real count boshan
-      ["Brands",        "Konica Minolta"],
-      ["Printing",      "Digital production press"],
-      ["Specialty",     "Short-run, proofs, samples & variable data"],
-      ["Variable Data", "Barcode, QR & serial printing"],
-      ["Daily Capacity","300 Thousand+ pcs"]
+      [["Total Machines","মোট মেশিন"],["10+ machines","১০+ মেশিন"]],  // EDIT: real count boshan
+      [["Brands","ব্র্যান্ড"],        "Konica Minolta"],
+      [["Printing","প্রিন্টিং"],      ["Digital production press","ডিজিটাল প্রোডাকশন প্রেস"]],
+      [["Specialty","বিশেষত্ব"],     ["Short-run, proofs, samples & variable data","শর্ট-রান, প্রুফ, স্যাম্পল ও ভ্যারিয়েবল ডেটা"]],
+      [["Variable Data","ভ্যারিয়েবল ডেটা"], ["Barcode, QR & serial printing","বারকোড, QR ও সিরিয়াল প্রিন্টিং"]],
+      [["Daily Capacity","দৈনিক ক্ষমতা"],["300 Thousand+ pcs","৩ লক্ষ+ পিস"]]
     ],
-    desc:  "Konica Minolta digital presses handle short-run orders, instant proofs and variable-data jobs — perfect for quick-turnaround hang tags, sample approvals and serialized printing."
+    desc:  ["Konica Minolta digital presses handle short-run orders, instant proofs and variable-data jobs — perfect for quick-turnaround hang tags, sample approvals and serialized printing.",
+            "Konica Minolta ডিজিটাল প্রেসে হয় শর্ট-রান অর্ডার, ইনস্ট্যান্ট প্রুফ ও ভ্যারিয়েবল-ডেটা কাজ — দ্রুত ডেলিভারির হ্যাং ট্যাগ, স্যাম্পল অ্যাপ্রুভাল ও সিরিয়ালাইজড প্রিন্টিংয়ের জন্য পারফেক্ট।"]
   },
   heat: {
-    title: "Heat Transfer Label Section",
-    cap:   "100 Thousand pcs / day",
+    title: ["Heat Transfer Label Section","হিট ট্রান্সফার লেবেল সেকশন"],
+    cap:   ["100 Thousand pcs / day","১ লক্ষ পিস / দিন"],
     imgs:  ["https://placehold.co/640x480/D9EBE0/128A46?text=Heat+Transfer"], // EDIT: images/machine/heattransfer.jpg add korle ekhane boshan
     specs: [
-      ["Label Base",    "Water-based & solvent-based"],
-      ["Compliance",    "Azo & phthalate free — EU & USA compliant"],
-      ["Techniques",    "Screen, hologram, DTF, silicon, metallic, 3D HD"],
-      ["Daily Capacity","100 Thousand+ pcs"]
+      [["Label Base","লেবেল বেইজ"],    ["Water-based & solvent-based","ওয়াটার-বেইজড ও সলভেন্ট-বেইজড"]],
+      [["Compliance","কমপ্লায়েন্স"],    ["Azo & phthalate free — EU & USA compliant","Azo ও phthalate মুক্ত — EU ও USA কমপ্লায়েন্ট"]],
+      [["Techniques","টেকনিক"],    ["Screen, hologram, DTF, silicon, metallic, 3D HD","স্ক্রিন, হলোগ্রাম, DTF, সিলিকন, মেটালিক, 3D HD"]],
+      [["Daily Capacity","দৈনিক ক্ষমতা"],["100 Thousand+ pcs","১ লক্ষ+ পিস"]]
     ],
-    desc:  "Eco-compliant heat transfer labels for activewear and kidswear — soft-hand screen transfers to premium 3D high-density and metallic finishes, fully EU & USA compliant."
+    desc:  ["Eco-compliant heat transfer labels for activewear and kidswear — soft-hand screen transfers to premium 3D high-density and metallic finishes, fully EU & USA compliant.",
+            "অ্যাক্টিভওয়্যার ও কিডসওয়্যারের জন্য পরিবেশ-কমপ্লায়েন্ট হিট ট্রান্সফার লেবেল — সফট-হ্যান্ড স্ক্রিন ট্রান্সফার থেকে প্রিমিয়াম 3D হাই-ডেনসিটি ও মেটালিক ফিনিশ, সম্পূর্ণ EU ও USA কমপ্লায়েন্ট।"]
   },
   narrow: {
-    title: "Narrow Fabrics Section",
-    cap:   "50 Thousand yrds / day",
+    title: ["Narrow Fabrics Section","ন্যারো ফেব্রিক্স সেকশন"],
+    cap:   ["50 Thousand yrds / day","৫০ হাজার গজ / দিন"],
     imgs:  ["images/machine/narrowfabric.jpg"],
     specs: [
-      ["Total Machines","20+ machines"],
-      ["Drawcord",      "16 / 32 / 48 spandal"],
-      ["Tapes",         "Twill & canvas tape machines"],
-      ["Finishing",     "Plastic & metal tipping"],
-      ["Daily Capacity","50 Thousand+ yards"]
+      [["Total Machines","মোট মেশিন"],["20+ machines","২০+ মেশিন"]],
+      [["Drawcord","ড্রকর্ড"],      ["16 / 32 / 48 spandal","১৬ / ৩২ / ৪৮ স্প্যান্ডেল"]],
+      [["Tapes","টেপ"],         ["Twill & canvas tape machines","টুইল ও ক্যানভাস টেপ মেশিন"]],
+      [["Finishing","ফিনিশিং"],     ["Plastic & metal tipping","প্লাস্টিক ও মেটাল টিপিং"]],
+      [["Daily Capacity","দৈনিক ক্ষমতা"],["50 Thousand+ yards","৫০ হাজার+ গজ"]]
     ],
-    desc:  "Dedicated narrow fabrics lines weave drawcords, twill and canvas tapes in-house, with plastic and metal tipping for ready-to-attach drawstrings."
+    desc:  ["Dedicated narrow fabrics lines weave drawcords, twill and canvas tapes in-house, with plastic and metal tipping for ready-to-attach drawstrings.",
+            "ডেডিকেটেড ন্যারো ফেব্রিক্স লাইনে ইন-হাউস তৈরি হয় ড্রকর্ড, টুইল ও ক্যানভাস টেপ — প্লাস্টিক ও মেটাল টিপিং সহ, রেডি-টু-অ্যাটাচ ড্রস্ট্রিং।"]
   },
   patch: {
-    title: "Patches & Lock String",
-    cap:   "Leather 25K · Silicon 25K · Lock String 200K / day",
+    title: ["Patches & Lock String","প্যাচ ও লক স্ট্রিং"],
+    cap:   ["Leather 25K · Silicon 25K · Lock String 200K / day","লেদার ২৫ হাজার · সিলিকন ২৫ হাজার · লক স্ট্রিং ২ লক্ষ / দিন"],
     imgs:  ["images/machine/pupatch.jpg"],
     specs: [
-      ["Leather Patch", "Genuine, PU/faux, suede, embossed & debossed"],
-      ["Silicon Patch", "2D / 3D / PVC / transparent"],
-      ["Lock String",   "Lock string & seal tag production"],
-      ["Daily Capacity","Leather 25K · Silicon 25K · Lock String 200K pcs"]
+      [["Leather Patch","লেদার প্যাচ"], ["Genuine, PU/faux, suede, embossed & debossed","জেনুইন, PU/ফক্স, সুয়েড, এমবস ও ডিবস"]],
+      [["Silicon Patch","সিলিকন প্যাচ"], ["2D / 3D / PVC / transparent","2D / 3D / PVC / ট্রান্সপারেন্ট"]],
+      [["Lock String","লক স্ট্রিং"],   ["Lock string & seal tag production","লক স্ট্রিং ও সিল ট্যাগ প্রোডাকশন"]],
+      [["Daily Capacity","দৈনিক ক্ষমতা"],["Leather 25K · Silicon 25K · Lock String 200K pcs","লেদার ২৫ হাজার · সিলিকন ২৫ হাজার · লক স্ট্রিং ২ লক্ষ পিস"]]
     ],
-    desc:  "From embossed genuine leather and 3D silicon patches to lock strings and seal tags — complete branding attachments produced under one roof."
+    desc:  ["From embossed genuine leather and 3D silicon patches to lock strings and seal tags — complete branding attachments produced under one roof.",
+            "এমবস করা জেনুইন লেদার ও 3D সিলিকন প্যাচ থেকে লক স্ট্রিং ও সিল ট্যাগ — সম্পূর্ণ ব্র্যান্ডিং অ্যাটাচমেন্ট তৈরি হয় এক ছাদের নিচে।"]
   },
   thermal: {
-    title: "Thermal Barcode Printing",
-    cap:   "1.5 Million stickers / day",  // EDIT: thermal er real capacity boshan
+    title: ["Thermal Barcode Printing","থার্মাল বারকোড প্রিন্টিং"],
+    cap:   ["1.5 Million stickers / day","১৫ লক্ষ স্টিকার / দিন"],  // EDIT: thermal er real capacity boshan
     imgs:  ["images/machine/zebra.jpg"],
     specs: [
-      ["Printers",      "Zebra industrial thermal printers"],
-      ["Output",        "Barcode, price tag & thermal stickers"],
-      ["Compliance",    "Retailer-compliant ticketing & labelling"],
-      ["Daily Capacity","1.5 Million+ stickers"]
+      [["Printers","প্রিন্টার"],      ["Zebra industrial thermal printers","Zebra ইন্ডাস্ট্রিয়াল থার্মাল প্রিন্টার"]],
+      [["Output","আউটপুট"],        ["Barcode, price tag & thermal stickers","বারকোড, প্রাইস ট্যাগ ও থার্মাল স্টিকার"]],
+      [["Compliance","কমপ্লায়েন্স"],    ["Retailer-compliant ticketing & labelling","রিটেইলার-কমপ্লায়েন্ট টিকেটিং ও লেবেলিং"]],
+      [["Daily Capacity","দৈনিক ক্ষমতা"],["1.5 Million+ stickers","১৫ লক্ষ+ স্টিকার"]]
     ],
-    desc:  "Zebra industrial thermal printers produce retailer-compliant barcodes, price tags and thermal stickers at high volume — accurate, scannable and ready for the shop floor."
+    desc:  ["Zebra industrial thermal printers produce retailer-compliant barcodes, price tags and thermal stickers at high volume — accurate, scannable and ready for the shop floor.",
+            "Zebra ইন্ডাস্ট্রিয়াল থার্মাল প্রিন্টারে হাই ভলিউমে তৈরি হয় রিটেইলার-কমপ্লায়েন্ট বারকোড, প্রাইস ট্যাগ ও থার্মাল স্টিকার — নিখুঁত, স্ক্যানযোগ্য ও শপ ফ্লোরের জন্য রেডি।"]
   }
 };
 
 const machModal = document.getElementById('machModal');
 const mmImg = document.getElementById('mmImg');
 
+// LX: [en,bn] pair thakle current bhasha onujayi value dey, string hole string-i dey
+const LX = v => Array.isArray(v) ? v[siteLang === 'bn' ? 1 : 0] : v;
 function openMach(key){
   const d = machData[key];
   if(!d) return;
-  document.getElementById('mmTitle').textContent = d.title;
-  document.getElementById('mmCap').textContent = d.cap;
+  document.getElementById('mmTitle').textContent = LX(d.title);
+  document.getElementById('mmCap').textContent = LX(d.cap);
   document.getElementById('mmSpecs').innerHTML =
-    d.specs.map(r => "<tr><td>"+r[0]+"</td><td>"+r[1]+"</td></tr>").join("");
-  document.getElementById('mmDesc').textContent = d.desc;
+    d.specs.map(r => "<tr><td>"+LX(r[0])+"</td><td>"+LX(r[1])+"</td></tr>").join("");
+  document.getElementById('mmDesc').textContent = LX(d.desc);
   mmImg.src = d.imgs[0];
-  mmImg.alt = d.title;
+  mmImg.alt = LX(d.title);
   // ekadhik image thakle thumbnail dekhay, click e main image swap hoy
   const th = document.getElementById('mmThumbs');
   th.innerHTML = "";
   if(d.imgs.length > 1){
     d.imgs.forEach((src,i)=>{
       const t = document.createElement('img');
-      t.src = src; t.alt = d.title + " photo " + (i+1);
+      t.src = src; t.alt = LX(d.title) + " photo " + (i+1);
       if(i===0) t.classList.add('act');
       t.onclick = ()=>{
         mmImg.src = src;
@@ -2311,24 +2325,31 @@ document.addEventListener('keydown', e=>{
 // ===== Leader profile modal (Read More) =====
 const leaderData = {
   chairman: {
-    name: "Israt Jahan Merry",
-    role: "Founder Chairman",
+    name: ["Israt Jahan Merry","ইসরাত জাহান মেরি"],
+    role: ["Founder Chairman","প্রতিষ্ঠাতা চেয়ারম্যান"],
     img: "images/chairman.png",
     desc: [
-      "Israt Jahan Merry, the respected Founder Chairman of Article Label & Accessories Ltd., is a passionate entrepreneur whose vision and dedication laid the foundation for one of Bangladesh's most trusted garment accessories companies.",
-      "She founded the company in 2003 with the goal of delivering innovative, sustainable, and high-quality accessories to the apparel industry.",
-      "Under her thoughtful guidance, Article Label has grown from a small setup into a proud sister concern of the R.PH. Group, serving both local and international markets. She is admired for her integrity, leadership, and sincere focus on ethical business practices. Her care for people, attention to detail, and commitment to sustainability continue to guide the company's steady growth and solid reputation in the industry.",
-      "Today, Article Label & Accessories Ltd. stands as a reflection of her vision — a company built on trust, quality, and responsibility. Her continuous inspiration keeps the team motivated to move forward with the same passion and purpose that began the journey more than two decades ago."
+      ["Israt Jahan Merry, the respected Founder Chairman of Article Label & Accessories Ltd., is a passionate entrepreneur whose vision and dedication laid the foundation for one of Bangladesh's most trusted garment accessories companies.",
+       "ইসরাত জাহান মেরি — Article Label & Accessories Ltd.-এর শ্রদ্ধেয় প্রতিষ্ঠাতা চেয়ারম্যান — একজন উদ্যমী উদ্যোক্তা, যাঁর দূরদর্শিতা ও নিষ্ঠায় গড়ে উঠেছে বাংলাদেশের অন্যতম বিশ্বস্ত গার্মেন্টস অ্যাক্সেসরিজ কোম্পানির ভিত্তি।"],
+      ["She founded the company in 2003 with the goal of delivering innovative, sustainable, and high-quality accessories to the apparel industry.",
+       "পোশাক শিল্পে উদ্ভাবনী, টেকসই ও উচ্চমানের অ্যাক্সেসরিজ পৌঁছে দেওয়ার লক্ষ্যে ২০০৩ সালে তিনি কোম্পানিটি প্রতিষ্ঠা করেন।"],
+      ["Under her thoughtful guidance, Article Label has grown from a small setup into a proud sister concern of the R.PH. Group, serving both local and international markets. She is admired for her integrity, leadership, and sincere focus on ethical business practices. Her care for people, attention to detail, and commitment to sustainability continue to guide the company's steady growth and solid reputation in the industry.",
+       "তাঁর বিচক্ষণ দিকনির্দেশনায় Article Label ছোট একটি সেটআপ থেকে R.PH. Group-এর গর্বিত সিস্টার কনসার্নে পরিণত হয়েছে — সেবা দিচ্ছে দেশি ও আন্তর্জাতিক উভয় বাজারে। সততা, নেতৃত্ব ও নৈতিক ব্যবসায়িক চর্চার জন্য তিনি সবার কাছে সমাদৃত। মানুষের প্রতি তাঁর মমত্ববোধ, খুঁটিনাটিতে মনোযোগ ও টেকসইতার প্রতি অঙ্গীকার আজও কোম্পানির স্থিতিশীল প্রবৃদ্ধি ও সুনামের পথপ্রদর্শক।"],
+      ["Today, Article Label & Accessories Ltd. stands as a reflection of her vision — a company built on trust, quality, and responsibility. Her continuous inspiration keeps the team motivated to move forward with the same passion and purpose that began the journey more than two decades ago.",
+       "আজকের Article Label & Accessories Ltd. তাঁর ভিশনেরই প্রতিফলন — বিশ্বাস, মান ও দায়িত্বশীলতার ওপর গড়া একটি প্রতিষ্ঠান। তাঁর অবিরাম অনুপ্রেরণা টিমকে সেই একই আবেগ ও লক্ষ্য নিয়ে এগিয়ে যেতে উদ্বুদ্ধ করে, যা দুই দশকেরও বেশি আগে এই যাত্রার সূচনা করেছিল।"]
     ]
   },
   md: {
-    name: "Md. Hanif Mondal",
-    role: "Managing Director",
+    name: ["Md. Hanif Mondal","মো. হানিফ মন্ডল"],
+    role: ["Managing Director","ব্যবস্থাপনা পরিচালক"],
     img: "images/md.jpeg",
     desc: [
-      "Md. Hanif Mondal, the Managing Director of Article Label & Accessories Ltd., is a dynamic leader with a strong vision for innovation, sustainability, and operational excellence in the garment accessories sector. Since the establishment of the company, he has played a pivotal role in transforming Article Label & Accessories Ltd. into a modern, customer-focused organization that meets the evolving demands of both local and international apparel brands.",
-      "With a deep understanding of manufacturing processes and market dynamics, he has introduced advanced technologies and eco-friendly practices across production lines, ensuring high-quality output while maintaining environmental compliance. His leadership is marked by a commitment to continuous improvement, workforce development, and strategic expansion, positioning the company as a reliable name in the industry.",
-      "A proactive member of the business community, Md. Hanif Mondal actively engages with industry associations such as BGAPMEA, contributing to broader discussions on industry standards and sustainable practices. His hands-on approach and dedication to excellence have earned Article Label & Accessories Ltd. a reputation for trust, quality, and professionalism."
+      ["Md. Hanif Mondal, the Managing Director of Article Label & Accessories Ltd., is a dynamic leader with a strong vision for innovation, sustainability, and operational excellence in the garment accessories sector. Since the establishment of the company, he has played a pivotal role in transforming Article Label & Accessories Ltd. into a modern, customer-focused organization that meets the evolving demands of both local and international apparel brands.",
+       "মো. হানিফ মন্ডল — Article Label & Accessories Ltd.-এর ব্যবস্থাপনা পরিচালক — গার্মেন্টস অ্যাক্সেসরিজ খাতে উদ্ভাবন, টেকসইতা ও অপারেশনাল এক্সিলেন্সের সুস্পষ্ট ভিশন নিয়ে কাজ করা একজন গতিশীল নেতা। প্রতিষ্ঠার শুরু থেকেই তিনি কোম্পানিটিকে একটি আধুনিক, গ্রাহককেন্দ্রিক প্রতিষ্ঠানে রূপান্তরে মুখ্য ভূমিকা পালন করেছেন — যা দেশি ও আন্তর্জাতিক অ্যাপারেল ব্র্যান্ডের ক্রমবর্ধমান চাহিদা পূরণ করছে।"],
+      ["With a deep understanding of manufacturing processes and market dynamics, he has introduced advanced technologies and eco-friendly practices across production lines, ensuring high-quality output while maintaining environmental compliance. His leadership is marked by a commitment to continuous improvement, workforce development, and strategic expansion, positioning the company as a reliable name in the industry.",
+       "ম্যানুফ্যাকচারিং প্রসেস ও বাজার সম্পর্কে গভীর ধারণা নিয়ে তিনি প্রোডাকশন লাইনে যুক্ত করেছেন আধুনিক প্রযুক্তি ও পরিবেশবান্ধব চর্চা — পরিবেশগত কমপ্লায়েন্স বজায় রেখে নিশ্চিত করেছেন উচ্চমানের আউটপুট। ধারাবাহিক উন্নয়ন, দক্ষতা বৃদ্ধি ও কৌশলগত সম্প্রসারণে তাঁর অঙ্গীকার কোম্পানিকে ইন্ডাস্ট্রিতে এক নির্ভরযোগ্য নামে পরিণত করেছে।"],
+      ["A proactive member of the business community, Md. Hanif Mondal actively engages with industry associations such as BGAPMEA, contributing to broader discussions on industry standards and sustainable practices. His hands-on approach and dedication to excellence have earned Article Label & Accessories Ltd. a reputation for trust, quality, and professionalism.",
+       "ব্যবসায়িক অঙ্গনের একজন সক্রিয় সদস্য হিসেবে তিনি BGAPMEA-এর মতো ইন্ডাস্ট্রি অ্যাসোসিয়েশনের সাথে যুক্ত থেকে ইন্ডাস্ট্রি স্ট্যান্ডার্ড ও টেকসই চর্চা নিয়ে বৃহত্তর আলোচনায় অবদান রাখছেন। তাঁর হাতে-কলমে নেতৃত্ব ও উৎকর্ষের প্রতি নিষ্ঠা Article Label & Accessories Ltd.-কে এনে দিয়েছে বিশ্বাস, মান ও পেশাদারিত্বের সুনাম।"]
     ]
   }
 };
@@ -2337,10 +2358,10 @@ function openLeader(key){
   const d = leaderData[key];
   if(!d) return;
   document.getElementById('lmImg').src = d.img;
-  document.getElementById('lmImg').alt = d.name + ", " + d.role;
-  document.getElementById('lmName').textContent = d.name;
-  document.getElementById('lmRole').textContent = d.role;
-  document.getElementById('lmDesc').innerHTML = d.desc.map(p => "<p>" + p + "</p>").join("");
+  document.getElementById('lmImg').alt = LX(d.name) + ", " + LX(d.role);
+  document.getElementById('lmName').textContent = LX(d.name);
+  document.getElementById('lmRole').textContent = LX(d.role);
+  document.getElementById('lmDesc').innerHTML = d.desc.map(p => "<p>" + LX(p) + "</p>").join("");
   leaderModal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -2487,6 +2508,126 @@ const i18n = {
   "j.2027.t":      ["Introducing RFID","RFID প্রযুক্তির সূচনা"],
   "j.2027.d":      ["We are introducing RFID technology to our labels and accessories — enabling smarter inventory tracking and connected products for global brands.",
                     "আমাদের লেবেল ও অ্যাক্সেসরিজে আমরা RFID প্রযুক্তি যুক্ত করছি — যা গ্লোবাল ব্র্যান্ডদের জন্য স্মার্ট ইনভেন্টরি ট্র্যাকিং ও কানেক্টেড প্রোডাক্টের সুযোগ তৈরি করবে।"],
+  "about.m1":      ["Since its establishment in <b>2003</b>, R.P.H. Group has been dedicated to producing a wide range of premium-quality garment trims and packaging items, catering to both local and international apparel brands. Our product line includes <span class=\"sb\">woven labels, printed labels, hang tags, barcode tags, photo inlays, adhesive stickers, leather and PU patches, silicon/rubber patches, printed canvas tapes, heat transfer labels, high-density prints, and printed self-adhesive poly bags</span>, among many others.",
+                    "প্রতিষ্ঠার (<b>২০০৩</b>) পর থেকেই R.P.H. Group দেশি ও আন্তর্জাতিক অ্যাপারেল ব্র্যান্ডের জন্য প্রিমিয়াম মানের গার্মেন্ট ট্রিমস ও প্যাকেজিং আইটেম তৈরি করে আসছে। আমাদের পণ্যতালিকায় রয়েছে <span class=\"sb\">ওভেন লেবেল, প্রিন্টেড লেবেল, হ্যাং ট্যাগ, বারকোড ট্যাগ, ফটো ইনলে, অ্যাডহেসিভ স্টিকার, লেদার ও PU প্যাচ, সিলিকন/রাবার প্যাচ, প্রিন্টেড ক্যানভাস টেপ, হিট ট্রান্সফার লেবেল, হাই-ডেনসিটি প্রিন্ট এবং প্রিন্টেড সেলফ-অ্যাডহেসিভ পলি ব্যাগ</span>সহ আরও অনেক কিছু।"],
+  "about.m2":      ["Under the visionary leadership of Managing Director <b>Md. Hanif Mondal</b>, the group has earned a strong reputation for <span class=\"sb\">technical excellence, reliability, and innovation</span>. Environmental responsibility is a core principle of our operations — we strictly comply with Bangladesh's environmental regulations and prioritize eco-friendly materials and sustainable production practices.",
+                    "ব্যবস্থাপনা পরিচালক <b>মো. হানিফ মন্ডল</b>-এর দূরদর্শী নেতৃত্বে গ্রুপটি অর্জন করেছে <span class=\"sb\">কারিগরি দক্ষতা, নির্ভরযোগ্যতা ও উদ্ভাবনের</span> সুনাম। পরিবেশগত দায়বদ্ধতা আমাদের কার্যক্রমের মূলনীতি — আমরা বাংলাদেশের পরিবেশ বিধিমালা কঠোরভাবে মেনে চলি এবং পরিবেশবান্ধব উপকরণ ও টেকসই উৎপাদন চর্চাকে অগ্রাধিকার দিই।"],
+  "about.m3":      ["R.P.H. Group is an active member of the <b>Bangladesh Garments Accessories &amp; Packaging Manufacturers &amp; Exporters Association (BGAPMEA)</b> and <b>DCCI</b> (since 2018), demonstrating our continuous commitment to industry standards and ongoing improvement.",
+                    "R.P.H. Group <b>Bangladesh Garments Accessories &amp; Packaging Manufacturers &amp; Exporters Association (BGAPMEA)</b> এবং <b>DCCI</b>-এর (২০১৮ থেকে) সক্রিয় সদস্য — যা ইন্ডাস্ট্রি স্ট্যান্ডার্ড ও ধারাবাহিক উন্নয়নে আমাদের অঙ্গীকারের প্রমাণ।"],
+  "about.m4":      ["Our facilities are located at <b>16/D, Chanpara, Uzampur, Uttarkhan, Uttara, Dhaka-1230</b>. For more information please visit our official website: <a href=\"https://www.rphgroupbd.com\" target=\"_blank\" rel=\"noopener\"><b>www.rphgroupbd.com</b></a>",
+                    "আমাদের ফ্যাসিলিটি: <b>১৬/ডি, চানপাড়া, উজামপুর, উত্তরখান, উত্তরা, ঢাকা-১২৩০</b>। আরও জানতে ভিজিট করুন আমাদের অফিসিয়াল ওয়েবসাইট: <a href=\"https://www.rphgroupbd.com\" target=\"_blank\" rel=\"noopener\"><b>www.rphgroupbd.com</b></a>"],
+  "lead.ch.name":  ["Israt Jahan Merry","ইসরাত জাহান মেরি"],
+  "lead.ch.role":  ["Chairman","চেয়ারম্যান"],
+  "lead.ch.p1":    ["The respected Founder Chairman of Article Label & Accessories Ltd. — a passionate entrepreneur whose vision laid the foundation for one of Bangladesh's most trusted garment accessories companies. She founded the company in 2003 with the goal of delivering innovative, sustainable and high-quality accessories to the apparel industry.",
+                    "Article Label & Accessories Ltd.-এর শ্রদ্ধেয় প্রতিষ্ঠাতা চেয়ারম্যান — একজন উদ্যমী উদ্যোক্তা, যাঁর দূরদর্শিতায় গড়ে উঠেছে বাংলাদেশের অন্যতম বিশ্বস্ত গার্মেন্টস অ্যাক্সেসরিজ কোম্পানির ভিত্তি। পোশাক শিল্পে উদ্ভাবনী, টেকসই ও উচ্চমানের অ্যাক্সেসরিজ পৌঁছে দেওয়ার লক্ষ্যে ২০০৩ সালে তিনি কোম্পানিটি প্রতিষ্ঠা করেন।"],
+  "lead.ch.p2":    ["Under her thoughtful guidance, Article Label has grown from a small setup into a proud sister concern of R.PH. Group, serving both local and international markets. She is admired for her integrity, leadership and sincere focus on ethical business practices.",
+                    "তাঁর বিচক্ষণ দিকনির্দেশনায় Article Label ছোট একটি সেটআপ থেকে R.PH. Group-এর গর্বিত সিস্টার কনসার্নে পরিণত হয়েছে — সেবা দিচ্ছে দেশি ও আন্তর্জাতিক উভয় বাজারে। সততা, নেতৃত্ব ও নৈতিক ব্যবসায়িক চর্চার জন্য তিনি সবার কাছে সমাদৃত।"],
+  "lead.md.name":  ["Md. Hanif Mondal","মো. হানিফ মন্ডল"],
+  "lead.md.role":  ["Managing Director","ব্যবস্থাপনা পরিচালক"],
+  "lead.md.p1":    ["A dynamic leader with a strong vision for innovation, sustainability and operational excellence in the garment accessories sector. Since the establishment of the company, he has played a pivotal role in transforming Article Label & Accessories Ltd. into a modern, customer-focused organization.",
+                    "গার্মেন্টস অ্যাক্সেসরিজ খাতে উদ্ভাবন, টেকসইতা ও অপারেশনাল এক্সিলেন্সের সুস্পষ্ট ভিশন নিয়ে কাজ করা একজন গতিশীল নেতা। প্রতিষ্ঠার শুরু থেকেই তিনি Article Label & Accessories Ltd.-কে একটি আধুনিক, গ্রাহককেন্দ্রিক প্রতিষ্ঠানে রূপান্তরে মুখ্য ভূমিকা পালন করেছেন।"],
+  "lead.md.p2":    ["With a deep understanding of manufacturing processes and market dynamics, he has introduced advanced technologies and eco-friendly practices across production lines. An active member of BGAPMEA, his hands-on approach has earned the company a reputation for trust, quality and professionalism.",
+                    "ম্যানুফ্যাকচারিং প্রসেস ও বাজার সম্পর্কে গভীর ধারণা নিয়ে তিনি প্রোডাকশন লাইনে যুক্ত করেছেন আধুনিক প্রযুক্তি ও পরিবেশবান্ধব চর্চা। BGAPMEA-এর সক্রিয় সদস্য হিসেবে তাঁর হাতে-কলমে নেতৃত্ব কোম্পানিকে এনে দিয়েছে বিশ্বাস, মান ও পেশাদারিত্বের সুনাম।"],
+  "mb.bg.t":       ["Proud Member — BGAPMEA","গর্বিত সদস্য — BGAPMEA"],
+  "mb.bg.d":       ["Bangladesh Garments Accessories & Packaging Manufacturers & Exporters Association — demonstrating our continuous commitment to industry standards.",
+                    "Bangladesh Garments Accessories & Packaging Manufacturers & Exporters Association — ইন্ডাস্ট্রি স্ট্যান্ডার্ডের প্রতি আমাদের ধারাবাহিক অঙ্গীকারের প্রমাণ।"],
+  "mb.dc.t":       ["Member — DCCI <span class=\"since\">since 2018</span>","সদস্য — DCCI <span class=\"since\">২০১৮ থেকে</span>"],
+  "mb.dc.d":       ["A prestigious member of the Dhaka Chamber of Commerce & Industry, reflecting our standing in Bangladesh's business community.",
+                    "ঢাকা চেম্বার অব কমার্স অ্যান্ড ইন্ডাস্ট্রির সম্মানিত সদস্য — যা বাংলাদেশের ব্যবসায়িক অঙ্গনে আমাদের অবস্থানের প্রতিফলন।"],
+  "cert.working":  ["<b style=\"color:var(--ink)\">Working toward:</b> ISO 9001:2015 · RCS · WRAP · GOTS · SEDEX · amfori BSCI",
+                    "<b style=\"color:var(--ink)\">যা অর্জনের পথে:</b> ISO 9001:2015 · RCS · WRAP · GOTS · SEDEX · amfori BSCI"],
+  "m1.t":          ["Sustainable Growth","টেকসই প্রবৃদ্ধি"],
+  "m1.d":          ["Empowering Bangladesh through sustainable growth and inclusive employment with eco-friendly materials and practices.",
+                    "পরিবেশবান্ধব উপকরণ ও চর্চার মাধ্যমে টেকসই প্রবৃদ্ধি ও অন্তর্ভুক্তিমূলক কর্মসংস্থানে বাংলাদেশকে এগিয়ে নেওয়া।"],
+  "m2.t":          ["Economic Development","অর্থনৈতিক উন্নয়ন"],
+  "m2.d":          ["Driving economic development by expanding opportunities for all and reducing unemployment through innovation.",
+                    "উদ্ভাবনের মাধ্যমে সবার জন্য সুযোগ সম্প্রসারণ ও বেকারত্ব হ্রাস করে অর্থনৈতিক উন্নয়ন এগিয়ে নেওয়া।"],
+  "m3.t":          ["Investing in People","মানুষে বিনিয়োগ"],
+  "m3.d":          ["Building a brighter future by investing in people, progress, workforce development and job creation.",
+                    "মানুষ, অগ্রগতি, দক্ষতা উন্নয়ন ও কর্মসংস্থান সৃষ্টিতে বিনিয়োগ করে উজ্জ্বল ভবিষ্যৎ গড়া।"],
+  "m4.t":          ["Made in Bangladesh","মেড ইন বাংলাদেশ"],
+  "m4.d":          ["Promoting 'Made in Bangladesh' as a global standard and creating strong support for the nation's backbone RMG sector.",
+                    "'Made in Bangladesh'-কে বিশ্বমানের পরিচয়ে রূপ দেওয়া এবং দেশের মেরুদণ্ড RMG খাতের জন্য শক্ত সাপোর্ট তৈরি করা।"],
+  "m5.t":          ["Quality & Ethics","মান ও নৈতিকতা"],
+  "m5.d":          ["Certified production (OEKO-TEX®, FSC®, GRS) with strict compliance — working toward ISO 9001:2015, WRAP, GOTS, SEDEX & amfori BSCI.",
+                    "সার্টিফায়েড প্রোডাকশন (OEKO-TEX®, FSC®, GRS) ও কঠোর কমপ্লায়েন্স — ISO 9001:2015, WRAP, GOTS, SEDEX ও amfori BSCI অর্জনের পথে।"],
+  "m6.t":          ["Global Expansion","বৈশ্বিক সম্প্রসারণ"],
+  "m6.d":          ["From ERP-driven automation (2024) to expanding global presence (2025) — serving customers around the world.",
+                    "ERP-চালিত অটোমেশন (২০২৪) থেকে বৈশ্বিক সম্প্রসারণ (২০২৫) — সেবা দিচ্ছি বিশ্বজুড়ে গ্রাহকদের।"],
+  "mc.woven.n":    ["Woven Label","ওভেন লেবেল"],
+  "mc.woven.c":    ["1 Million Pcs / Day","১০ লক্ষ পিস / দিন"],
+  "mc.woven.l1":   ["Rapier, Needle, Warping & Shuttle looms (Vaupel, MEI)","রেপিয়ার, নিডল, ওয়ার্পিং ও শাটল লুম (Vaupel, MEI)"],
+  "mc.woven.l2":   ["Ultrasonic, Laser, Heat & Dye cutting","আল্ট্রাসনিক, লেজার, হিট ও ডাই কাটিং"],
+  "mc.woven.l3":   ["Mid & meter folding","মিড ও মিটার ফোল্ডিং"],
+  "mc.printed.n":  ["Printed Label","প্রিন্টেড লেবেল"],
+  "mc.printed.c":  ["3.8 Million Pcs / Day","৩৮ লক্ষ পিস / দিন"],
+  "mc.printed.l1": ["20+ machines — HY speed printing up to 6 colours","২০+ মেশিন — HY স্পিড প্রিন্টিং, ৬ কালার পর্যন্ত"],
+  "mc.printed.l2": ["Ultrasonic cutting, cut & folding, curing","আল্ট্রাসনিক কাটিং, কাট ও ফোল্ডিং, কিউরিং"],
+  "mc.printed.l3": ["Polyester, paper, cotton, canvas & Tyvek print","পলিয়েস্টার, পেপার, কটন, ক্যানভাস ও Tyvek প্রিন্ট"],
+  "mc.offset.n":   ["Offset Printing","অফসেট প্রিন্টিং"],
+  "mc.offset.c":   ["1.2 Million Pcs / Day","১২ লক্ষ পিস / দিন"],
+  "mc.offset.l1":  ["40+ machines — Heidelberg presses","৪০+ মেশিন — Heidelberg প্রেস"],
+  "mc.offset.l2":  ["CTP plate making (Fuji), offset up to 4 colours","CTP প্লেট মেকিং (Fuji), ৪ কালার পর্যন্ত অফসেট"],
+  "mc.offset.l3":  ["X-Rite colour matching system","X-Rite কালার ম্যাচিং সিস্টেম"],
+  "mc.digital.n":  ["Digital Printing","ডিজিটাল প্রিন্টিং"],
+  "mc.digital.c":  ["300 Thousand Pcs / Day","৩ লক্ষ পিস / দিন"],
+  "mc.digital.l1": ["Konica Minolta production presses","Konica Minolta প্রোডাকশন প্রেস"],
+  "mc.digital.l2": ["Short-run hang tags, proofs & samples","শর্ট-রান হ্যাং ট্যাগ, প্রুফ ও স্যাম্পল"],
+  "mc.digital.l3": ["Variable data — barcode, QR & serial print","ভ্যারিয়েবল ডেটা — বারকোড, QR ও সিরিয়াল প্রিন্ট"],
+  "mc.heat.n":     ["Heat Transfer Label","হিট ট্রান্সফার লেবেল"],
+  "mc.heat.c":     ["100 Thousand Pcs / Day","১ লক্ষ পিস / দিন"],
+  "mc.heat.l1":    ["Water-based & solvent-based labels","ওয়াটার-বেইজড ও সলভেন্ট-বেইজড লেবেল"],
+  "mc.heat.l2":    ["Azo & phthalate free — EU & USA compliant","Azo ও phthalate মুক্ত — EU ও USA কমপ্লায়েন্ট"],
+  "mc.heat.l3":    ["Screen, hologram, DTF, silicon, metallic, 3D HD","স্ক্রিন, হলোগ্রাম, DTF, সিলিকন, মেটালিক, 3D HD"],
+  "mc.narrow.n":   ["Narrow Fabrics","ন্যারো ফেব্রিক্স"],
+  "mc.narrow.c":   ["50 Thousand Yrds / Day","৫০ হাজার গজ / দিন"],
+  "mc.narrow.l1":  ["20+ machines — drawcord (16/32/48 spandal)","২০+ মেশিন — ড্রকর্ড (১৬/৩২/৪৮ স্প্যান্ডেল)"],
+  "mc.narrow.l2":  ["Twill & canvas tape machines","টুইল ও ক্যানভাস টেপ মেশিন"],
+  "mc.narrow.l3":  ["Plastic & metal tipping","প্লাস্টিক ও মেটাল টিপিং"],
+  "mc.patch.n":    ["Patches & Lock String","প্যাচ ও লক স্ট্রিং"],
+  "mc.patch.c":    ["Leather 25K · Silicon 25K · Lock String 200K / Day","লেদার ২৫ হাজার · সিলিকন ২৫ হাজার · লক স্ট্রিং ২ লক্ষ / দিন"],
+  "mc.patch.l1":   ["Genuine, PU/faux, suede, embossed & debossed leather","জেনুইন, PU/ফক্স, সুয়েড, এমবস ও ডিবস লেদার"],
+  "mc.patch.l2":   ["2D/3D/PVC/transparent silicon patches","2D/3D/PVC/ট্রান্সপারেন্ট সিলিকন প্যাচ"],
+  "mc.patch.l3":   ["Lock string & seal tag production","লক স্ট্রিং ও সিল ট্যাগ প্রোডাকশন"],
+  "mc.thermal.n":  ["Thermal Barcode Printing","থার্মাল বারকোড প্রিন্টিং"],
+  "mc.thermal.c":  ["1.5 Million Stickers / Day","১৫ লক্ষ স্টিকার / দিন"],
+  "mc.thermal.l1": ["Zebra industrial thermal printers","Zebra ইন্ডাস্ট্রিয়াল থার্মাল প্রিন্টার"],
+  "mc.thermal.l2": ["Barcode, price tag & thermal sticker printing","বারকোড, প্রাইস ট্যাগ ও থার্মাল স্টিকার প্রিন্টিং"],
+  "mc.thermal.l3": ["Retailer-compliant ticketing & labelling","রিটেইলার-কমপ্লায়েন্ট টিকেটিং ও লেবেলিং"],
+  "job.m.t":       ["Merchandiser (Trims & Accessories)","মার্চেন্ডাইজার (ট্রিমস ও অ্যাক্সেসরিজ)"],
+  "job.m.d":       ["Full time · Uttara, Dhaka · Experience: 2+ years","ফুল টাইম · উত্তরা, ঢাকা · অভিজ্ঞতা: ২+ বছর"],
+  "c.addr1":       ["KA-86/C, Kuril Bishwa Road, Vatara, Dhaka-1230","কা-৮৬/সি, কুড়িল বিশ্ব রোড, ভাটারা, ঢাকা-১২৩০"],
+  "c.addr2":       ["16/D, Chanpara, Uzampur, Uttarkhan, Uttara, Dhaka-1230","১৬/ডি, চানপাড়া, উজামপুর, উত্তরখান, উত্তরা, ঢাকা-১২৩০"],
+  "c.addr3":       ["149/5, Arambagh, Motijheel, Dhaka-1000","১৪৯/৫, আরামবাগ, মতিঝিল, ঢাকা-১০০০"],
+  "c.advisor":     ["Mr. Mohiuddin Masud (Shakil) — Advisor","জনাব মহিউদ্দিন মাসুদ (শাকিল) — উপদেষ্টা"],
+  "c.fname":       ["Your Name *","আপনার নাম *"],
+  "ph.fname":      ["Full name","পুরো নাম"],
+  "c.fcompany":    ["Company","কোম্পানি"],
+  "ph.fcompany":   ["Company name","কোম্পানির নাম"],
+  "c.femail":      ["Email *","ইমেইল *"],
+  "c.fphone":      ["Phone","ফোন"],
+  "c.fproduct":    ["Product Interest","কোন পণ্যে আগ্রহী"],
+  "ph.fproduct":   ["e.g. Woven label, Hang tag, Leather patch...","যেমন: ওভেন লেবেল, হ্যাং ট্যাগ, লেদার প্যাচ..."],
+  "c.fmsg":        ["Message *","বার্তা *"],
+  "ph.fmsg":       ["Tell us about your requirement, quantity, target date...","আপনার চাহিদা, পরিমাণ, টার্গেট ডেট সম্পর্কে লিখুন..."],
+  "c.fsend":       ["Send Message ✉","বার্তা পাঠান ✉"],
+  "pr1":           ["Woven Label","ওভেন লেবেল"],
+  "pr2":           ["Printed Label","প্রিন্টেড লেবেল"],
+  "pr3":           ["Offset Items & Hang Tags","অফসেট আইটেম ও হ্যাং ট্যাগ"],
+  "pr4":           ["Heat Transfer Label","হিট ট্রান্সফার লেবেল"],
+  "pr5":           ["Leather & Rubber Patch","লেদার ও রাবার প্যাচ"],
+  "pr6":           ["Silicon Patch","সিলিকন প্যাচ"],
+  "pr7":           ["Drawstring & Drawcord","ড্রস্ট্রিং ও ড্রকর্ড"],
+  "pr8":           ["Elastic","ইলাস্টিক"],
+  "pr9":           ["Lock String","লক স্ট্রিং"],
+  "pr10":          ["Gum Tape","গাম টেপ"],
+  "pr11":          ["Printed Poly Bag","প্রিন্টেড পলি ব্যাগ"],
+  "pr12":          ["Packaging Accessories","প্যাকেজিং অ্যাক্সেসরিজ"],
+  "footer.desc":   ["A proud sister concern of R.PH. Group — alongside R.PH. Label & Accessories and Article Printing & Packaging. Manufacturer, supplier & exporter of all kinds of garments accessories.",
+                    "R.PH. Group-এর গর্বিত সিস্টার কনসার্ন — সাথে আছে R.PH. Label & Accessories ও Article Printing & Packaging। সব ধরনের গার্মেন্টস অ্যাক্সেসরিজের প্রস্তুতকারক, সরবরাহকারী ও রপ্তানিকারক।"],
+  "footer.rights": ["© 2026 Article Label & Accessories Ltd. — R.PH. Group. All rights reserved.",
+                    "© ২০২৬ Article Label & Accessories Ltd. — R.PH. Group। সর্বস্বত্ব সংরক্ষিত।"],
+  "footer.certline":["OEKO-TEX® · FSC® · GRS Certified","OEKO-TEX® · FSC® · GRS সার্টিফায়েড"],
   "mission.sub":   ["Our mission goes beyond labels — it's about empowering people, industry and the nation's backbone RMG sector.",
                     "আমাদের মিশন শুধু লেবেল নয় — মানুষ, শিল্প এবং দেশের মেরুদণ্ড RMG খাতকে এগিয়ে নেওয়াই আমাদের লক্ষ্য।"],
   "mach.tag":      ["Machineries & Capacity","মেশিনারিজ ও উৎপাদন ক্ষমতা"],
