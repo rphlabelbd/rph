@@ -952,14 +952,26 @@ body.intro-active{overflow:hidden}
     background:#fff;flex-direction:column;padding:16px;border-bottom:1px solid var(--line);
   }
   .nav-links.open{display:flex}
-  .menu-btn{display:block}
+  .menu-btn{display:block;padding:6px 10px;font-size:1rem}
+  /* mobile e language button ke ektu chhoto o kache anlam, jate brand
+     er jonno beshi jayga thake — nahole "Ltd." kete jachhilo */
+  .lang-btn{width:38px;height:38px}
+  .lang-wrap{right:8px}
   /* mobile e brand jate screen er baire na jay ebong company name
-     EK LINE e thake (venge na jay) — nowrap + size sei onujayi choto */
-  nav{padding:12px calc(4vw + 50px) 12px 4vw}
-  .brand{min-width:0;gap:8px;flex-shrink:1}
-  .brand img{width:30px;height:30px}
-  .brand-name{font-size:clamp(.68rem,3.4vw,1.1rem);white-space:nowrap}
-  .brand-name small{font-size:.56rem;letter-spacing:.04em;white-space:nowrap}
+     EK LINE e thake (venge na jay) — nowrap + size sei onujayi choto.
+     Right-side padding language button + menu button er soman rakha hoyeche,
+     r font-size ekhon min-width shoho calculate kora jate lomba name-o
+     "Ltd." shoho pura dekha jay, kete na jay. */
+  nav{padding:10px 8px 10px 4vw;gap:6px}
+  .brand{min-width:0;gap:6px;flex-shrink:1;max-width:calc(100% - 90px)}
+  .brand img{width:28px;height:28px;flex-shrink:0}
+  .brand-name{font-size:clamp(.56rem,3.05vw,1.1rem);white-space:nowrap;overflow:visible}
+  .brand-name small{font-size:.5rem;letter-spacing:.02em;white-space:nowrap}
+}
+/* extra-choto phone (<=360px) — safety net: jodi tao na atey,
+   tahole line venge dui line hobe, kintu kono obostheyi "Ltd." kete jabe na */
+@media(max-width:360px){
+  .brand-name{white-space:normal;line-height:1.15}
 }
 </style>
 </head>
