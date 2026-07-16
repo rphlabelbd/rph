@@ -231,7 +231,8 @@ html[lang="bn"] h1,html[lang="bn"] h2,html[lang="bn"] h3,html[lang="bn"] h4{font
 /* ================= ABOUT ================= */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 .about-img{position:relative}
-.about-img img{border-radius:var(--radius);box-shadow:0 24px 50px rgba(34,48,60,.18)}
+.about-img img{border-radius:var(--radius);box-shadow:0 24px 50px rgba(34,48,60,.18);cursor:pointer;transition:opacity .35s ease}
+.about-img img.fading{opacity:0}
 .about-img::before{
   content:"";position:absolute;inset:-14px auto auto -14px;width:110px;height:110px;
   border:2px solid var(--neon);border-radius:var(--radius);z-index:-1;
@@ -834,6 +835,9 @@ footer a:hover{color:var(--neon)}
 #brandIntro.fly .intro-mems img,
 #brandIntro.fly .intro-certs img{animation:none;opacity:1}
 @media(max-width:640px){
+  /* intro er boro company name-o mobile e ek line e thakbe */
+  .intro-name,.intro-name small{white-space:nowrap}
+  .intro-brand{font-size:clamp(.9rem,4.6vw,3.4rem)}
   /* mobile e duita corner logo group jate majhkhane overlap na kore —
      prottek group max 46vw width pay, gap kome, height-o kome */
   .intro-mems{left:10px;gap:8px;max-width:44vw}
@@ -949,12 +953,13 @@ body.intro-active{overflow:hidden}
   }
   .nav-links.open{display:flex}
   .menu-btn{display:block}
-  /* mobile e brand jate screen er baire na jay — logo+name choto hoye fit hoy */
+  /* mobile e brand jate screen er baire na jay ebong company name
+     EK LINE e thake (venge na jay) — nowrap + size sei onujayi choto */
   nav{padding:12px calc(4vw + 50px) 12px 4vw}
-  .brand{min-width:0;gap:9px;flex-shrink:1}
-  .brand img{width:34px;height:34px}
-  .brand-name{font-size:clamp(.92rem,4.2vw,1.18rem)}
-  .brand-name small{font-size:.6rem;letter-spacing:.05em}
+  .brand{min-width:0;gap:8px;flex-shrink:1}
+  .brand img{width:30px;height:30px}
+  .brand-name{font-size:clamp(.68rem,3.4vw,1.1rem);white-space:nowrap}
+  .brand-name small{font-size:.56rem;letter-spacing:.04em;white-space:nowrap}
 }
 </style>
 </head>
@@ -1080,8 +1085,9 @@ body.intro-active{overflow:hidden}
 <section id="about">
   <div class="wrap about-grid">
     <div class="about-img reveal">
-      <!-- EDIT-IMG: factory building photo -->
-      <img src="images/factory.jpg" alt="Article Label factory">
+      <!-- EDIT-IMG: factory photos — 1 sec por por auto change hoy, click korleo change hoy.
+           Aro image add korte niche script e "factoryImgs" list e path add korun -->
+      <img src="images/factory1.png" alt="Article Label factory" id="aboutFactoryImg" title="Click to see next photo">
     </div>
     <div class="reveal">
       <span class="tag-label" data-i18n="about.tag">About Us</span>
@@ -1106,7 +1112,7 @@ body.intro-active{overflow:hidden}
       <button class="btn btn-ghost rph-more-btn" id="rphMoreBtn" onclick="toggleRphMore()">More About R.P.H. Group ↓</button>
       <div class="rph-more" id="rphMore">
         <div class="rph-more-inner">
-          <p data-i18n="about.m1">Since its establishment in <b>2003</b>, R.P.H. Group has been dedicated to producing a wide range of premium-quality garment trims and packaging items, catering to both local and international apparel brands. Our product line includes <span class="sb">woven labels, printed labels, hang tags, barcode tags, photo inlays, adhesive stickers, leather and PU patches, silicon/rubber patches, printed canvas tapes, heat transfer labels, high-density prints, and printed self-adhesive poly bags</span>, among many others.</p>
+          <p data-i18n="about.m1">Since its establishment in <b>2003</b>, R.P.H. Group has been dedicated to producing a wide range of premium-quality garment trims, catering to both local and international apparel brands. Our product line includes <span class="sb">woven labels, printed labels, hang tags, barcode tags, photo inlays, adhesive stickers, leather and PU patches, silicon/rubber patches, printed canvas tapes, heat transfer labels and high-density prints</span>, among many others.</p>
           <p data-i18n="about.m2">Under the visionary leadership of Managing Director <b>Md. Hanif Mondal</b>, the group has earned a strong reputation for <span class="sb">technical excellence, reliability, and innovation</span>. Environmental responsibility is a core principle of our operations — we strictly comply with Bangladesh's environmental regulations and prioritize eco-friendly materials and sustainable production practices.</p>
           <p data-i18n="about.m3">R.P.H. Group is an active member of the <b>Bangladesh Garments Accessories &amp; Packaging Manufacturers &amp; Exporters Association (BGAPMEA)</b> and <b>DCCI</b> (since 2018), demonstrating our continuous commitment to industry standards and ongoing improvement.</p>
           <p data-i18n="about.m4">Our facilities are located at <b>16/D, Chanpara, Uzampur, Uttarkhan, Uttara, Dhaka-1230</b>. For more information please visit our official website: <a href="https://www.rphgroupbd.com" target="_blank" rel="noopener"><b>www.rphgroupbd.com</b></a></p>
@@ -1429,7 +1435,7 @@ body.intro-active{overflow:hidden}
   <div class="wrap">
     <span class="tag-label reveal" data-i18n="prod.tag">Key Products</span>
     <h2 class="sec-title reveal" data-i18n="prod.title">Everything a garment <span>needs</span></h2>
-    <p class="sec-sub reveal" data-i18n="prod.sub">From woven labels to printed poly bags — complete trims & packaging support from a single, reliable source.</p>
+    <p class="sec-sub reveal" data-i18n="prod.sub">From woven labels to leather patches — complete trims support from a single, reliable source.</p>
     <div class="prod-grid">
       <!-- EDIT-IMG: prottek product card e:
            1) img src = card er cover photo
@@ -1446,8 +1452,6 @@ body.intro-active{overflow:hidden}
       <div class="prod reveal"><img src="https://placehold.co/420x440/22303C/ffffff?text=Elastic" alt="Elastic"><div class="name" data-i18n="pr8">Elastic</div></div>
       <div class="prod reveal"><img src="https://placehold.co/420x440/1B9E4B/ffffff?text=Lock+String" alt="Lock string"><div class="name" data-i18n="pr9">Lock String</div></div>
       <div class="prod reveal" data-images="images/gt01.png"><img src="images/gt01.png" alt="Gum tape"><div class="name" data-i18n="pr10">Gum Tape</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Poly+Bag" alt="Poly bag"><div class="name" data-i18n="pr11">Printed Poly Bag</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/22303C/ffffff?text=Packaging" alt="Packaging"><div class="name" data-i18n="pr12">Packaging Accessories</div></div>
     </div>
   </div>
 </section>
@@ -1732,6 +1736,19 @@ body.intro-active{overflow:hidden}
 
 <script>
 // WhatsApp button ekhon direct wa.me link — kono chatbox/JS lage na.
+
+// ===== About factory image slideshow: 1 sec por por change + click e change =====
+const factoryImgs = ["images/factory1.png","images/factory2.png"];
+factoryImgs.forEach(p => { const im = new Image(); im.src = p; }); // preload — flicker hobe na
+let factoryIx = 0;
+const factoryEl = document.getElementById('aboutFactoryImg');
+function factoryNext(){
+  factoryIx = (factoryIx + 1) % factoryImgs.length;
+  factoryEl.classList.add('fading');
+  setTimeout(()=>{ factoryEl.src = factoryImgs[factoryIx]; factoryEl.classList.remove('fading'); }, 180);
+}
+setInterval(factoryNext, 1000);
+factoryEl.addEventListener('click', factoryNext);
 
 // scroll reveal animation
 const obs = new IntersectionObserver(entries=>{
@@ -2450,8 +2467,8 @@ const i18n = {
   "j.2027.t":      ["Introducing RFID","RFID প্রযুক্তির সূচনা"],
   "j.2027.d":      ["We are introducing RFID technology to our labels and accessories — enabling smarter inventory tracking and connected products for global brands.",
                     "আমাদের লেবেল ও অ্যাক্সেসরিজে আমরা RFID প্রযুক্তি যুক্ত করছি — যা গ্লোবাল ব্র্যান্ডদের জন্য স্মার্ট ইনভেন্টরি ট্র্যাকিং ও কানেক্টেড প্রোডাক্টের সুযোগ তৈরি করবে।"],
-  "about.m1":      ["Since its establishment in <b>2003</b>, R.P.H. Group has been dedicated to producing a wide range of premium-quality garment trims and packaging items, catering to both local and international apparel brands. Our product line includes <span class=\"sb\">woven labels, printed labels, hang tags, barcode tags, photo inlays, adhesive stickers, leather and PU patches, silicon/rubber patches, printed canvas tapes, heat transfer labels, high-density prints, and printed self-adhesive poly bags</span>, among many others.",
-                    "প্রতিষ্ঠার (<b>২০০৩</b>) পর থেকেই R.P.H. Group দেশি ও আন্তর্জাতিক অ্যাপারেল ব্র্যান্ডের জন্য প্রিমিয়াম মানের গার্মেন্ট ট্রিমস ও প্যাকেজিং আইটেম তৈরি করে আসছে। আমাদের পণ্যতালিকায় রয়েছে <span class=\"sb\">ওভেন লেবেল, প্রিন্টেড লেবেল, হ্যাং ট্যাগ, বারকোড ট্যাগ, ফটো ইনলে, অ্যাডহেসিভ স্টিকার, লেদার ও PU প্যাচ, সিলিকন/রাবার প্যাচ, প্রিন্টেড ক্যানভাস টেপ, হিট ট্রান্সফার লেবেল, হাই-ডেনসিটি প্রিন্ট এবং প্রিন্টেড সেলফ-অ্যাডহেসিভ পলি ব্যাগ</span>সহ আরও অনেক কিছু।"],
+  "about.m1":      ["Since its establishment in <b>2003</b>, R.P.H. Group has been dedicated to producing a wide range of premium-quality garment trims, catering to both local and international apparel brands. Our product line includes <span class=\"sb\">woven labels, printed labels, hang tags, barcode tags, photo inlays, adhesive stickers, leather and PU patches, silicon/rubber patches, printed canvas tapes, heat transfer labels and high-density prints</span>, among many others.",
+                    "প্রতিষ্ঠার (<b>২০০৩</b>) পর থেকেই R.P.H. Group দেশি ও আন্তর্জাতিক অ্যাপারেল ব্র্যান্ডের জন্য প্রিমিয়াম মানের গার্মেন্ট ট্রিমস তৈরি করে আসছে। আমাদের পণ্যতালিকায় রয়েছে <span class=\"sb\">ওভেন লেবেল, প্রিন্টেড লেবেল, হ্যাং ট্যাগ, বারকোড ট্যাগ, ফটো ইনলে, অ্যাডহেসিভ স্টিকার, লেদার ও PU প্যাচ, সিলিকন/রাবার প্যাচ, প্রিন্টেড ক্যানভাস টেপ, হিট ট্রান্সফার লেবেল এবং হাই-ডেনসিটি প্রিন্ট</span>সহ আরও অনেক কিছু।"],
   "about.m2":      ["Under the visionary leadership of Managing Director <b>Md. Hanif Mondal</b>, the group has earned a strong reputation for <span class=\"sb\">technical excellence, reliability, and innovation</span>. Environmental responsibility is a core principle of our operations — we strictly comply with Bangladesh's environmental regulations and prioritize eco-friendly materials and sustainable production practices.",
                     "ব্যবস্থাপনা পরিচালক <b>মো. হানিফ মন্ডল</b>-এর দূরদর্শী নেতৃত্বে গ্রুপটি অর্জন করেছে <span class=\"sb\">কারিগরি দক্ষতা, নির্ভরযোগ্যতা ও উদ্ভাবনের</span> সুনাম। পরিবেশগত দায়বদ্ধতা আমাদের কার্যক্রমের মূলনীতি — আমরা বাংলাদেশের পরিবেশ বিধিমালা কঠোরভাবে মেনে চলি এবং পরিবেশবান্ধব উপকরণ ও টেকসই উৎপাদন চর্চাকে অগ্রাধিকার দিই।"],
   "about.m3":      ["R.P.H. Group is an active member of the <b>Bangladesh Garments Accessories &amp; Packaging Manufacturers &amp; Exporters Association (BGAPMEA)</b> and <b>DCCI</b> (since 2018), demonstrating our continuous commitment to industry standards and ongoing improvement.",
@@ -2563,8 +2580,6 @@ const i18n = {
   "pr8":           ["Elastic","ইলাস্টিক"],
   "pr9":           ["Lock String","লক স্ট্রিং"],
   "pr10":          ["Gum Tape","গাম টেপ"],
-  "pr11":          ["Printed Poly Bag","প্রিন্টেড পলি ব্যাগ"],
-  "pr12":          ["Packaging Accessories","প্যাকেজিং অ্যাক্সেসরিজ"],
   "footer.desc":   ["A proud sister concern of R.PH. Group — alongside R.PH. Label & Accessories and Article Printing & Packaging. Manufacturer, supplier & exporter of all kinds of garments accessories.",
                     "R.PH. Group-এর গর্বিত সিস্টার কনসার্ন — সাথে আছে R.PH. Label & Accessories ও Article Printing & Packaging। সব ধরনের গার্মেন্টস অ্যাক্সেসরিজের প্রস্তুতকারক, সরবরাহকারী ও রপ্তানিকারক।"],
   "footer.rights": ["© 2026 Article Label & Accessories Ltd. — R.PH. Group. All rights reserved.",
@@ -2578,8 +2593,8 @@ const i18n = {
                     "Vaupel, MEI, Heidelberg, Fuji, Konica Minolta, HY, Zebra — বিশ্বখ্যাত ব্র্যান্ডের মেশিনে চলে আমাদের প্রোডাকশন ফ্লোর।"],
   "prod.tag":      ["Key Products","প্রধান পণ্যসমূহ"],
   "prod.title":    ["Everything a garment <span>needs</span>","পোশাকের <span>যা কিছু প্রয়োজন</span>"],
-  "prod.sub":      ["From woven labels to printed poly bags — complete trims & packaging support from a single, reliable source.",
-                    "ওভেন লেবেল থেকে প্রিন্টেড পলি ব্যাগ — এক নির্ভরযোগ্য উৎস থেকে সম্পূর্ণ ট্রিমস ও প্যাকেজিং সাপোর্ট।"],
+  "prod.sub":      ["From woven labels to leather patches — complete trims support from a single, reliable source.",
+                    "ওভেন লেবেল থেকে লেদার প্যাচ — এক নির্ভরযোগ্য উৎস থেকে সম্পূর্ণ ট্রিমস সাপোর্ট।"],
   "gal.tag":       ["Gallery","গ্যালারি"],
   "gal.title":     ["Inside our <span>factory</span>","আমাদের <span>কারখানার ভেতরে</span>"],
   "career.tag":    ["Career","ক্যারিয়ার"],
