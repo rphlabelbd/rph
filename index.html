@@ -1903,6 +1903,7 @@ function spinTo(item){
 
   setTimeout(()=>{
     spinIdx = (spinIdx+1) % spinWords.length;
+    preloadAhead(spinIdx);                 // porer koyekta image age theke load
     spinTo(spinWords[spinIdx]);
   }, maxDur + HOLD);
 }
@@ -1914,8 +1915,20 @@ const FALLBACK_IMG = "images/cl01.png"; // kono image missing thakle eta dekhabe
 const heroImg = document.querySelector('.hero-slide img');
 heroImg.addEventListener('error', ()=>{ heroImg.src = FALLBACK_IMG; });
 
-// preload sob product image, jate spin er somoy atke na thake
-spinWords.forEach(it => { const im = new Image(); im.src = it.img; });
+// ===== Smart preload: ekshathe sob na — shudhu current + porer koyekta =====
+// Prothom load fast rakhe; baki image gulo spin egonor sathe age theke load hoy.
+const _preloaded = new Set();
+const PRELOAD_AHEAD = 3;                  // porer koyta image age theke namabe
+function preloadAhead(idx){
+  for(let k = 0; k <= PRELOAD_AHEAD; k++){
+    const it = spinWords[(idx + k) % spinWords.length];
+    if(it && !_preloaded.has(it.img)){
+      _preloaded.add(it.img);
+      const im = new Image(); im.src = it.img;
+    }
+  }
+}
+preloadAhead(0);                          // shuru te: current + porer 3ta
 
 function swapHeroImage(src){
   if(heroImg.getAttribute('src') === src) return;
