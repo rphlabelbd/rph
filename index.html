@@ -808,7 +808,9 @@ footer a:hover{color:var(--neon)}
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 10px 28px rgba(37,211,102,.45), 0 0 20px var(--neon-soft);
   animation:pulse 2.6s infinite;transition:.3s;
+  padding:0;overflow:hidden;
 }
+.wa-btn img{width:66%;height:66%;object-fit:contain;border-radius:50%}
 .wa-btn:hover{transform:scale(1.1)}
 @keyframes pulse{
   0%,100%{box-shadow:0 10px 28px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.4)}
@@ -1378,7 +1380,7 @@ nav{transition:background .35s ease,border-color .35s ease}
            EDIT: video list ta niche script e (videoList array) add/remove korun.
            Video upload korun: images/gallery/videos/ folder e (github repo) -->
       <div class="gal-big reveal" id="videoGalCard">
-        <img src="images/gallery/videos/vt001.jpg" alt="Factory video gallery">
+        <img src="images/factory.jpg" alt="Factory video gallery">
         <div class="gal-big-overlay">
           <span class="gal-big-icon">▶</span>
           <div class="name">Video Gallery</div>
@@ -1670,7 +1672,7 @@ nav{transition:background .35s ease,border-color .35s ease}
     <button class="wa-send" onclick="sendWA()">Send on WhatsApp ➤</button>
   </div>
 </div>
-<button class="wa-btn" onclick="document.getElementById('waBox').classList.toggle('open')" aria-label="Chat on WhatsApp">💬</button>
+<button class="wa-btn" onclick="document.getElementById('waBox').classList.toggle('open')" aria-label="Chat on WhatsApp"><img src="images/logo.png" alt="Article Label"></button>
 
 <script>
 // WhatsApp chat — EDIT: number ekhane
@@ -2436,9 +2438,12 @@ document.querySelectorAll('.nav-links a').forEach(a=>{
 // src   = video file er path (images/gallery/videos/ folder e upload korun, .mp4 recommended)
 // poster= video-r thumbnail chobi (na dile blank thakbe, kintu dile valo dekhabe)
 const videoList = [
-  { title: "Factory Tour",    src: "images/gallery/videos/v001.mp4", poster: "images/gallery/videos/vt001.jpg" },
-  { title: "Production Line", src: "images/gallery/videos/v002.mp4", poster: "images/gallery/videos/vt002.jpg" },
-  { title: "Quality Check",   src: "images/gallery/videos/v003.mp4", poster: "images/gallery/videos/vt003.jpg" },
+  { title: "Factory Video 1", src: "images/gallery/videos/v001.mp4", poster: "" },
+  { title: "Factory Video 2", src: "images/gallery/videos/v002.mp4", poster: "" },
+  { title: "Factory Video 3", src: "images/gallery/videos/v003.mp4", poster: "" },
+  { title: "Factory Video 4", src: "images/gallery/videos/v004.mp4", poster: "" },
+  { title: "Factory Video 5", src: "images/gallery/videos/v005.mp4", poster: "" },
+  { title: "Factory Video 6", src: "images/gallery/videos/v006.mp4", poster: "" },
 ];
 
 const videoModal = document.getElementById('videoModal');
