@@ -580,107 +580,138 @@ footer a:hover{color:var(--neon)}
 }
 .cert-modal .box-foot .btn{padding:11px 22px;font-size:.86rem}
 
-/* ===== Product gallery lightbox (auto-rotating, dynamic) ===== */
+/* ===== Product gallery lightbox (bigger stage, segmented progress, thumbnail strip) ===== */
 .prod-modal{
   position:fixed;inset:0;z-index:300;
-  background:radial-gradient(circle at 50% 20%, rgba(43,232,124,.08), rgba(15,22,18,.88));
-  backdrop-filter:blur(10px);
+  background:radial-gradient(circle at 50% 20%, rgba(43,232,124,.1), rgba(12,18,15,.92));
+  backdrop-filter:blur(14px);
   display:none;align-items:center;justify-content:center;padding:24px;
 }
 .prod-modal.open{display:flex}
 .prod-modal .pm-stage{
-  position:relative;max-width:1140px;width:100%;
-  background:rgba(255,255,255,.9);
-  border-radius:28px;overflow:hidden;
-  box-shadow:0 50px 120px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.5) inset;
-  animation:pmPopIn .45s cubic-bezier(.16,1,.3,1);
+  position:relative;max-width:1340px;width:100%;
+  background:rgba(255,255,255,.94);
+  border-radius:32px;overflow:hidden;
+  box-shadow:0 70px 160px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.55) inset;
+  animation:pmPopIn .5s cubic-bezier(.16,1,.3,1);
 }
 @keyframes pmPopIn{
-  from{opacity:0;transform:scale(.9) translateY(40px)}
+  from{opacity:0;transform:scale(.92) translateY(46px)}
   to{opacity:1;transform:scale(1) translateY(0)}
 }
 .prod-modal .pm-imgwrap{
-  position:relative;width:100%;height:min(72vh,660px);
+  position:relative;width:100%;height:min(78vh,760px);
   background:
-    radial-gradient(circle at 30% 20%, rgba(43,232,124,.12), transparent 60%),
+    radial-gradient(circle at 30% 20%, rgba(43,232,124,.15), transparent 60%),
     linear-gradient(135deg,#eef7f1,#f7fbf8);
   overflow:hidden;
 }
 .prod-modal .pm-imgwrap img{
   position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
-  padding:28px;box-sizing:border-box;
+  padding:26px;box-sizing:border-box;
   opacity:0;transform:scale(1.08) rotate(-1.2deg);
   transition:opacity .8s ease, transform 1.1s cubic-bezier(.16,1,.3,1);
   pointer-events:none;
 }
 .prod-modal .pm-imgwrap img.active{
-  opacity:1;transform:scale(1) rotate(0deg);
-  z-index:2;pointer-events:auto;
+  opacity:1;z-index:2;pointer-events:auto;
+  animation:pmKenburns 6s ease-out forwards;
 }
 .prod-modal .pm-imgwrap img.leaving{
   opacity:0;transform:scale(.94) rotate(1.2deg);
   z-index:1;
 }
-.prod-modal .pm-progress-track{
-  position:absolute;bottom:0;left:0;right:0;height:3px;
-  background:rgba(0,0,0,.06);z-index:3;
+@keyframes pmKenburns{
+  from{transform:scale(1) rotate(0deg)}
+  to{transform:scale(1.045) rotate(0deg)}
 }
-.prod-modal .pm-progress{
-  height:100%;width:0%;
-  background:linear-gradient(90deg,var(--green),var(--neon));
-  box-shadow:0 0 10px var(--neon-soft);
+
+/* Instagram-story-style segmented progress — one sliver per photo */
+.pm-segments{
+  position:absolute;top:16px;left:74px;right:74px;z-index:5;
+  display:flex;gap:5px;
 }
-.prod-modal .pm-progress.run{transition:width 2.4s linear;width:100%}
+.pm-seg{flex:1;height:3px;min-width:5px;border-radius:3px;overflow:hidden;background:rgba(0,0,0,.16)}
+.pm-seg-fill{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--green),var(--neon));box-shadow:0 0 8px var(--neon-soft)}
+.pm-seg.is-done .pm-seg-fill{width:100%}
+.pm-seg.is-active .pm-seg-fill.run{transition:width 2.4s linear;width:100%}
+
 .prod-modal .pm-bar{
   display:flex;align-items:center;justify-content:space-between;gap:14px;
-  padding:18px 26px;
-  background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.95));
+  padding:16px 26px;
+  background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.97));
   border-top:1px solid var(--line);
 }
-.prod-modal .pm-bar b{font-family:'Sora',sans-serif;font-size:1.08rem;color:var(--ink);letter-spacing:.2px}
+.prod-modal .pm-bar b{font-family:'Sora',sans-serif;font-size:1.12rem;color:var(--ink);letter-spacing:.2px}
 .prod-modal .pm-count{
   font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--green);
   background:var(--bg);padding:5px 12px;border-radius:20px;border:1px solid var(--line);
   font-weight:700;
 }
+
+/* thumbnail strip — click any photo to jump straight to it */
+.pm-thumbs{
+  display:flex;gap:10px;padding:6px 26px 20px;overflow-x:auto;
+  background:#fff;
+}
+.pm-thumbs::-webkit-scrollbar{height:5px}
+.pm-thumbs::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
+.pm-thumb{
+  flex:0 0 auto;width:60px;height:60px;border-radius:12px;overflow:hidden;
+  border:2px solid transparent;padding:0;cursor:pointer;background:var(--bg);
+  opacity:.55;transition:.25s;
+}
+.pm-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.pm-thumb:hover{opacity:.9;transform:translateY(-3px)}
+.pm-thumb.is-active{border-color:var(--green);opacity:1;box-shadow:0 8px 18px var(--neon-soft)}
+
 .pm-close{
-  position:absolute;top:18px;right:18px;z-index:5;
+  position:absolute;top:16px;right:18px;z-index:6;
   background:rgba(255,255,255,.85);backdrop-filter:blur(10px);
   border:1px solid rgba(255,255,255,.7);border-radius:50%;
-  width:42px;height:42px;padding:0;
+  width:44px;height:44px;padding:0;
   display:flex;align-items:center;justify-content:center;
-  font-size:1.15rem;cursor:pointer;color:var(--ink);transition:.3s;
-  box-shadow:0 10px 26px rgba(0,0,0,.18);
+  font-size:1.18rem;cursor:pointer;color:var(--ink);transition:.3s;
+  box-shadow:0 10px 26px rgba(0,0,0,.2);
 }
 .pm-close:hover{background:var(--green);color:#fff;transform:rotate(90deg)}
 .pm-nav{
-  position:absolute;top:50%;transform:translateY(-50%);z-index:5;
-  width:54px;height:54px;border-radius:50%;border:none;cursor:pointer;
-  background:rgba(255,255,255,.85);backdrop-filter:blur(10px);color:var(--ink);font-size:1.65rem;line-height:1;
-  box-shadow:0 12px 30px rgba(0,0,0,.22);transition:.3s;
+  position:absolute;top:calc(min(78vh,760px) / 2);transform:translateY(-50%);z-index:6;
+  width:58px;height:58px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(10px);color:var(--ink);font-size:1.8rem;line-height:1;
+  box-shadow:0 16px 36px rgba(0,0,0,.26);transition:.3s;
   display:flex;align-items:center;justify-content:center;
 }
-.pm-nav:hover{background:var(--green);color:#fff;transform:translateY(-50%) scale(1.12)}
-.pm-prev{left:20px}
-.pm-next{right:20px}
+.pm-nav:hover{background:var(--green);color:#fff;transform:translateY(-50%) scale(1.14)}
+.pm-prev{left:22px}
+.pm-next{right:22px}
 .pm-auto-badge{
-  position:absolute;top:18px;left:18px;z-index:5;
+  position:absolute;top:16px;left:18px;z-index:6;
   display:flex;align-items:center;gap:7px;
   background:rgba(255,255,255,.85);backdrop-filter:blur(10px);
   border-radius:20px;padding:7px 13px 7px 11px;
   font-size:.72rem;font-family:'JetBrains Mono',monospace;font-weight:600;
-  color:var(--ink-soft);box-shadow:0 10px 24px rgba(0,0,0,.14);
+  color:var(--ink-soft);box-shadow:0 10px 24px rgba(0,0,0,.16);
   letter-spacing:.3px;transition:.3s;
 }
 .pm-auto-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--neon);animation:pmBlink 1.4s infinite}
 .pm-auto-badge.paused .dot{background:var(--ink-soft);animation:none}
 @keyframes pmBlink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(43,232,124,.5)}50%{opacity:.4}}
+@media(max-width:900px){
+  .prod-modal .pm-imgwrap{height:min(64vh,600px)}
+  .pm-nav{top:calc(min(64vh,600px) / 2)}
+}
 @media(max-width:640px){
-  .prod-modal .pm-imgwrap{height:min(58vh,480px)}
-  .pm-nav{width:42px;height:42px;font-size:1.3rem}
+  .prod-modal .pm-imgwrap{height:min(52vh,440px)}
+  .pm-nav{top:calc(min(52vh,440px) / 2);width:44px;height:44px;font-size:1.35rem}
   .pm-prev{left:10px}.pm-next{right:10px}
+  .pm-segments{left:58px;right:58px}
   .prod-modal .pm-bar{padding:14px 18px}
-  .prod-modal .pm-bar b{font-size:.92rem}
+  .prod-modal .pm-bar b{font-size:.94rem}
+  .pm-thumb{width:48px;height:48px}
+}
+@media (prefers-reduced-motion: reduce){
+  .prod-modal .pm-imgwrap img.active{animation:none}
 }
 
 /* ================= WHATSAPP CHATBOX ================= */
@@ -1483,17 +1514,18 @@ nav .brand{transition:opacity .35s ease}
   <div class="pm-stage">
     <button class="pm-close" onclick="closeProd()">✕</button>
     <div class="pm-auto-badge" id="pmAutoBadge"><span class="dot"></span><span id="pmAutoLabel">Auto</span></div>
+    <div class="pm-segments" id="pmSegments"></div>
     <button class="pm-nav pm-prev" onclick="stepProd(-1,true)">‹</button>
     <div class="pm-imgwrap">
       <img id="prodBig" class="active" src="" alt="Product large view">
       <img id="prodBig2" src="" alt="Product large view">
-      <div class="pm-progress-track"><div class="pm-progress" id="pmProgress"></div></div>
     </div>
     <button class="pm-nav pm-next" onclick="stepProd(1,true)">›</button>
     <div class="pm-bar">
       <b id="prodTitle">Product</b>
       <span class="pm-count" id="prodCount">1 / 1</span>
     </div>
+    <div class="pm-thumbs" id="pmThumbs"></div>
   </div>
 </div>
 
@@ -2105,26 +2137,26 @@ function closeCert(){
 certModal.addEventListener('click', e=>{ if(e.target === certModal) closeCert(); });
 document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeCert(); });
 
-// ===== Product gallery lightbox (auto-rotating, dynamic crossfade) =====
+// ===== Product gallery lightbox (auto-rotating, dynamic crossfade,
+//        segmented "story" progress + jump-to-photo thumbnail strip) =====
 // EDIT: AUTO_MS = koto second por por chobi automatically change hobe (ms e, 2000 = 2 sec)
-// EDIT: PAUSE_AFTER_MANUAL_MS = user click/arrow chapar por koto khon autoplay thambe (fer nijer theke chalu hobe)
+// EDIT: PAUSE_AFTER_MANUAL_MS = user click/arrow/thumbnail chapar por koto khon autoplay thambe
 const AUTO_MS = 2600;
 const PAUSE_AFTER_MANUAL_MS = 5000;
 
 const prodModal   = document.getElementById('prodModal');
 const imgA        = document.getElementById('prodBig');
 const imgB        = document.getElementById('prodBig2');
-const pmProgress  = document.getElementById('pmProgress');
+const pmSegments  = document.getElementById('pmSegments');
+const pmThumbs    = document.getElementById('pmThumbs');
 const pmAutoBadge = document.getElementById('pmAutoBadge');
 const pmAutoLabel = document.getElementById('pmAutoLabel');
 
 let prodImgs = [], prodIdx = 0;
 let showingA = true;              // kon img element ekhon "active"
 let autoTimer = null, resumeTimer = null;
-let isPaused = false;
+let segEls = [], thumbEls = [];
 
-// halka random style: proti bar image change hobar somoy fade+scale+ektu rotate hoy (CSS e already ache),
-// kintu amra alternate kore direction (rotate left/right) o vary kori jate aro "dynamic" lage
 function nextEl(){ return showingA ? imgB : imgA; }
 function currEl(){ return showingA ? imgA : imgB; }
 
@@ -2138,12 +2170,35 @@ document.querySelectorAll('.prod').forEach(p=>{
 
     imgA.src = prodImgs[0]; imgA.classList.add('active'); imgA.classList.remove('leaving');
     imgB.classList.remove('active','leaving');
+    buildSegmentsAndThumbs();
     updateBar();
     prodModal.classList.add('open');
     document.body.style.overflow = 'hidden';
     startAuto();
   });
 });
+
+// build one progress-sliver + one thumbnail per photo (runs once per product opened)
+function buildSegmentsAndThumbs(){
+  pmSegments.innerHTML = '';
+  pmThumbs.innerHTML = '';
+  segEls = prodImgs.map(() => {
+    const seg = document.createElement('div');
+    seg.className = 'pm-seg';
+    seg.innerHTML = '<span class="pm-seg-fill"></span>';
+    pmSegments.appendChild(seg);
+    return seg;
+  });
+  thumbEls = prodImgs.map((src, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'pm-thumb';
+    btn.innerHTML = `<img src="${src}" alt="View photo ${i + 1}" loading="lazy">`;
+    btn.addEventListener('click', () => { crossfadeTo(i); pauseAutoTemporarily(); });
+    pmThumbs.appendChild(btn);
+    return btn;
+  });
+  pmThumbs.style.display = prodImgs.length > 1 ? 'flex' : 'none';
+}
 
 function crossfadeTo(idx){
   const incoming = nextEl();
@@ -2163,18 +2218,28 @@ function updateBar(){
   document.getElementById('prodCount').textContent = (prodIdx+1) + " / " + prodImgs.length;
   document.querySelectorAll('.pm-nav').forEach(n=>n.style.display = prodImgs.length > 1 ? 'flex' : 'none');
   pmAutoBadge.style.display = prodImgs.length > 1 ? 'flex' : 'none';
+
+  segEls.forEach((seg, i) => {
+    seg.classList.toggle('is-done', i < prodIdx);
+    seg.classList.toggle('is-active', i === prodIdx);
+    if(i !== prodIdx) seg.querySelector('.pm-seg-fill').classList.remove('run');
+  });
+  thumbEls.forEach((t, i) => t.classList.toggle('is-active', i === prodIdx));
+  const activeThumb = thumbEls[prodIdx];
+  if(activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
 }
 
 function runProgress(){
-  pmProgress.classList.remove('run');
-  void pmProgress.offsetWidth;
-  pmProgress.classList.add('run');
+  const fill = segEls[prodIdx] && segEls[prodIdx].querySelector('.pm-seg-fill');
+  if(!fill) return;
+  fill.classList.remove('run');
+  void fill.offsetWidth;
+  fill.classList.add('run');
 }
 
 function startAuto(){
   stopAutoTimer();
   if(prodImgs.length <= 1) return;
-  isPaused = false;
   pmAutoBadge.classList.remove('paused');
   pmAutoLabel.textContent = 'Auto';
   runProgress();
@@ -2189,10 +2254,10 @@ function stopAutoTimer(){
 }
 function pauseAutoTemporarily(){
   stopAutoTimer();
-  isPaused = true;
   pmAutoBadge.classList.add('paused');
   pmAutoLabel.textContent = 'Paused';
-  pmProgress.classList.remove('run');
+  const fill = segEls[prodIdx] && segEls[prodIdx].querySelector('.pm-seg-fill');
+  if(fill) fill.classList.remove('run');
   clearTimeout(resumeTimer);
   resumeTimer = setTimeout(startAuto, PAUSE_AFTER_MANUAL_MS);
 }
@@ -2211,7 +2276,15 @@ function closeProd(){
 }
 // hover korle o autoplay pause, mouse sorale abar chalu
 const pmStage = prodModal.querySelector('.pm-stage');
-pmStage.addEventListener('mouseenter', ()=>{ if(prodImgs.length>1){ stopAutoTimer(); pmAutoBadge.classList.add('paused'); pmAutoLabel.textContent='Paused'; pmProgress.classList.remove('run'); } });
+pmStage.addEventListener('mouseenter', ()=>{
+  if(prodImgs.length>1){
+    stopAutoTimer();
+    pmAutoBadge.classList.add('paused');
+    pmAutoLabel.textContent='Paused';
+    const fill = segEls[prodIdx] && segEls[prodIdx].querySelector('.pm-seg-fill');
+    if(fill) fill.classList.remove('run');
+  }
+});
 pmStage.addEventListener('mouseleave', ()=>{ if(prodImgs.length>1 && prodModal.classList.contains('open')) startAuto(); });
 
 prodModal.addEventListener('click', e=>{ if(e.target === prodModal) closeProd(); });
