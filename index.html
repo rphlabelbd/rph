@@ -580,43 +580,108 @@ footer a:hover{color:var(--neon)}
 }
 .cert-modal .box-foot .btn{padding:11px 22px;font-size:.86rem}
 
-/* ===== Product gallery lightbox (next/previous) ===== */
+/* ===== Product gallery lightbox (auto-rotating, dynamic) ===== */
 .prod-modal{
   position:fixed;inset:0;z-index:300;
-  background:rgba(20,30,25,.78);backdrop-filter:blur(6px);
-  display:none;align-items:center;justify-content:center;padding:20px;
+  background:radial-gradient(circle at 50% 20%, rgba(43,232,124,.08), rgba(15,22,18,.88));
+  backdrop-filter:blur(10px);
+  display:none;align-items:center;justify-content:center;padding:24px;
 }
 .prod-modal.open{display:flex}
 .prod-modal .pm-stage{
-  position:relative;max-width:820px;width:100%;
-  background:#fff;border-radius:18px;overflow:hidden;
-  box-shadow:0 30px 80px rgba(0,0,0,.4);
+  position:relative;max-width:1140px;width:100%;
+  background:rgba(255,255,255,.9);
+  border-radius:28px;overflow:hidden;
+  box-shadow:0 50px 120px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.5) inset;
+  animation:pmPopIn .45s cubic-bezier(.16,1,.3,1);
 }
-.prod-modal .pm-stage img{
-  width:100%;max-height:76vh;object-fit:contain;background:var(--bg);display:block;
+@keyframes pmPopIn{
+  from{opacity:0;transform:scale(.9) translateY(40px)}
+  to{opacity:1;transform:scale(1) translateY(0)}
 }
+.prod-modal .pm-imgwrap{
+  position:relative;width:100%;height:min(72vh,660px);
+  background:
+    radial-gradient(circle at 30% 20%, rgba(43,232,124,.12), transparent 60%),
+    linear-gradient(135deg,#eef7f1,#f7fbf8);
+  overflow:hidden;
+}
+.prod-modal .pm-imgwrap img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  padding:28px;box-sizing:border-box;
+  opacity:0;transform:scale(1.08) rotate(-1.2deg);
+  transition:opacity .8s ease, transform 1.1s cubic-bezier(.16,1,.3,1);
+  pointer-events:none;
+}
+.prod-modal .pm-imgwrap img.active{
+  opacity:1;transform:scale(1) rotate(0deg);
+  z-index:2;pointer-events:auto;
+}
+.prod-modal .pm-imgwrap img.leaving{
+  opacity:0;transform:scale(.94) rotate(1.2deg);
+  z-index:1;
+}
+.prod-modal .pm-progress-track{
+  position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:rgba(0,0,0,.06);z-index:3;
+}
+.prod-modal .pm-progress{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,var(--green),var(--neon));
+  box-shadow:0 0 10px var(--neon-soft);
+}
+.prod-modal .pm-progress.run{transition:width 2.4s linear;width:100%}
 .prod-modal .pm-bar{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:14px 20px;border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:18px 26px;
+  background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.95));
+  border-top:1px solid var(--line);
 }
-.prod-modal .pm-bar b{font-family:'Sora',sans-serif;font-size:.95rem}
-.prod-modal .pm-count{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--ink-soft)}
+.prod-modal .pm-bar b{font-family:'Sora',sans-serif;font-size:1.08rem;color:var(--ink);letter-spacing:.2px}
+.prod-modal .pm-count{
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--green);
+  background:var(--bg);padding:5px 12px;border-radius:20px;border:1px solid var(--line);
+  font-weight:700;
+}
 .pm-close{
-  position:absolute;top:14px;right:14px;z-index:2;
-  background:#fff;border:1.5px solid var(--line);border-radius:10px;
-  padding:6px 12px;font-size:1rem;cursor:pointer;color:var(--ink);transition:.25s;
+  position:absolute;top:18px;right:18px;z-index:5;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.7);border-radius:50%;
+  width:42px;height:42px;padding:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;cursor:pointer;color:var(--ink);transition:.3s;
+  box-shadow:0 10px 26px rgba(0,0,0,.18);
 }
-.pm-close:hover{border-color:var(--neon);color:var(--green)}
+.pm-close:hover{background:var(--green);color:#fff;transform:rotate(90deg)}
 .pm-nav{
-  position:absolute;top:50%;transform:translateY(-50%);z-index:2;
-  width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
-  background:rgba(255,255,255,.92);color:var(--ink);font-size:1.5rem;line-height:1;
-  box-shadow:0 6px 18px rgba(0,0,0,.18);transition:.25s;
+  position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  width:54px;height:54px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(10px);color:var(--ink);font-size:1.65rem;line-height:1;
+  box-shadow:0 12px 30px rgba(0,0,0,.22);transition:.3s;
   display:flex;align-items:center;justify-content:center;
 }
-.pm-nav:hover{background:var(--green);color:#fff}
-.pm-prev{left:14px}
-.pm-next{right:14px}
+.pm-nav:hover{background:var(--green);color:#fff;transform:translateY(-50%) scale(1.12)}
+.pm-prev{left:20px}
+.pm-next{right:20px}
+.pm-auto-badge{
+  position:absolute;top:18px;left:18px;z-index:5;
+  display:flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(10px);
+  border-radius:20px;padding:7px 13px 7px 11px;
+  font-size:.72rem;font-family:'JetBrains Mono',monospace;font-weight:600;
+  color:var(--ink-soft);box-shadow:0 10px 24px rgba(0,0,0,.14);
+  letter-spacing:.3px;transition:.3s;
+}
+.pm-auto-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--neon);animation:pmBlink 1.4s infinite}
+.pm-auto-badge.paused .dot{background:var(--ink-soft);animation:none}
+@keyframes pmBlink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(43,232,124,.5)}50%{opacity:.4}}
+@media(max-width:640px){
+  .prod-modal .pm-imgwrap{height:min(58vh,480px)}
+  .pm-nav{width:42px;height:42px;font-size:1.3rem}
+  .pm-prev{left:10px}.pm-next{right:10px}
+  .prod-modal .pm-bar{padding:14px 18px}
+  .prod-modal .pm-bar b{font-size:.92rem}
+}
 
 /* ================= WHATSAPP CHATBOX ================= */
 .wa-btn{
@@ -1143,14 +1208,14 @@ nav .brand{transition:opacity .35s ease}
            2) data-images = gallery er image list (comma diye alada) —
               click korle ei gula boro view te next/previous kore dekha jabe.
            Example: data-images="images/wl01.png, images/wl02.png, images/wl03.png" -->
-      <div class="prod reveal"><img src="images/products/woven-label/w001.jpg" alt="Woven label"><div class="name">Woven Label</div></div>
+      <div class="prod reveal" data-images="images/products/woven-label/w001.jpg, images/products/woven-label/w002.jpg, images/products/woven-label/w003.jpg, images/products/woven-label/w004.jpg, images/products/woven-label/w005.jpg, images/products/woven-label/w006.jpg, images/products/woven-label/w007.jpg, images/products/woven-label/w008.jpg, images/products/woven-label/w009.jpg, images/products/woven-label/w010.jpg, images/products/woven-label/w011.jpg, images/products/woven-label/w012.jpg, images/products/woven-label/w013.jpg, images/products/woven-label/w014.jpg, images/products/woven-label/w015.jpg, images/products/woven-label/w016.jpg, images/products/woven-label/w017.jpg, images/products/woven-label/w018.jpg, images/products/woven-label/w019.jpg, images/products/woven-label/w020.jpg, images/products/woven-label/w021.jpg, images/products/woven-label/w022.jpg, images/products/woven-label/w023.jpg, images/products/woven-label/w024.jpg, images/products/woven-label/w025.jpg, images/products/woven-label/w026.jpg, images/products/woven-label/w027.jpg, images/products/woven-label/w028.jpg, images/products/woven-label/w029.jpg, images/products/woven-label/w030.jpg"><img src="images/products/woven-label/w001.jpg" alt="Woven label"><div class="name">Woven Label</div></div>
       <div class="prod reveal"><img src="https://placehold.co/420x440/128A46/ffffff?text=Printed+Label" alt="Printed label"><div class="name">Printed Label</div></div>
-      <div class="prod reveal"><img src="images/products/hangtag/ht001.jpg" alt="Offset items"><div class="name">Offset Items & Hang Tags</div></div>
+      <div class="prod reveal" data-images="images/products/hangtag/ht001.jpg, images/products/hangtag/ht002.jpg, images/products/hangtag/ht003.jpg, images/products/hangtag/ht004.jpg, images/products/hangtag/ht005.jpg, images/products/hangtag/ht006.jpg, images/products/hangtag/ht007.jpg, images/products/hangtag/ht008.jpg, images/products/hangtag/ht009.jpg, images/products/hangtag/ht010.jpg, images/products/hangtag/ht011.jpg, images/products/hangtag/ht012.jpg, images/products/hangtag/ht013.jpg, images/products/hangtag/ht014.jpg, images/products/hangtag/ht015.jpg, images/products/hangtag/ht016.jpg, images/products/hangtag/ht017.jpg, images/products/hangtag/ht018.jpg, images/products/hangtag/ht019.jpg, images/products/hangtag/ht020.jpg, images/products/hangtag/ht021.jpg, images/products/hangtag/ht022.jpg, images/products/hangtag/ht023.jpg, images/products/hangtag/ht024.jpg, images/products/hangtag/ht025.jpg, images/products/hangtag/ht026.jpg, images/products/hangtag/ht027.jpg, images/products/hangtag/ht028.jpg, images/products/hangtag/ht029.jpg, images/products/hangtag/ht030.jpg, images/products/hangtag/ht031.jpg, images/products/hangtag/ht032.jpg, images/products/hangtag/ht033.jpg, images/products/hangtag/ht034.jpg, images/products/hangtag/ht035.jpg, images/products/hangtag/ht036.jpg, images/products/hangtag/ht037.jpg, images/products/hangtag/ht038.jpg, images/products/hangtag/ht039.jpg, images/products/hangtag/ht040.jpg, images/products/hangtag/ht041.jpg"><img src="images/products/hangtag/ht001.jpg" alt="Offset items"><div class="name">Offset Items & Hang Tags</div></div>
       <div class="prod reveal" data-images="images/hs01.png"><img src="images/hs01.png" alt="Heat seal"><div class="name">Heat Transfer Label</div></div>
       <div class="prod reveal" data-images="images/lb01.png"><img src="images/lb01.png" alt="Leather patch"><div class="name">Leather & Rubber Patch</div></div>
       <div class="prod reveal"><img src="https://placehold.co/420x440/128A46/ffffff?text=Silicon+Patch" alt="Silicon patch"><div class="name">Silicon Patch</div></div>
-      <div class="prod reveal"><img src="images/products/drawcord/nf001.jpg" alt="Drawstring"><div class="name">Drawstring & Drawcord</div></div>
-      <div class="prod reveal"><img src="images/products/elastic/e001.jpg" alt="Elastic"><div class="name">Elastic</div></div>
+      <div class="prod reveal" data-images="images/products/drawcord/nf001.jpg, images/products/drawcord/nf002.jpg, images/products/drawcord/nf003.jpg, images/products/drawcord/nf004.jpg, images/products/drawcord/nf005.jpg, images/products/drawcord/nf006.jpg, images/products/drawcord/nf007.jpg, images/products/drawcord/nf008.jpg, images/products/drawcord/nf009.jpg, images/products/drawcord/nf010.jpg, images/products/drawcord/nf011.jpg, images/products/drawcord/nf012.jpg, images/products/drawcord/nf013.jpg, images/products/drawcord/nf014.jpg, images/products/drawcord/nf015.jpg, images/products/drawcord/nf016.jpg, images/products/drawcord/nf017.jpg, images/products/drawcord/nf018.jpg, images/products/drawcord/nf019.jpg, images/products/drawcord/nf020.jpg, images/products/drawcord/nf021.jpg, images/products/drawcord/nf022.jpg, images/products/drawcord/nf023.jpg, images/products/drawcord/nf024.jpg"><img src="images/products/drawcord/nf001.jpg" alt="Drawstring"><div class="name">Drawstring & Drawcord</div></div>
+      <div class="prod reveal" data-images="images/products/elastic/e001.jpg, images/products/elastic/e002.jpg, images/products/elastic/e003.jpg, images/products/elastic/e004.jpg, images/products/elastic/e005.jpg, images/products/elastic/e006.jpg, images/products/elastic/e007.jpg, images/products/elastic/e008.jpg, images/products/elastic/e009.jpg, images/products/elastic/e010.jpg, images/products/elastic/e011.jpg, images/products/elastic/e012.jpg, images/products/elastic/e013.jpg, images/products/elastic/e014.jpg, images/products/elastic/e015.jpg, images/products/elastic/e016.jpg, images/products/elastic/e017.jpg, images/products/elastic/e018.jpg, images/products/elastic/e020.jpg, images/products/elastic/e021.jpg, images/products/elastic/e022.jpg, images/products/elastic/e023.jpg, images/products/elastic/e024.jpg, images/products/elastic/e025.jpg, images/products/elastic/e026.jpg, images/products/elastic/e027.jpg, images/products/elastic/e028.jpg"><img src="images/products/elastic/e001.jpg" alt="Elastic"><div class="name">Elastic</div></div>
       <div class="prod reveal"><img src="https://placehold.co/420x440/1B9E4B/ffffff?text=Lock+String" alt="Lock string"><div class="name">Lock String</div></div>
       <div class="prod reveal" data-images="images/gt01.png"><img src="images/gt01.png" alt="Gum tape"><div class="name">Gum Tape</div></div>
       <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Poly+Bag" alt="Poly bag"><div class="name">Printed Poly Bag</div></div>
@@ -1417,9 +1482,14 @@ nav .brand{transition:opacity .35s ease}
 <div class="prod-modal" id="prodModal">
   <div class="pm-stage">
     <button class="pm-close" onclick="closeProd()">✕</button>
-    <button class="pm-nav pm-prev" onclick="stepProd(-1)">‹</button>
-    <img id="prodBig" src="" alt="Product large view">
-    <button class="pm-nav pm-next" onclick="stepProd(1)">›</button>
+    <div class="pm-auto-badge" id="pmAutoBadge"><span class="dot"></span><span id="pmAutoLabel">Auto</span></div>
+    <button class="pm-nav pm-prev" onclick="stepProd(-1,true)">‹</button>
+    <div class="pm-imgwrap">
+      <img id="prodBig" class="active" src="" alt="Product large view">
+      <img id="prodBig2" src="" alt="Product large view">
+      <div class="pm-progress-track"><div class="pm-progress" id="pmProgress"></div></div>
+    </div>
+    <button class="pm-nav pm-next" onclick="stepProd(1,true)">›</button>
     <div class="pm-bar">
       <b id="prodTitle">Product</b>
       <span class="pm-count" id="prodCount">1 / 1</span>
@@ -2035,42 +2105,120 @@ function closeCert(){
 certModal.addEventListener('click', e=>{ if(e.target === certModal) closeCert(); });
 document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeCert(); });
 
-// ===== Product gallery lightbox (next/previous) =====
-const prodModal = document.getElementById('prodModal');
+// ===== Product gallery lightbox (auto-rotating, dynamic crossfade) =====
+// EDIT: AUTO_MS = koto second por por chobi automatically change hobe (ms e, 2000 = 2 sec)
+// EDIT: PAUSE_AFTER_MANUAL_MS = user click/arrow chapar por koto khon autoplay thambe (fer nijer theke chalu hobe)
+const AUTO_MS = 2600;
+const PAUSE_AFTER_MANUAL_MS = 5000;
+
+const prodModal   = document.getElementById('prodModal');
+const imgA        = document.getElementById('prodBig');
+const imgB        = document.getElementById('prodBig2');
+const pmProgress  = document.getElementById('pmProgress');
+const pmAutoBadge = document.getElementById('pmAutoBadge');
+const pmAutoLabel = document.getElementById('pmAutoLabel');
+
 let prodImgs = [], prodIdx = 0;
+let showingA = true;              // kon img element ekhon "active"
+let autoTimer = null, resumeTimer = null;
+let isPaused = false;
+
+// halka random style: proti bar image change hobar somoy fade+scale+ektu rotate hoy (CSS e already ache),
+// kintu amra alternate kore direction (rotate left/right) o vary kori jate aro "dynamic" lage
+function nextEl(){ return showingA ? imgB : imgA; }
+function currEl(){ return showingA ? imgA : imgB; }
 
 document.querySelectorAll('.prod').forEach(p=>{
   p.addEventListener('click', ()=>{
-    // data-images thakle sei list, na thakle card er cover image tai
     const list = p.dataset.images
       ? p.dataset.images.split(',').map(s=>s.trim()).filter(Boolean)
       : [p.querySelector('img').src];
-    prodImgs = list; prodIdx = 0;
+    prodImgs = list; prodIdx = 0; showingA = true;
     document.getElementById('prodTitle').textContent = p.querySelector('.name').textContent;
-    showProd();
+
+    imgA.src = prodImgs[0]; imgA.classList.add('active'); imgA.classList.remove('leaving');
+    imgB.classList.remove('active','leaving');
+    updateBar();
     prodModal.classList.add('open');
     document.body.style.overflow = 'hidden';
+    startAuto();
   });
 });
-function showProd(){
-  document.getElementById('prodBig').src = prodImgs[prodIdx];
-  document.getElementById('prodCount').textContent = (prodIdx+1) + " / " + prodImgs.length;
-  // ekta matro image hole arrow gula lukiye rakhi
-  document.querySelectorAll('.pm-nav').forEach(n=>n.style.display = prodImgs.length > 1 ? 'flex' : 'none');
+
+function crossfadeTo(idx){
+  const incoming = nextEl();
+  incoming.src = prodImgs[idx];
+  incoming.classList.remove('leaving');
+  // force reflow so transition triggers cleanly
+  void incoming.offsetWidth;
+  incoming.classList.add('active');
+  currEl().classList.remove('active');
+  currEl().classList.add('leaving');
+  showingA = !showingA;
+  prodIdx = idx;
+  updateBar();
 }
-function stepProd(dir){
-  prodIdx = (prodIdx + dir + prodImgs.length) % prodImgs.length;
-  showProd();
+
+function updateBar(){
+  document.getElementById('prodCount').textContent = (prodIdx+1) + " / " + prodImgs.length;
+  document.querySelectorAll('.pm-nav').forEach(n=>n.style.display = prodImgs.length > 1 ? 'flex' : 'none');
+  pmAutoBadge.style.display = prodImgs.length > 1 ? 'flex' : 'none';
+}
+
+function runProgress(){
+  pmProgress.classList.remove('run');
+  void pmProgress.offsetWidth;
+  pmProgress.classList.add('run');
+}
+
+function startAuto(){
+  stopAutoTimer();
+  if(prodImgs.length <= 1) return;
+  isPaused = false;
+  pmAutoBadge.classList.remove('paused');
+  pmAutoLabel.textContent = 'Auto';
+  runProgress();
+  autoTimer = setInterval(()=>{
+    const next = (prodIdx + 1) % prodImgs.length;
+    crossfadeTo(next);
+    runProgress();
+  }, AUTO_MS);
+}
+function stopAutoTimer(){
+  if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
+}
+function pauseAutoTemporarily(){
+  stopAutoTimer();
+  isPaused = true;
+  pmAutoBadge.classList.add('paused');
+  pmAutoLabel.textContent = 'Paused';
+  pmProgress.classList.remove('run');
+  clearTimeout(resumeTimer);
+  resumeTimer = setTimeout(startAuto, PAUSE_AFTER_MANUAL_MS);
+}
+
+function stepProd(dir, manual){
+  const next = (prodIdx + dir + prodImgs.length) % prodImgs.length;
+  crossfadeTo(next);
+  if(manual) pauseAutoTemporarily();
+  else runProgress();
 }
 function closeProd(){
   prodModal.classList.remove('open');
   document.body.style.overflow = '';
+  stopAutoTimer();
+  clearTimeout(resumeTimer);
 }
+// hover korle o autoplay pause, mouse sorale abar chalu
+const pmStage = prodModal.querySelector('.pm-stage');
+pmStage.addEventListener('mouseenter', ()=>{ if(prodImgs.length>1){ stopAutoTimer(); pmAutoBadge.classList.add('paused'); pmAutoLabel.textContent='Paused'; pmProgress.classList.remove('run'); } });
+pmStage.addEventListener('mouseleave', ()=>{ if(prodImgs.length>1 && prodModal.classList.contains('open')) startAuto(); });
+
 prodModal.addEventListener('click', e=>{ if(e.target === prodModal) closeProd(); });
 document.addEventListener('keydown', e=>{
   if(!prodModal.classList.contains('open')) return;
-  if(e.key === 'ArrowRight') stepProd(1);
-  if(e.key === 'ArrowLeft')  stepProd(-1);
+  if(e.key === 'ArrowRight'){ stepProd(1,true); }
+  if(e.key === 'ArrowLeft'){  stepProd(-1,true); }
   if(e.key === 'Escape')     closeProd();
 });
 
