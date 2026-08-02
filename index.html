@@ -842,6 +842,10 @@ body.intro-active nav .nav-links,
 body.intro-active nav .menu-btn{opacity:0;pointer-events:none}
 nav .nav-links,
 nav .menu-btn{transition:opacity .35s ease}
+/* intro cholakalin nav-er nijer sada/blur background-o lukano thake,
+   noyle content invisible thakleo ekta khali sada strip dekha jay upore */
+body.intro-active nav{background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+nav{transition:background .35s ease,border-color .35s ease}
 
 /* ===== DAILY CAPACITY typing cursor ===== */
 .cap-cursor{
