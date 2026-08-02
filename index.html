@@ -583,72 +583,40 @@ footer a:hover{color:var(--neon)}
 /* ===== Product gallery lightbox (next/previous) ===== */
 .prod-modal{
   position:fixed;inset:0;z-index:300;
-  background:rgba(12,20,16,.72);backdrop-filter:blur(10px);
+  background:rgba(20,30,25,.78);backdrop-filter:blur(6px);
   display:none;align-items:center;justify-content:center;padding:20px;
 }
 .prod-modal.open{display:flex}
 .prod-modal .pm-stage{
-  position:relative;max-width:1180px;width:96%;
-  background:rgba(255,255,255,.55);
-  border:1px solid rgba(255,255,255,.8);
-  border-radius:26px;overflow:hidden;
-  backdrop-filter:blur(24px) saturate(160%);
-  -webkit-backdrop-filter:blur(24px) saturate(160%);
-  box-shadow:
-    0 40px 90px -20px rgba(0,0,0,.45),
-    0 14px 34px -12px rgba(0,0,0,.28),
-    inset 0 1px 0 rgba(255,255,255,.7),
-    0 0 90px -10px var(--neon-soft);
-  animation:pm-pop .45s cubic-bezier(.16,1,.3,1) both;
-}
-@keyframes pm-pop{
-  from{opacity:0;transform:translateY(24px) scale(.92)}
-  to{opacity:1;transform:translateY(0) scale(1)}
+  position:relative;max-width:820px;width:100%;
+  background:#fff;border-radius:18px;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
 }
 .prod-modal .pm-stage img{
-  width:calc(100% - 40px);max-height:82vh;object-fit:contain;
-  background:var(--bg);display:block;
-  margin:20px auto 0;border-radius:18px;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.6);
-  transition:opacity .25s ease;
+  width:100%;max-height:76vh;object-fit:contain;background:var(--bg);display:block;
 }
 .prod-modal .pm-bar{
   display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:16px 22px;background:rgba(255,255,255,.5);
-  border-top:1px solid rgba(255,255,255,.7);
+  padding:14px 20px;border-top:1px solid var(--line);
 }
-.prod-modal .pm-bar b{font-family:'Sora',sans-serif;font-size:1rem;letter-spacing:-.01em}
-.prod-modal .pm-count{
-  font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--ink-soft);
-  background:rgba(0,0,0,.06);padding:4px 10px;border-radius:100px;
-}
+.prod-modal .pm-bar b{font-family:'Sora',sans-serif;font-size:.95rem}
+.prod-modal .pm-count{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--ink-soft)}
 .pm-close{
-  position:absolute;top:16px;right:16px;z-index:2;
-  background:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.9);border-radius:12px;
-  backdrop-filter:blur(8px);
-  padding:7px 13px;font-size:1rem;cursor:pointer;color:var(--ink);transition:.25s;
-  box-shadow:0 8px 20px rgba(0,0,0,.15);
+  position:absolute;top:14px;right:14px;z-index:2;
+  background:#fff;border:1.5px solid var(--line);border-radius:10px;
+  padding:6px 12px;font-size:1rem;cursor:pointer;color:var(--ink);transition:.25s;
 }
-.pm-close:hover{border-color:var(--neon);color:var(--green);transform:scale(1.06)}
+.pm-close:hover{border-color:var(--neon);color:var(--green)}
 .pm-nav{
   position:absolute;top:50%;transform:translateY(-50%);z-index:2;
-  width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.9);cursor:pointer;
-  background:rgba(255,255,255,.85);color:var(--ink);font-size:1.5rem;line-height:1;
-  backdrop-filter:blur(8px);
-  box-shadow:0 10px 24px rgba(0,0,0,.2);transition:.25s;
+  width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(255,255,255,.92);color:var(--ink);font-size:1.5rem;line-height:1;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);transition:.25s;
   display:flex;align-items:center;justify-content:center;
 }
-.pm-spin{
-  display:none;position:absolute;top:50%;left:50%;
-  width:44px;height:44px;margin:-22px 0 0 -22px;z-index:3;
-  border:4px solid rgba(0,0,0,.12);border-top-color:var(--green);
-  border-radius:50%;animation:pm-spin-rotate .8s linear infinite;
-}
-.pm-spin.show{display:block}
-@keyframes pm-spin-rotate{to{transform:rotate(360deg)}}
-.pm-nav:hover{background:var(--green);color:#fff;border-color:var(--green);transform:translateY(-50%) scale(1.08)}
-.pm-prev{left:18px}
-.pm-next{right:18px}
+.pm-nav:hover{background:var(--green);color:#fff}
+.pm-prev{left:14px}
+.pm-next{right:14px}
 
 /* ================= WHATSAPP CHATBOX ================= */
 .wa-btn{
@@ -1168,26 +1136,25 @@ nav .brand{transition:opacity .35s ease}
   <div class="wrap">
     <span class="tag-label reveal">Key Products</span>
     <h2 class="sec-title reveal">Everything a garment <span>needs</span></h2>
-    <p class="sec-sub reveal">From woven labels to leather patches — complete trims & accessories support from a single, reliable source.</p>
+    <p class="sec-sub reveal">From woven labels to printed poly bags — complete trims & packaging support from a single, reliable source.</p>
     <div class="prod-grid">
       <!-- EDIT-IMG: prottek product card e:
            1) img src = card er cover photo
            2) data-images = gallery er image list (comma diye alada) —
               click korle ei gula boro view te next/previous kore dekha jabe.
            Example: data-images="images/wl01.png, images/wl02.png, images/wl03.png" -->
-      <div class="prod reveal" data-images="images/products/woven-label/w001.png, images/products/woven-label/w002.png, images/products/woven-label/w003.png, images/products/woven-label/w004.png, images/products/woven-label/w005.png, images/products/woven-label/w006.png, images/products/woven-label/w007.png, images/products/woven-label/w008.png, images/products/woven-label/w009.png, images/products/woven-label/w010.png, images/products/woven-label/w011.png, images/products/woven-label/w012.png, images/products/woven-label/w013.png, images/products/woven-label/w014.png, images/products/woven-label/w015.png, images/products/woven-label/w016.png, images/products/woven-label/w017.png, images/products/woven-label/w018.png, images/products/woven-label/w019.png, images/products/woven-label/w020.png, images/products/woven-label/w021.png, images/products/woven-label/w022.png, images/products/woven-label/w023.png, images/products/woven-label/w024.png, images/products/woven-label/w025.png, images/products/woven-label/w026.png, images/products/woven-label/w027.png, images/products/woven-label/w028.png, images/products/woven-label/w029.png, images/products/woven-label/w030.png">
-        <img src="images/products/woven-label/w001.png" alt="Woven label">
-        <div class="name">Woven Label</div>
-      </div>
+      <div class="prod reveal"><img src="images/products/woven-label/w001.jpg" alt="Woven label"><div class="name">Woven Label</div></div>
       <div class="prod reveal"><img src="https://placehold.co/420x440/128A46/ffffff?text=Printed+Label" alt="Printed label"><div class="name">Printed Label</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Offset+Items" alt="Offset items"><div class="name">Offset Items & Hang Tags</div></div>
+      <div class="prod reveal"><img src="images/products/hangtag/ht001.jpg" alt="Offset items"><div class="name">Offset Items & Hang Tags</div></div>
       <div class="prod reveal" data-images="images/hs01.png"><img src="images/hs01.png" alt="Heat seal"><div class="name">Heat Transfer Label</div></div>
       <div class="prod reveal" data-images="images/lb01.png"><img src="images/lb01.png" alt="Leather patch"><div class="name">Leather & Rubber Patch</div></div>
       <div class="prod reveal"><img src="https://placehold.co/420x440/128A46/ffffff?text=Silicon+Patch" alt="Silicon patch"><div class="name">Silicon Patch</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Drawstring" alt="Drawstring"><div class="name">Drawstring & Drawcord</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/22303C/ffffff?text=Elastic" alt="Elastic"><div class="name">Elastic</div></div>
+      <div class="prod reveal"><img src="images/products/drawcord/nf001.jpg" alt="Drawstring"><div class="name">Drawstring & Drawcord</div></div>
+      <div class="prod reveal"><img src="images/products/elastic/e001.jpg" alt="Elastic"><div class="name">Elastic</div></div>
       <div class="prod reveal"><img src="https://placehold.co/420x440/1B9E4B/ffffff?text=Lock+String" alt="Lock string"><div class="name">Lock String</div></div>
       <div class="prod reveal" data-images="images/gt01.png"><img src="images/gt01.png" alt="Gum tape"><div class="name">Gum Tape</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/0B5E30/ffffff?text=Poly+Bag" alt="Poly bag"><div class="name">Printed Poly Bag</div></div>
+      <div class="prod reveal"><img src="https://placehold.co/420x440/22303C/ffffff?text=Packaging" alt="Packaging"><div class="name">Packaging Accessories</div></div>
     </div>
   </div>
 </section>
@@ -1451,7 +1418,6 @@ nav .brand{transition:opacity .35s ease}
   <div class="pm-stage">
     <button class="pm-close" onclick="closeProd()">✕</button>
     <button class="pm-nav pm-prev" onclick="stepProd(-1)">‹</button>
-    <div class="pm-spin" id="prodSpin" aria-hidden="true"></div>
     <img id="prodBig" src="" alt="Product large view">
     <button class="pm-nav pm-next" onclick="stepProd(1)">›</button>
     <div class="pm-bar">
@@ -1711,8 +1677,6 @@ document.querySelector('nav').addEventListener('click', collapseIntro);
 introEl.addEventListener('click', collapseIntro);
 // page jodi already scrolled thake (refresh mid-page), intro dorkar nai
 if(window.scrollY > 40) { introDone = true; finishIntro(); }
-// AUTO-ADVANCE: user 4 sec er moddhe click/scroll na korle nijer theke main page e chole jabe
-setTimeout(collapseIntro, 4000);
 
 // ===== ABOUT: "More About R.P.H. Group" inline expand/collapse =====
 function toggleRphMore(){
@@ -2073,33 +2037,7 @@ document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeCert(); })
 
 // ===== Product gallery lightbox (next/previous) =====
 const prodModal = document.getElementById('prodModal');
-let prodImgs = [], prodIdx = 0, prodLoaded = new Set(), prodLoadToken = 0;
-
-function preloadOne(src){
-  if(prodLoaded.has(src)) return;
-  const img = new Image();
-  img.onload = () => prodLoaded.add(src);
-  img.src = src;
-}
-
-// prothome mustho koyekta (FAST_COUNT) druto load kori, page atke thake na,
-// baki gula background e dhire dhire (idle time e) load hote thake
-function preloadProgressively(list){
-  const FAST_COUNT = 5;
-  list.slice(0, FAST_COUNT).forEach(preloadOne);
-
-  const token = ++prodLoadToken; // notun product khule gele purono background-loop bondho kore dei
-  const rest = list.slice(FAST_COUNT);
-  let i = 0;
-  function loadNext(){
-    if(token !== prodLoadToken || i >= rest.length) return;
-    preloadOne(rest[i]);
-    i++;
-    if(window.requestIdleCallback) requestIdleCallback(loadNext, { timeout: 600 });
-    else setTimeout(loadNext, 180);
-  }
-  setTimeout(loadNext, 250);
-}
+let prodImgs = [], prodIdx = 0;
 
 document.querySelectorAll('.prod').forEach(p=>{
   p.addEventListener('click', ()=>{
@@ -2110,36 +2048,15 @@ document.querySelectorAll('.prod').forEach(p=>{
     prodImgs = list; prodIdx = 0;
     document.getElementById('prodTitle').textContent = p.querySelector('.name').textContent;
     showProd();
-    preloadProgressively(list);
     prodModal.classList.add('open');
     document.body.style.overflow = 'hidden';
   });
 });
 function showProd(){
-  const src = prodImgs[prodIdx];
-  const bigImg = document.getElementById('prodBig');
-  const spin = document.getElementById('prodSpin');
-
+  document.getElementById('prodBig').src = prodImgs[prodIdx];
   document.getElementById('prodCount').textContent = (prodIdx+1) + " / " + prodImgs.length;
+  // ekta matro image hole arrow gula lukiye rakhi
   document.querySelectorAll('.pm-nav').forEach(n=>n.style.display = prodImgs.length > 1 ? 'flex' : 'none');
-
-  // already preload kora thakle spinner dekhabo na, sathe sathe dekhabo
-  if(prodLoaded.has(src)){
-    spin.classList.remove('show');
-    bigImg.src = src;
-  } else {
-    spin.classList.add('show');
-    bigImg.style.opacity = 0;
-    const tmp = new Image();
-    tmp.onload = () => {
-      prodLoaded.add(src);
-      if(prodImgs[prodIdx] !== src) return; // ittomodhe user aro click kore fele thakle skip
-      bigImg.src = src;
-      spin.classList.remove('show');
-      bigImg.style.opacity = 1;
-    };
-    tmp.src = src;
-  }
 }
 function stepProd(dir){
   prodIdx = (prodIdx + dir + prodImgs.length) % prodImgs.length;
