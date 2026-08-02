@@ -200,6 +200,15 @@ nav{
   content:"";position:absolute;inset:-14px auto auto -14px;width:110px;height:110px;
   border:2px solid var(--neon);border-radius:var(--radius);z-index:-1;
 }
+/* ---- factory photo auto-slideshow (blur crossfade) ---- */
+.about-img{aspect-ratio:1/0.72}
+.about-img img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;filter:blur(14px) scale(1.04);
+  transition:opacity 1.4s ease, filter 1.4s ease;
+  pointer-events:none;
+}
+.about-img img.active{opacity:1;filter:blur(0) scale(1);pointer-events:auto}
 .leaders{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
 .leader{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
@@ -1066,9 +1075,12 @@ nav{transition:background .35s ease,border-color .35s ease}
 <!-- ================= ABOUT ================= -->
 <section id="about">
   <div class="wrap about-grid">
-    <div class="about-img reveal">
-      <!-- EDIT-IMG: factory building photo -->
-      <img src="images/factory.jpg" alt="Article Label factory">
+    <div class="about-img reveal" id="aboutSlider">
+      <!-- EDIT-IMG: factory building photos — jodi ar image add korte chan,
+           ekta notun <img> line add korun ei-vabe, r script e imgEl.length shoto shoto niye jabe -->
+      <img src="images/factory.jpg" alt="Article Label factory" class="active">
+      <img src="images/factory1.jpeg" alt="Article Label factory">
+      <img src="images/factory2.jpg" alt="Article Label factory">
     </div>
     <div class="reveal">
       <span class="tag-label">About Us</span>
@@ -1334,7 +1346,7 @@ nav{transition:background .35s ease,border-color .35s ease}
       <div class="prod reveal" data-images="images/products/hangtag/ht001.jpg, images/products/hangtag/ht002.jpg, images/products/hangtag/ht003.jpg, images/products/hangtag/ht004.jpg, images/products/hangtag/ht005.jpg, images/products/hangtag/ht006.jpg, images/products/hangtag/ht007.jpg, images/products/hangtag/ht008.jpg, images/products/hangtag/ht009.jpg, images/products/hangtag/ht010.jpg, images/products/hangtag/ht011.jpg, images/products/hangtag/ht012.jpg, images/products/hangtag/ht013.jpg, images/products/hangtag/ht014.jpg, images/products/hangtag/ht015.jpg, images/products/hangtag/ht016.jpg, images/products/hangtag/ht017.jpg, images/products/hangtag/ht018.jpg, images/products/hangtag/ht019.jpg, images/products/hangtag/ht020.jpg, images/products/hangtag/ht021.jpg, images/products/hangtag/ht022.jpg, images/products/hangtag/ht023.jpg, images/products/hangtag/ht024.jpg, images/products/hangtag/ht025.jpg, images/products/hangtag/ht026.jpg, images/products/hangtag/ht027.jpg, images/products/hangtag/ht028.jpg, images/products/hangtag/ht029.jpg, images/products/hangtag/ht030.jpg, images/products/hangtag/ht031.jpg, images/products/hangtag/ht032.jpg, images/products/hangtag/ht033.jpg, images/products/hangtag/ht034.jpg, images/products/hangtag/ht035.jpg, images/products/hangtag/ht036.jpg, images/products/hangtag/ht037.jpg, images/products/hangtag/ht038.jpg, images/products/hangtag/ht039.jpg, images/products/hangtag/ht040.jpg, images/products/hangtag/ht041.jpg"><img src="images/products/hangtag/ht001.jpg" alt="Offset items"><div class="name">Offset Items & Hang Tags</div></div>
       <div class="prod reveal" data-images="images/products/heatseal/hs001.jpg, images/products/heatseal/hs002.jpg, images/products/heatseal/hs003.jpg, images/products/heatseal/hs004.jpg, images/products/heatseal/hs005.jpg, images/products/heatseal/hs006.jpg, images/products/heatseal/hs007.jpg, images/products/heatseal/hs008.jpg, images/products/heatseal/hs009.jpg, images/products/heatseal/hs010.jpg, images/products/heatseal/hs011.jpg, images/products/heatseal/hs012.jpg, images/products/heatseal/hs013.jpg, images/products/heatseal/hs014.jpg, images/products/heatseal/hs015.jpg, images/products/heatseal/hs016.jpg, images/products/heatseal/hs017.jpg, images/products/heatseal/hs018.jpg, images/products/heatseal/hs019.jpg, images/products/heatseal/hs020.jpg, images/products/heatseal/hs021.jpg, images/products/heatseal/hs022.jpg, images/products/heatseal/hs023.jpg, images/products/heatseal/hs024.jpg, images/products/heatseal/hs025.jpg, images/products/heatseal/hs026.jpg, images/products/heatseal/hs027.jpg, images/products/heatseal/hs028.jpg, images/products/heatseal/hs029.jpg, images/products/heatseal/hs030.jpg"><img src="images/products/heatseal/hs001.jpg" alt="Heat seal"><div class="name">Heat Transfer Label</div></div>
       <div class="prod reveal" data-images="images/products/pu/pu001.jpg, images/products/pu/pu002.jpg, images/products/pu/pu003.jpg, images/products/pu/pu004.jpg, images/products/pu/pu005.jpg, images/products/pu/pu006.jpg, images/products/pu/pu007.jpg, images/products/pu/pu008.jpg, images/products/pu/pu009.jpg, images/products/pu/pu010.jpg, images/products/pu/pu011.jpg, images/products/pu/pu012.jpg, images/products/pu/pu013.jpg, images/products/pu/pu014.jpg, images/products/pu/pu015.jpg, images/products/pu/pu016.jpg, images/products/pu/pu017.jpg, images/products/pu/pu018.jpg, images/products/pu/pu019.jpg, images/products/pu/pu020.jpg, images/products/pu/pu021.jpg, images/products/pu/pu022.jpg, images/products/pu/pu023.jpg, images/products/pu/pu024.jpg, images/products/pu/pu025.jpg, images/products/pu/pu026.jpg, images/products/pu/pu027.jpg, images/products/pu/pu028.jpg, images/products/pu/pu029.jpg, images/products/pu/pu030.jpg, images/products/pu/pu031.jpg, images/products/pu/pu032.jpg, images/products/pu/pu033.jpg"><img src="images/products/pu/pu001.jpg" alt="Leather patch"><div class="name">Leather & Rubber Patch</div></div>
-      <div class="prod reveal"><img src="https://placehold.co/420x440/128A46/ffffff?text=Silicon+Patch" alt="Silicon patch"><div class="name">Silicon Patch</div></div>
+      <div class="prod reveal" data-images="images/products/silicon/sp001.jpg, images/products/silicon/sp002.jpg, images/products/silicon/sp003.jpg, images/products/silicon/sp004.jpg, images/products/silicon/sp005.jpg, images/products/silicon/sp006.jpg, images/products/silicon/sp007.jpg, images/products/silicon/sp008.jpg, images/products/silicon/sp009.jpg, images/products/silicon/sp010.jpg, images/products/silicon/sp011.jpg, images/products/silicon/sp012.jpg, images/products/silicon/sp013.jpg, images/products/silicon/sp014.jpg, images/products/silicon/sp015.jpg, images/products/silicon/sp016.jpg, images/products/silicon/sp017.jpg, images/products/silicon/sp018.jpg, images/products/silicon/sp019.jpg, images/products/silicon/sp020.jpg, images/products/silicon/sp021.jpg, images/products/silicon/sp022.jpg, images/products/silicon/sp023.jpg, images/products/silicon/sp024.jpg, images/products/silicon/sp025.jpg, images/products/silicon/sp026.jpg, images/products/silicon/sp027.jpg, images/products/silicon/sp028.jpg, images/products/silicon/sp029.jpg, images/products/silicon/sp030.jpg, images/products/silicon/sp031.jpg"><img src="images/products/silicon/sp001.jpg" alt="Silicon patch"><div class="name">Silicon Patch</div></div>
       <div class="prod reveal" data-images="images/products/drawcord/nf001.jpg, images/products/drawcord/nf002.jpg, images/products/drawcord/nf003.jpg, images/products/drawcord/nf004.jpg, images/products/drawcord/nf005.jpg, images/products/drawcord/nf006.jpg, images/products/drawcord/nf007.jpg, images/products/drawcord/nf008.jpg, images/products/drawcord/nf009.jpg, images/products/drawcord/nf010.jpg, images/products/drawcord/nf011.jpg, images/products/drawcord/nf012.jpg, images/products/drawcord/nf013.jpg, images/products/drawcord/nf014.jpg, images/products/drawcord/nf015.jpg, images/products/drawcord/nf016.jpg, images/products/drawcord/nf017.jpg, images/products/drawcord/nf018.jpg, images/products/drawcord/nf019.jpg, images/products/drawcord/nf020.jpg, images/products/drawcord/nf021.jpg, images/products/drawcord/nf022.jpg, images/products/drawcord/nf023.jpg, images/products/drawcord/nf024.jpg"><img src="images/products/drawcord/nf001.jpg" alt="Drawstring"><div class="name">Drawstring & Drawcord</div></div>
       <div class="prod reveal" data-images="images/products/elastic/e001.jpg, images/products/elastic/e002.jpg, images/products/elastic/e003.jpg, images/products/elastic/e004.jpg, images/products/elastic/e005.jpg, images/products/elastic/e006.jpg, images/products/elastic/e007.jpg, images/products/elastic/e008.jpg, images/products/elastic/e009.jpg, images/products/elastic/e010.jpg, images/products/elastic/e011.jpg, images/products/elastic/e012.jpg, images/products/elastic/e013.jpg, images/products/elastic/e014.jpg, images/products/elastic/e015.jpg, images/products/elastic/e016.jpg, images/products/elastic/e017.jpg, images/products/elastic/e018.jpg, images/products/elastic/e020.jpg, images/products/elastic/e021.jpg, images/products/elastic/e022.jpg, images/products/elastic/e023.jpg, images/products/elastic/e024.jpg, images/products/elastic/e025.jpg, images/products/elastic/e026.jpg, images/products/elastic/e027.jpg, images/products/elastic/e028.jpg"><img src="images/products/elastic/e001.jpg" alt="Elastic"><div class="name">Elastic</div></div>
       <div class="prod reveal" data-images="images/products/string/st001.jpg, images/products/string/st002.jpg, images/products/string/st003.jpg, images/products/string/st004.jpg, images/products/string/st005.jpg, images/products/string/st006.jpg, images/products/string/st007.jpg, images/products/string/st008.jpg, images/products/string/st009.jpg, images/products/string/st010.jpg, images/products/string/st011.jpg, images/products/string/st012.jpg, images/products/string/st013.jpg, images/products/string/st014.jpg, images/products/string/st015.jpg, images/products/string/st016.jpg, images/products/string/st017.jpg, images/products/string/st018.jpg, images/products/string/st019.jpg, images/products/string/st020.jpg, images/products/string/st021.jpg, images/products/string/st022.jpg, images/products/string/st023.jpg, images/products/string/st024.jpg, images/products/string/st025.jpg, images/products/string/st026.jpg, images/products/string/st027.jpg, images/products/string/st028.jpg, images/products/string/st029.jpg, images/products/string/st030.jpg"><img src="images/products/string/st001.jpg" alt="Lock string"><div class="name">Lock String</div></div>
@@ -2476,6 +2488,20 @@ document.addEventListener('keydown', e=>{
   if(!videoModal.classList.contains('open')) return;
   if(e.key === 'Escape') closeVideoModal();
 });
+
+// ===== About-us factory photo slideshow (auto, blur crossfade) =====
+(function(){
+  const wrap = document.getElementById('aboutSlider');
+  if(!wrap) return;
+  const imgs = wrap.querySelectorAll('img');
+  if(imgs.length < 2) return;
+  let idx = 0;
+  setInterval(()=>{
+    imgs[idx].classList.remove('active');
+    idx = (idx+1) % imgs.length;
+    imgs[idx].classList.add('active');
+  }, 4000); // EDIT: 4000 = 4 second e ekbar chobi change hobe, chaile number ta change korun
+})();
 </script>
 </body>
 </html>
