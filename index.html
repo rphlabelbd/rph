@@ -778,16 +778,21 @@ footer a:hover{color:var(--neon)}
 /* intro corner logos: bam pashe membership (DCCI, BGAPMEA), dan pashe certification
    NOTE: transparent dekhate hole image file gulo-o transparent PNG hote hobe —
    dcci/bgmpea jodi white-background JPG hoy, PNG version dile aro clean dekhabe */
-.intro-mems,.intro-certs{position:absolute;top:96px;display:flex;gap:16px;align-items:center}
+.intro-mems,.intro-certs{position:absolute;top:22px;display:flex;gap:16px;align-items:center}
 .intro-mems{left:30px}
 .intro-certs{right:30px}
 .intro-mems img,.intro-certs img{
   height:78px;width:auto;object-fit:contain;
   opacity:0;animation:tagFade .8s ease .3s forwards;
 }
-#brandIntro.fly .intro-welcome,
+#brandIntro.fly .intro-welcome{opacity:0;transition:opacity .3s ease;animation:none}
+/* mems/certs o ekhon shudhu fade na, brand-er moto e upore fly kore beriye jay */
 #brandIntro.fly .intro-mems,
-#brandIntro.fly .intro-certs{opacity:0;transition:opacity .25s;animation:none}
+#brandIntro.fly .intro-certs{
+  opacity:0;transform:translateY(-70px);
+  transition:opacity .5s ease, transform .6s cubic-bezier(.55,.06,.22,1);
+  animation:none;
+}
 @media(max-width:640px){
   .intro-mems img,.intro-certs img{height:46px}
   .intro-mems{left:14px}.intro-certs{right:14px}
