@@ -836,6 +836,12 @@ footer a:hover{color:var(--neon)}
 /* intro cholakalin navbar er brand lukano thake */
 body.intro-active nav .brand{opacity:0}
 nav .brand{transition:opacity .35s ease}
+/* intro cholakalin header er menu (nav-links + mobile hamburger) o lukano thake —
+   main/inner page e gele (intro-active class shore gele) fade-in kore dekha jay */
+body.intro-active nav .nav-links,
+body.intro-active nav .menu-btn{opacity:0;pointer-events:none}
+nav .nav-links,
+nav .menu-btn{transition:opacity .35s ease}
 
 /* ===== DAILY CAPACITY typing cursor ===== */
 .cap-cursor{
@@ -1773,6 +1779,9 @@ window.addEventListener('keydown', e=>{
 });
 // nav er je kono link/button e click korleo intro collapse hoy
 document.querySelector('nav').addEventListener('click', collapseIntro);
+// EDIT: INTRO_AUTO_MS = user kono kichu na korle koto second por auto main page e chole jabe (ms e, 5000 = 5 sec)
+const INTRO_AUTO_MS = 5000;
+setTimeout(collapseIntro, INTRO_AUTO_MS);
 // overlay te click korleo
 introEl.addEventListener('click', collapseIntro);
 // page jodi already scrolled thake (refresh mid-page), intro dorkar nai
