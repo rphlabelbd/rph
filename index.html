@@ -406,6 +406,23 @@ nav{
 .gal:hover{transform:translateY(-6px);box-shadow:0 16px 34px var(--neon-soft)}
 .gal:hover img{transform:scale(1.07)}
 
+/* ---- 2-column big gallery (Photo Gallery / Video Gallery) ---- */
+.gal-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.gal-big{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:.35s;aspect-ratio:4/3}
+.gal-big img{width:100%;height:100%;object-fit:cover;transition:.6s;display:block}
+.gal-big:hover{transform:translateY(-6px);box-shadow:0 22px 46px var(--neon-soft)}
+.gal-big:hover img{transform:scale(1.08)}
+.gal-big-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(10,20,14,.04) 30%, rgba(8,16,11,.85) 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  padding:36px 20px;text-align:center;color:#fff;
+}
+.gal-big-icon{font-size:2.3rem;margin-bottom:10px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.4))}
+.gal-big-overlay .name{font-family:'Sora',sans-serif;font-size:1.55rem;font-weight:700;margin-bottom:6px}
+.gal-big-sub{font-size:.86rem;color:rgba(255,255,255,.8);letter-spacing:.2px}
+@media(max-width:760px){.gal-grid-2{grid-template-columns:1fr}}
+
 /* client marquee */
 .clients{margin-top:70px;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;background:#fff}
 .marquee{display:flex;gap:56px;width:max-content;animation:scroll 36s linear infinite}
@@ -712,6 +729,65 @@ footer a:hover{color:var(--neon)}
 }
 @media (prefers-reduced-motion: reduce){
   .prod-modal .pm-imgwrap img.active{animation:none}
+}
+
+/* ===== Video gallery lightbox ===== */
+.video-modal{
+  position:fixed;inset:0;z-index:300;
+  background:radial-gradient(circle at 50% 20%, rgba(43,232,124,.1), rgba(12,18,15,.92));
+  backdrop-filter:blur(14px);
+  display:none;align-items:center;justify-content:center;padding:24px;
+}
+.video-modal.open{display:flex}
+.video-modal .vm-stage{
+  position:relative;max-width:1100px;width:100%;
+  background:rgba(255,255,255,.94);border-radius:32px;overflow:hidden;
+  box-shadow:0 70px 160px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.55) inset;
+  animation:pmPopIn .5s cubic-bezier(.16,1,.3,1);
+}
+.video-modal .vm-player{width:100%;background:#000}
+.video-modal .vm-player video{width:100%;max-height:min(70vh,620px);display:block;background:#000}
+.video-modal .vm-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:16px 26px;
+  background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.97));
+  border-top:1px solid var(--line);
+}
+.video-modal .vm-bar b{font-family:'Sora',sans-serif;font-size:1.12rem;color:var(--ink);letter-spacing:.2px}
+.vm-count{
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--green);
+  background:var(--bg);padding:5px 12px;border-radius:20px;border:1px solid var(--line);
+  font-weight:700;
+}
+.vm-thumbs{display:flex;gap:10px;padding:6px 26px 20px;overflow-x:auto;background:#fff}
+.vm-thumbs::-webkit-scrollbar{height:5px}
+.vm-thumbs::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
+.vm-thumb{
+  flex:0 0 auto;width:100px;height:62px;border-radius:12px;overflow:hidden;position:relative;
+  border:2px solid transparent;padding:0;cursor:pointer;background:var(--bg);
+  opacity:.55;transition:.25s;
+}
+.vm-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.vm-thumb .play-ico{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1rem;background:rgba(0,0,0,.28);
+}
+.vm-thumb:hover{opacity:.9;transform:translateY(-3px)}
+.vm-thumb.is-active{border-color:var(--green);opacity:1;box-shadow:0 8px 18px var(--neon-soft)}
+.vm-close{
+  position:absolute;top:16px;right:18px;z-index:6;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.7);border-radius:50%;
+  width:44px;height:44px;padding:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.18rem;cursor:pointer;color:var(--ink);transition:.3s;
+  box-shadow:0 10px 26px rgba(0,0,0,.2);
+}
+.vm-close:hover{background:var(--green);color:#fff;transform:rotate(90deg)}
+@media(max-width:640px){
+  .video-modal .vm-bar{padding:14px 18px}
+  .video-modal .vm-bar b{font-size:.94rem}
+  .vm-thumb{width:78px;height:50px}
 }
 
 /* ================= WHATSAPP CHATBOX ================= */
@@ -1271,16 +1347,31 @@ nav{transition:background .35s ease,border-color .35s ease}
   <div class="wrap">
     <span class="tag-label reveal">Gallery</span>
     <h2 class="sec-title reveal">Inside our <span>factory</span></h2>
-    <div class="gal-grid">
-      <!-- EDIT-IMG: gallery photos — add/remove as many .gal blocks as you want -->
-      <div class="gal reveal"><img src="https://placehold.co/500x440/D9EBE0/128A46?text=Gallery+1" alt="Gallery 1"></div>
-      <div class="gal reveal"><img src="https://placehold.co/500x440/E1EDE5/0B5E30?text=Gallery+2" alt="Gallery 2"></div>
-      <div class="gal reveal"><img src="https://placehold.co/500x440/D9EBE0/128A46?text=Gallery+3" alt="Gallery 3"></div>
-      <div class="gal reveal"><img src="https://placehold.co/500x440/E1EDE5/0B5E30?text=Gallery+4" alt="Gallery 4"></div>
-      <div class="gal reveal"><img src="https://placehold.co/500x440/D9EBE0/128A46?text=Gallery+5" alt="Gallery 5"></div>
-      <div class="gal reveal"><img src="https://placehold.co/500x440/E1EDE5/0B5E30?text=Gallery+6" alt="Gallery 6"></div>
-      <div class="gal reveal"><img src="https://placehold.co/500x440/D9EBE0/128A46?text=Gallery+7" alt="Gallery 7"></div>
-      <div class="gal reveal"><img src="https://placehold.co/500x440/E1EDE5/0B5E30?text=Gallery+8" alt="Gallery 8"></div>
+    <div class="gal-grid-2">
+      <!-- PHOTO GALLERY: click korle shob photo bujhle prod-lightbox e khulbe.
+           EDIT-IMG: data-images e comma diye photo path add/remove korun.
+           Photo upload korun: images/gallery/photos/ folder e (github repo) -->
+      <div class="gal-big prod reveal"
+           data-images="images/gallery/photos/gp001.jpg, images/gallery/photos/gp002.jpg, images/gallery/photos/gp003.jpg, images/gallery/photos/gp004.jpg, images/gallery/photos/gp005.jpg, images/gallery/photos/gp006.jpg, images/gallery/photos/gp007.jpg, images/gallery/photos/gp008.jpg">
+        <img src="images/gallery/photos/gp001.jpg" alt="Factory photo gallery">
+        <div class="gal-big-overlay">
+          <span class="gal-big-icon">📷</span>
+          <div class="name">Photo Gallery</div>
+          <span class="gal-big-sub">Click to view all photos</span>
+        </div>
+      </div>
+
+      <!-- VIDEO GALLERY: click korle video-modal khulbe.
+           EDIT: video list ta niche script e (videoList array) add/remove korun.
+           Video upload korun: images/gallery/videos/ folder e (github repo) -->
+      <div class="gal-big reveal" id="videoGalCard">
+        <img src="images/gallery/videos/vt001.jpg" alt="Factory video gallery">
+        <div class="gal-big-overlay">
+          <span class="gal-big-icon">▶</span>
+          <div class="name">Video Gallery</div>
+          <span class="gal-big-sub">Click to watch videos</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1537,6 +1628,19 @@ nav{transition:background .35s ease,border-color .35s ease}
       <span class="pm-count" id="prodCount">1 / 1</span>
     </div>
     <div class="pm-thumbs" id="pmThumbs"></div>
+  </div>
+</div>
+
+<!-- ================= VIDEO GALLERY LIGHTBOX ================= -->
+<div class="video-modal" id="videoModal">
+  <div class="vm-stage">
+    <button class="vm-close" onclick="closeVideoModal()">✕</button>
+    <div class="vm-player"><video id="vmVideo" controls playsinline></video></div>
+    <div class="vm-bar">
+      <b id="vmTitle">Video Gallery</b>
+      <span class="vm-count" id="vmCount">1 / 1</span>
+    </div>
+    <div class="vm-thumbs" id="vmThumbs"></div>
   </div>
 </div>
 
@@ -2312,6 +2416,64 @@ document.addEventListener('keydown', e=>{
 // close mobile menu on link click
 document.querySelectorAll('.nav-links a').forEach(a=>{
   a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+});
+
+// ===== Video Gallery Lightbox =====
+// EDIT: video add/remove korte niche list e ekta line add/delete korun.
+// src   = video file er path (images/gallery/videos/ folder e upload korun, .mp4 recommended)
+// poster= video-r thumbnail chobi (na dile blank thakbe, kintu dile valo dekhabe)
+const videoList = [
+  { title: "Factory Tour",    src: "images/gallery/videos/v001.mp4", poster: "images/gallery/videos/vt001.jpg" },
+  { title: "Production Line", src: "images/gallery/videos/v002.mp4", poster: "images/gallery/videos/vt002.jpg" },
+  { title: "Quality Check",   src: "images/gallery/videos/v003.mp4", poster: "images/gallery/videos/vt003.jpg" },
+];
+
+const videoModal = document.getElementById('videoModal');
+const vmVideo     = document.getElementById('vmVideo');
+const vmTitle     = document.getElementById('vmTitle');
+const vmCount     = document.getElementById('vmCount');
+const vmThumbs    = document.getElementById('vmThumbs');
+let vmIdx = 0;
+
+function loadVideo(){
+  const v = videoList[vmIdx];
+  vmVideo.src = v.src;
+  vmVideo.poster = v.poster || '';
+  vmTitle.textContent = v.title;
+  vmCount.textContent = (vmIdx+1) + ' / ' + videoList.length;
+  vmVideo.load();
+}
+function buildVideoThumbs(){
+  vmThumbs.innerHTML = '';
+  videoList.forEach((v,i)=>{
+    const t = document.createElement('button');
+    t.className = 'vm-thumb' + (i===vmIdx ? ' is-active' : '');
+    t.innerHTML = `<img src="${v.poster||''}" alt="${v.title}"><span class="play-ico">▶</span>`;
+    t.onclick = ()=>{
+      vmIdx = i; vmVideo.pause(); loadVideo(); vmVideo.play();
+      [...vmThumbs.children].forEach(c=>c.classList.remove('is-active'));
+      t.classList.add('is-active');
+    };
+    vmThumbs.appendChild(t);
+  });
+}
+function openVideoModal(i){
+  vmIdx = i;
+  loadVideo();
+  buildVideoThumbs();
+  videoModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeVideoModal(){
+  videoModal.classList.remove('open');
+  vmVideo.pause();
+  document.body.style.overflow = '';
+}
+document.getElementById('videoGalCard')?.addEventListener('click', ()=> openVideoModal(0));
+videoModal.addEventListener('click', e=>{ if(e.target === videoModal) closeVideoModal(); });
+document.addEventListener('keydown', e=>{
+  if(!videoModal.classList.contains('open')) return;
+  if(e.key === 'Escape') closeVideoModal();
 });
 </script>
 </body>
