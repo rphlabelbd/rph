@@ -511,6 +511,12 @@ input,textarea{
 input:focus,textarea:focus{outline:none;border-color:var(--neon);box-shadow:0 0 0 4px var(--neon-soft);background:#fff}
 textarea{min-height:130px;resize:vertical}
 form .btn-primary{width:100%;justify-content:center;margin-top:24px}
+.form-success{
+  display:none;margin-top:16px;padding:14px 18px;border-radius:14px;
+  background:rgba(43,232,124,.12);border:1px solid rgba(43,232,124,.4);
+  color:var(--green-dk);font-weight:600;font-size:.92rem;text-align:center;
+}
+.form-success.show{display:block;animation:pmPopIn .4s ease}
 
 /* ================= FOOTER ================= */
 footer{
@@ -1486,13 +1492,11 @@ nav{transition:background .35s ease,border-color .35s ease}
            FormSubmit tokhon rphlabel@yahoo.com e ekta activation email pathabe,
            sei email er confirm link e click korlei form active hoye jabe.
            ============================================ -->
-      <form class="reveal" action="https://formsubmit.co/rphlabel@yahoo.com" method="POST">
+      <form class="reveal" id="contactForm" action="https://formsubmit.co/rphlabel@yahoo.com" method="POST">
         <input type="hidden" name="_cc" value="hanif@articlelabelbd.com">
         <input type="hidden" name="_subject" value="New inquiry from Article Label website">
         <input type="hidden" name="_captcha" value="true">
         <input type="hidden" name="_template" value="table">
-        <!-- EDIT: thank-you redirect — apnar live domain diye replace korun -->
-        <input type="hidden" name="_next" value="https://articlelabelbd.com/thanks.html">
 
         <div class="f-row">
           <div><label>Your Name *</label><input type="text" name="name" required placeholder="Full name"></div>
@@ -1506,8 +1510,9 @@ nav{transition:background .35s ease,border-color .35s ease}
         <input type="text" name="product" placeholder="e.g. Woven label, Hang tag, Leather patch...">
         <label>Message *</label>
         <textarea name="message" required placeholder="Tell us about your requirement, quantity, target date..."></textarea>
-        <button type="submit" class="btn btn-primary">Send Message ✉</button>
+        <button type="submit" class="btn btn-primary" id="contactSubmitBtn">Send Message ✉</button>
       </form>
+      <div class="form-success" id="contactSuccess">✅ Thank you! Your message has been sent — we'll get back to you soon.</div>
     </div>
   </div>
 </section>
@@ -1589,8 +1594,6 @@ nav{transition:background .35s ease,border-color .35s ease}
       <input type="hidden" name="_subject" id="apSubject" value="Job Application">
       <input type="hidden" name="_captcha" value="true">
       <input type="hidden" name="_template" value="table">
-      <!-- EDIT: thank-you redirect — apnar live domain diye replace korun -->
-      <input type="hidden" name="_next" value="https://articlelabelbd.com/thanks.html">
       <input type="hidden" name="Position" id="apPosition" value="">
 
       <!-- photo: upload ba camera -->
@@ -1643,8 +1646,9 @@ nav{transition:background .35s ease,border-color .35s ease}
       <input type="file" name="CV" accept=".pdf,.doc,.docx" required class="ap-file">
       <small class="ap-hint">PDF or Word file</small>
 
-      <button type="submit" class="btn btn-primary">Submit Application ➜</button>
+      <button type="submit" class="btn btn-primary" id="applySubmitBtn">Submit Application ➜</button>
     </form>
+    <div class="form-success" id="applySuccess">✅ Thank you! Your application has been submitted successfully.</div>
   </div>
 </div>
 
@@ -2140,6 +2144,12 @@ function openApply(position){
   document.getElementById('apPos').textContent = position;
   document.getElementById('apPosition').value = position;
   document.getElementById('apSubject').value = "Job Application — " + position;
+  const form = document.getElementById('applyForm');
+  const success = document.getElementById('applySuccess');
+  const btn = document.getElementById('applySubmitBtn');
+  form.style.display = '';
+  success.classList.remove('show');
+  btn.disabled = false; btn.textContent = 'Submit Application ➜';
   applyModal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -2253,11 +2263,31 @@ function removeAudio(){
 }
 
 // form validation: likha ba voice — jekono ekta answer lagbe
-document.getElementById('applyForm').addEventListener('submit', e=>{
+// + AJAX submit (FormSubmit) — kono notun page e redirect na kore, ekhanei "thank you" dekhabe
+document.getElementById('applyForm').addEventListener('submit', async e=>{
+  e.preventDefault();
   const why = document.getElementById('apWhy').value.trim();
   if(!why && !apAudioInput.files.length){
-    e.preventDefault();
     alert('Please answer "Why are you applying" — write it or record a voice answer.');
+    return;
+  }
+  const form = e.target;
+  const btn  = document.getElementById('applySubmitBtn');
+  const success = document.getElementById('applySuccess');
+  const originalLabel = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try{
+    const res = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if(!res.ok) throw new Error('submit failed');
+    form.style.display = 'none';
+    success.classList.add('show');
+  }catch(err){
+    alert('Somoshsha hoyeche, ektu por abar try korun.');
+    btn.disabled = false; btn.textContent = originalLabel;
   }
 });
 
@@ -2266,6 +2296,29 @@ document.addEventListener('keydown', e=>{
   if(e.key !== 'Escape') return;
   if(camModal.classList.contains('open')) closeCamera();
   else if(applyModal.classList.contains('open')) closeApply();
+});
+
+// ===== Contact form: AJAX submit, kono redirect chara ekhanei "thank you" dekhabe =====
+document.getElementById('contactForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const form = e.target;
+  const btn  = document.getElementById('contactSubmitBtn');
+  const success = document.getElementById('contactSuccess');
+  const originalLabel = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try{
+    const res = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if(!res.ok) throw new Error('submit failed');
+    form.style.display = 'none';
+    success.classList.add('show');
+  }catch(err){
+    alert('Somoshsha hoyeche, ektu por abar try korun.');
+    btn.disabled = false; btn.textContent = originalLabel;
+  }
 });
 
 // ===== Leader profile modal (Read More) =====
