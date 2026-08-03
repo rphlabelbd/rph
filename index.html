@@ -1810,7 +1810,7 @@ const DUR_BASE = 800;   // ms — first letter spin duration
 const DUR_GAP  = 130;   // ms — each next letter spins this much longer (stops later)
 const DUR_MAX  = 2400;  // ms — cap (longest letter)
 const REEL_CELLS = 2;   // each letter cycles through max 2 letters before landing
-const HOLD     = 2600;  // ms — word stays before next spin
+const HOLD     = 3000;  // ms — word stays before next spin (minimum 3 sec, EDIT: user chaile ei number change korte paren)
 // EDIT: FIRST_HOLD = intro shesh hoye 1st image ta minimum koto second thakbe
 // (next image e jawar age). Ekhon 5000ms = 5 second.
 const FIRST_HOLD   = 5000;
@@ -1886,19 +1886,25 @@ function spinTo(item){
     setTimeout(()=>o.strip.classList.remove('rolling'), dur*0.72);
   });
 
-  // ei muhurte je word/image ta dekhano hocche (spinIdx), tar jonno koto hold somoy lagbe:
-  // 1st image (spinIdx===0) hole FIRST_HOLD (5 sec), nahole normal HOLD.
+  // IMAGE-er stay time ekhon lettering-er upor r nirvor kore na — image change
+  // hobar muhurto (spinTo call howar somoy) theke thik holdMs somoy por-e
+  // porer image-e move korar check shuru hoy. Sob product-e ei somoy ekই thakbe.
+  // 1st image (spinIdx===0) hole FIRST_HOLD (5 sec), nahole shobshomoy HOLD (3 sec) — fixed.
+  // NOTE: HOLD/FIRST_HOLD dutoi DUR_MAX (2400ms, lettering-er max somoy) theke
+  // beshi rakhte hobe, nahole lettering effect shesh howar age-i image change hoye jabe.
   const holdMs  = (spinIdx === 0) ? FIRST_HOLD : HOLD;
   const nextIdx = (spinIdx + 1) % spinWords.length;
 
-  setTimeout(()=> waitForImageThenAdvance(nextIdx), maxDur + holdMs);
+  setTimeout(()=> waitForImageThenAdvance(nextIdx), holdMs);
 }
 
-// Hold somoy shesh howar por, porer image ta load hoyeche kina check kore tarpor move kore.
-// Jodi porer image ekhono load na hoye thake, current image e e-i atke thake — 
-// IMG_CHECK_MS por por abar check kore, jotokkhon na image ta ready hoy.
+// Hold somoy shesh howar por, porer image ta (+ tar porer image o) load hoyeche kina check kore tarpor move kore.
+// EDIT: shudhu porer 1 ta image na, porer 2 ta image (nextIdx + tar porer ta) load na howa
+// porjonto current product e-i atke thakbe — IMG_CHECK_MS por por abar check kore.
+// Ete image skip howar somvabona kome jay.
 function waitForImageThenAdvance(nextIdx){
-  if(imgLoaded[nextIdx]){
+  const afterNextIdx = (nextIdx + 1) % spinWords.length;
+  if(imgLoaded[nextIdx] && imgLoaded[afterNextIdx]){
     spinIdx = nextIdx;
     spinTo(spinWords[spinIdx]);
   } else {
