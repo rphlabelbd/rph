@@ -1811,7 +1811,11 @@ const DUR_GAP  = 130;   // ms — each next letter spins this much longer (stops
 const DUR_MAX  = 2400;  // ms — cap (longest letter)
 const REEL_CELLS = 2;   // each letter cycles through max 2 letters before landing
 const HOLD     = 2600;  // ms — word stays before next spin
-const EASE     = "cubic-bezier(.14,.75,.22,1)"; // fast start → very smooth landing
+// EDIT: FIRST_HOLD = intro shesh hoye 1st image ta minimum koto second thakbe
+// (next image e jawar age). Ekhon 5000ms = 5 second.
+const FIRST_HOLD   = 5000;
+const IMG_CHECK_MS = 150; // ms — next image load hoyeche kina koto ghono ghono check kora hobe
+const EASE = "cubic-bezier(.14,.75,.22,1)"; // fast start → very smooth landing
 let spinIdx = 0;
 
 // hidden measurer to lock each slot's width to its final character
@@ -1882,10 +1886,24 @@ function spinTo(item){
     setTimeout(()=>o.strip.classList.remove('rolling'), dur*0.72);
   });
 
-  setTimeout(()=>{
-    spinIdx = (spinIdx+1) % spinWords.length;
+  // ei muhurte je word/image ta dekhano hocche (spinIdx), tar jonno koto hold somoy lagbe:
+  // 1st image (spinIdx===0) hole FIRST_HOLD (5 sec), nahole normal HOLD.
+  const holdMs  = (spinIdx === 0) ? FIRST_HOLD : HOLD;
+  const nextIdx = (spinIdx + 1) % spinWords.length;
+
+  setTimeout(()=> waitForImageThenAdvance(nextIdx), maxDur + holdMs);
+}
+
+// Hold somoy shesh howar por, porer image ta load hoyeche kina check kore tarpor move kore.
+// Jodi porer image ekhono load na hoye thake, current image e e-i atke thake — 
+// IMG_CHECK_MS por por abar check kore, jotokkhon na image ta ready hoy.
+function waitForImageThenAdvance(nextIdx){
+  if(imgLoaded[nextIdx]){
+    spinIdx = nextIdx;
     spinTo(spinWords[spinIdx]);
-  }, maxDur + HOLD);
+  } else {
+    setTimeout(()=> waitForImageThenAdvance(nextIdx), IMG_CHECK_MS);
+  }
 }
 
 // ===== Hero product image (name er sathe synced) =====
@@ -1896,7 +1914,15 @@ const heroImg = document.querySelector('.hero-slide img');
 heroImg.addEventListener('error', ()=>{ heroImg.src = FALLBACK_IMG; });
 
 // preload sob product image, jate spin er somoy atke na thake
-spinWords.forEach(it => { const im = new Image(); im.src = it.img; });
+// + protyek image kobe fully load hoyeche seta track kora hoy (imgLoaded array e),
+//   jate porer image e jawar age eta check kora jay je image ta ready ache kina.
+const imgLoaded = new Array(spinWords.length).fill(false);
+spinWords.forEach((it, i) => {
+  const im = new Image();
+  im.onload  = () => { imgLoaded[i] = true; };
+  im.onerror = () => { imgLoaded[i] = true; }; // error holeo "loaded" dhore nicchi, nahole atke thakbe
+  im.src = it.img;
+});
 
 function swapHeroImage(src){
   if(heroImg.getAttribute('src') === src) return;
