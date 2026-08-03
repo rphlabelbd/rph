@@ -517,6 +517,8 @@ form .btn-primary{width:100%;justify-content:center;margin-top:24px}
   color:var(--green-dk);font-weight:600;font-size:.92rem;text-align:center;
 }
 .form-success.show{display:block;animation:pmPopIn .4s ease}
+.field-invalid{border-color:#e5484d !important;box-shadow:0 0 0 3px rgba(229,72,77,.15) !important}
+.ap-photo.field-invalid{border-color:#e5484d}
 
 /* ================= FOOTER ================= */
 footer{
@@ -1622,7 +1624,7 @@ nav{transition:background .35s ease,border-color .35s ease}
       </div>
       <div class="f-row">
         <div><label>Phone *</label><input type="tel" name="Phone" required placeholder="+880..."></div>
-        <div><label>Email</label><input type="email" name="Email" placeholder="you@email.com"></div>
+        <div><label>Email *</label><input type="email" name="Email" id="apEmail" required placeholder="you@email.com"></div>
       </div>
       <label>Present Address *</label>
       <textarea name="Present Address" class="ap-addr" required placeholder="House, road, area, city"></textarea>
@@ -2152,6 +2154,7 @@ function openApply(position){
   form.style.display = '';
   success.classList.remove('show');
   btn.disabled = false; btn.textContent = 'Submit Application ➜';
+  form.querySelectorAll('.field-invalid').forEach(el=>el.classList.remove('field-invalid'));
   applyModal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -2265,12 +2268,42 @@ function removeAudio(){
 }
 
 // form validation: likha ba voice — jekono ekta answer lagbe
-// + AJAX submit (FormSubmit) — kono notun page e redirect na kore, ekhanei "thank you" dekhabe
+// + required field check (photo, cv, name, email, phone, experience, salary...)
+//   modal-er transform/animation-r karone browser-r nijer "please fill" tooltip
+//   thikmoto na dekhate pare, tai nijeder moto spostho notice dekhachhi.
+const apRequiredFields = [
+  { get: () => document.getElementById('apPhotoInput'),                      box: () => document.getElementById('apPhotoBox'), label: 'Recent Photograph', isFile: true },
+  { get: () => document.querySelector('#applyForm [name="Name"]'),           label: 'Full Name' },
+  { get: () => document.querySelector('#applyForm [name="Date of Birth"]'),  label: 'Date of Birth' },
+  { get: () => document.querySelector('#applyForm [name="Fathers Name"]'),   label: "Father's Name" },
+  { get: () => document.querySelector('#applyForm [name="Mothers Name"]'),   label: "Mother's Name" },
+  { get: () => document.querySelector('#applyForm [name="Phone"]'),          label: 'Phone' },
+  { get: () => document.getElementById('apEmail'),                          label: 'Email' },
+  { get: () => document.querySelector('#applyForm [name="Present Address"]'),   label: 'Present Address' },
+  { get: () => document.querySelector('#applyForm [name="Permanent Address"]'), label: 'Permanent Address' },
+  { get: () => document.querySelector('#applyForm [name="Experience Years"]'),  label: 'Experience (years)' },
+  { get: () => document.querySelector('#applyForm [name="Asking Salary"]'),     label: 'Asking Salary' },
+  { get: () => document.querySelector('#applyForm [name="CV"]'),             label: 'CV', isFile: true },
+];
+function validateApplyRequired(){
+  const missing = [];
+  apRequiredFields.forEach(f=>{
+    const el = f.get();
+    if(!el) return;
+    const empty = f.isFile ? el.files.length === 0 : el.value.trim() === '';
+    const target = f.box ? f.box() : el;
+    target.classList.toggle('field-invalid', empty);
+    if(empty) missing.push(f.label);
+  });
+  return missing;
+}
 document.getElementById('applyForm').addEventListener('submit', async e=>{
   e.preventDefault();
+  const missing = validateApplyRequired();
   const why = document.getElementById('apWhy').value.trim();
-  if(!why && !apAudioInput.files.length){
-    alert('Please answer "Why are you applying" — write it or record a voice answer.');
+  if(!why && !apAudioInput.files.length) missing.push('Why are you applying (write or record)');
+  if(missing.length){
+    alert('Please fill in the following required field(s):\n\n• ' + missing.join('\n• '));
     return;
   }
   const form = e.target;
@@ -2676,6 +2709,12 @@ reqModal.addEventListener('click', e=>{ if(e.target === reqModal) closeRequireme
 document.addEventListener('keydown', e=>{
   if(!reqModal.classList.contains('open')) return;
   if(e.key === 'Escape') closeRequirements();
+});
+
+// apply form: field bhorle laal border nijei sore jak
+document.getElementById('applyForm').addEventListener('input', e=>{
+  e.target.classList.remove('field-invalid');
+  if(e.target.id === 'apPhotoInput') document.getElementById('apPhotoBox').classList.remove('field-invalid');
 });
 
 // ===== About-us factory photo slideshow (auto, blur crossfade) =====
